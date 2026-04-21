@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore | SonicCritique</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="index.html">Sonic<span>Critique</span></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="explore.html" class="active">Explore</a></li>
+                <li><a href="explore.html?tab=reviews">My Reviews</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="explore-layout">
+            <aside class="filters">
+                <h3>Filters</h3>
+                <div class="filter-group">
+                    <label>Genre</label>
+                    <select id="filter-genre">
+                        <option value="all">All Genres</option>
+                        <option value="Pop">Pop</option>
+                        <option value="Hip-Hop">Hip-Hop</option>
+                        <option value="R&B">R&B</option>
+                        <option value="Indie">Indie</option>
+                        <option value="Rock">Rock</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Year</label>
+                    <select id="filter-year">
+                        <option value="all">All Years</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="older">Older</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Min Rating</label>
+                    <input type="range" id="filter-rating" min="0" max="10" value="0">
+                    <span id="rating-val">0</span>
+                </div>
+                <button id="reset-filters" class="btn-primary" style="width:100%; font-size:0.8rem; padding:8px;">Reset Filters</button>
+            </aside>
+
+            <section class="explore-content">
+                <div class="search-header">
+                    <div class="search-main">
+                        <input type="text" id="search-input" placeholder="Search for albums or artists...">
+                        <button id="search-btn" class="btn-primary">Search</button>
+                    </div>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="all">Discover</button>
+                    <button class="tab-btn" data-tab="reviews">My Reviews</button>
+                </div>
+
+                <div id="explore-grid" class="album-grid"></div>
+
+                <div id="loading-state" class="hidden" style="text-align:center; padding: 50px;">
+                    <div class="spinner"></div>
+                    <p>Searching for music...</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                &copy; 2023 SonicCritique.
+            </div>
+        </div>
+    </footer>
+
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-modal" class="close-btn">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/explore.js"></script>
+</body>
+</html>

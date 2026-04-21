@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SonicCritique | Music & Album Reviews</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="index.html">Sonic<span>Critique</span></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="explore.html">Explore</a></li>
+                <li><a href="explore.html?tab=reviews">My Reviews</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <div id="record-of-the-day" class="featured-card">
+                    <div class="tag">Record of the Day</div>
+                    <div class="featured-info" id="rot-content">
+                        <div class="skeleton" style="height: 200px; width: 200px;"></div>
+                        <div class="featured-text">
+                            <h2>Loading featured album...</h2>
+                            <p>Discover something new today.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="top-charts container">
+            <div class="section-header">
+                <h2>Top Charts</h2>
+                <a href="explore.html?sort=rating" class="btn-text">View All <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="album-grid" id="top-charts-grid"></div>
+        </section>
+
+        <section class="recent-reviews container">
+            <div class="section-header">
+                <h2>Recent Reviews</h2>
+                <a href="explore.html?tab=reviews" class="btn-text">See Community <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="review-list" id="recent-reviews-list"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Sonic<span>Critique</span></div>
+                <p>Your personal hub for music discovery and album critiques.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-spotify"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2023 SonicCritique. Made with passion for music.
+            </div>
+        </div>
+    </footer>
+
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-modal" class="close-btn">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
