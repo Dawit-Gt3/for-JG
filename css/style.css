@@ -482,13 +482,33 @@ nav {
 
 .highlighted-line {
     background: rgba(255, 62, 108, 0.2);
-    border-bottom: 2px solid var(--primary);
+    border-left: 3px solid var(--primary);
+    padding-left: 10px;
+    margin: 5px 0;
+    display: inline-block;
+    width: 100%;
     cursor: help;
     transition: background 0.3s;
 }
 
 .highlighted-line:hover {
     background: rgba(255, 62, 108, 0.4);
+}
+
+.lyrics-container-v2 {
+    max-height: 500px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
+}
+
+.lyrics-container-v2::-webkit-scrollbar {
+    width: 6px;
+}
+
+.lyrics-container-v2::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    border-radius: 10px;
 }
 
 .sidebar-box {

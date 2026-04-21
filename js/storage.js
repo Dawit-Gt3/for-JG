@@ -3,58 +3,83 @@ const STORAGE_KEYS = {
     REVIEWS_SONGS: 'sonic_critique_reviews_songs',
     FAVORITES_ALBUMS: 'sonic_critique_favorites_albums',
     FAVORITES_SONGS: 'sonic_critique_favorites_songs',
-    STARTER_INITIALIZED: 'sonic_critique_initialized_v2', // Increment version
+    STARTER_INITIALIZED: 'sonic_critique_initialized_v3',
     ROT_DATE: 'sonic_critique_rot_date',
     ROT_ALBUM: 'sonic_critique_rot_album'
 };
 
-// We will populate this with 50 albums in a separate action
 const STARTER_ALBUMS = [
     {
         "id": "alb_1",
         "title": "After Hours",
         "artist": "The Weeknd",
         "year": "2020",
-        "genre": "R&B",
+        "genre": "R&B/Pop",
         "cover": "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "alb_1_1",
+                "id": "s_alone_again",
                 "track": 1,
                 "title": "Alone Again",
                 "duration": "3:10",
-                "lyrics": "Take off my disguise...",
-                "interpretation": "Intro to isolation.",
+                "lyrics": "Take off my disguise\nI'm living someone else's life\nSuppressing who I was inside\nSo I can tell her I'm fine\nI'm living a lie",
+                "interpretation": "A heavy opener about the identity crisis that comes with fame.",
                 "themes": [
-                    "Identity"
+                    "Identity",
+                    "Isolation"
                 ],
                 "mood": [
-                    "Dark"
+                    "Dark",
+                    "Cinematic"
                 ],
                 "key_lines": [
                     {
                         "line": "Take off my disguise",
-                        "explanation": "Character study."
+                        "explanation": "The Weeknd acknowledging his stage persona vs Abel."
                     }
                 ]
             },
             {
-                "id": "alb_1_2",
-                "track": 2,
-                "title": "Too Late",
-                "duration": "3:59",
-                "lyrics": "We're in hell...",
-                "interpretation": "Toxic love.",
+                "id": "s_blinding_lights",
+                "track": 9,
+                "title": "Blinding Lights",
+                "duration": "3:20",
+                "lyrics": "I've been on my own for long enough\nMaybe you can show me how to love, maybe\nI'm going through withdrawals\nYou don't even have to do too much\nYou can turn me on with just a touch, baby\n\nI look around and Sin City's cold and empty\nNo one's around to judge me\nI can't see clearly when you're gone",
+                "interpretation": "An 80s-inspired anthem about the rush and dependency of a high-speed relationship.",
                 "themes": [
-                    "Love"
+                    "Obsession",
+                    "Escapism"
                 ],
                 "mood": [
-                    "Sad"
+                    "Hype",
+                    "Nostalgic"
                 ],
                 "key_lines": [
                     {
-                        "line": "Hell as paradise",
-                        "explanation": "LA lifestyle."
+                        "line": "Sin City's cold and empty",
+                        "explanation": "Refers to the superficiality and loneliness of Las Vegas nightlife."
+                    }
+                ]
+            },
+            {
+                "id": "s_after_hours",
+                "track": 13,
+                "title": "After Hours",
+                "duration": "6:01",
+                "lyrics": "Thought I almost died in my dream again\nFightin' for my life, I couldn't breathe again\nI'm fallin' into a deep state\nCan't get you out of my mind\nI'm fallin' into a deep state\nCan't get you out of my mind",
+                "interpretation": "The title track explores themes of regret and the desire for reconciliation in the early hours of the morning.",
+                "themes": [
+                    "Regret",
+                    "Longing"
+                ],
+                "mood": [
+                    "Melancholic",
+                    "Dark"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Thought I almost died in my dream again",
+                        "explanation": "A recurring theme of near-death experiences and existential dread."
                     }
                 ]
             }
@@ -62,261 +87,53 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_2",
-        "title": "Dawn FM",
-        "artist": "The Weeknd",
-        "year": "2022",
-        "genre": "Pop",
+        "title": "IGOR",
+        "artist": "Tyler, The Creator",
+        "year": "2019",
+        "genre": "Alternative Hip-Hop",
         "cover": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_2_1",
-                "track": 1,
-                "title": "Track 1 for Dawn FM",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Dawn FM go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Dawn FM's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 1 for Dawn FM",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_2_2",
-                "track": 2,
-                "title": "Track 2 for Dawn FM",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Dawn FM go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Dawn FM's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 2 for Dawn FM",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_2_3",
-                "track": 3,
-                "title": "Track 3 for Dawn FM",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Dawn FM go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Dawn FM's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 3 for Dawn FM",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_2_4",
+                "id": "s_earfquake",
                 "track": 4,
-                "title": "Track 4 for Dawn FM",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Dawn FM go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Dawn FM's message.",
+                "title": "EARFQUAKE",
+                "duration": "3:10",
+                "lyrics": "For real, for real this time\nBitch, I'm for real, for real this time\nYou make my earth quake\nOh, you make my earth quake\nDon't leave, it's my fault\n'Cause when it all comes to a halt\nI don't want tonight to end",
+                "interpretation": "A vulnerable confession of love and dependency, featuring an iconic uncredited guest verse from Playboi Carti.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Love",
+                    "Dependency"
                 ],
                 "mood": [
-                    "Chill"
+                    "Chill",
+                    "Vulnerable"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Dawn FM",
-                        "explanation": "Deep meaning."
+                        "line": "You make my earth quake",
+                        "explanation": "A metaphor for the destabilizing power of love."
                     }
                 ]
             },
             {
-                "id": "s_alb_2_5",
-                "track": 5,
-                "title": "Track 5 for Dawn FM",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Dawn FM go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Dawn FM's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 5 for Dawn FM",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_2_6",
+                "id": "s_new_magic_wand",
                 "track": 6,
-                "title": "Track 6 for Dawn FM",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Dawn FM go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Dawn FM's message.",
+                "title": "NEW MAGIC WAND",
+                "duration": "3:15",
+                "lyrics": "Sometimes you gotta close a door to open a window\nI saw a photo, you looked joyous\nMy eyes are green I'm eating veggies\nI need to get her out the picture\nShe's really messing up my frame",
+                "interpretation": "A frantic track about jealousy and the desire to eliminate anyone coming between Tyler and his partner.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Jealousy",
+                    "Chaos"
                 ],
                 "mood": [
-                    "Chill"
+                    "Aggressive",
+                    "Hype"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Dawn FM",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_2_7",
-                "track": 7,
-                "title": "Track 7 for Dawn FM",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Dawn FM go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Dawn FM's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 7 for Dawn FM",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_2_8",
-                "track": 8,
-                "title": "Track 8 for Dawn FM",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Dawn FM go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Dawn FM's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 8 for Dawn FM",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_2_9",
-                "track": 9,
-                "title": "Track 9 for Dawn FM",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Dawn FM go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Dawn FM's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 9 for Dawn FM",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_2_10",
-                "track": 10,
-                "title": "Track 10 for Dawn FM",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Dawn FM go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Dawn FM's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 10 for Dawn FM",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_2_11",
-                "track": 11,
-                "title": "Track 11 for Dawn FM",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Dawn FM go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Dawn FM's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Dawn FM",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_2_12",
-                "track": 12,
-                "title": "Track 12 for Dawn FM",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Dawn FM go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Dawn FM's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Dawn FM",
-                        "explanation": "Deep meaning."
+                        "line": "She's really messing up my frame",
+                        "explanation": "The 'frame' represents his perfect vision of the relationship."
                     }
                 ]
             }
@@ -324,2357 +141,410 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_3",
-        "title": "Life of a Don",
-        "artist": "Don Toliver",
-        "year": "2021",
-        "genre": "Hip-Hop",
+        "title": "Blonde",
+        "artist": "Frank Ocean",
+        "year": "2016",
+        "genre": "R&B",
         "cover": "https://images.unsplash.com/photo-1619983081563-430f63602796?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_3_1",
+                "id": "s_nikes",
                 "track": 1,
-                "title": "Track 1 for Life of a Don",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Life of a Don go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Life of a Don's message.",
+                "title": "Nikes",
+                "duration": "5:14",
+                "lyrics": "These bitches want Nikes...",
+                "interpretation": "Critique of materialism.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Materialism"
                 ],
                 "mood": [
                     "Chill"
                 ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 1 for Life of a Don",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_3_2",
-                "track": 2,
-                "title": "Track 2 for Life of a Don",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Life of a Don go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Life of a Don's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 2 for Life of a Don",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_3_3",
-                "track": 3,
-                "title": "Track 3 for Life of a Don",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Life of a Don go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Life of a Don's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 3 for Life of a Don",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_3_4",
-                "track": 4,
-                "title": "Track 4 for Life of a Don",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Life of a Don go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Life of a Don's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 4 for Life of a Don",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_3_5",
-                "track": 5,
-                "title": "Track 5 for Life of a Don",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Life of a Don go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Life of a Don's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 5 for Life of a Don",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_3_6",
-                "track": 6,
-                "title": "Track 6 for Life of a Don",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Life of a Don go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Life of a Don's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 6 for Life of a Don",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_3_7",
-                "track": 7,
-                "title": "Track 7 for Life of a Don",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Life of a Don go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Life of a Don's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 7 for Life of a Don",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_3_8",
-                "track": 8,
-                "title": "Track 8 for Life of a Don",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Life of a Don go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Life of a Don's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 8 for Life of a Don",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_3_9",
-                "track": 9,
-                "title": "Track 9 for Life of a Don",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Life of a Don go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Life of a Don's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 9 for Life of a Don",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_3_10",
-                "track": 10,
-                "title": "Track 10 for Life of a Don",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Life of a Don go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Life of a Don's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 10 for Life of a Don",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_3_11",
-                "track": 11,
-                "title": "Track 11 for Life of a Don",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Life of a Don go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Life of a Don's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Life of a Don",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_3_12",
-                "track": 12,
-                "title": "Track 12 for Life of a Don",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Life of a Don go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Life of a Don's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Life of a Don",
-                        "explanation": "Deep meaning."
-                    }
-                ]
+                "key_lines": []
             }
         ]
     },
     {
         "id": "alb_4",
-        "title": "Heaven or Hell",
-        "artist": "Don Toliver",
-        "year": "2020",
+        "title": "To Pimp a Butterfly",
+        "artist": "Kendrick Lamar",
+        "year": "2015",
         "genre": "Hip-Hop",
         "cover": "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_4_1",
-                "track": 1,
-                "title": "Track 1 for Heaven or Hell",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Heaven or Hell go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Heaven or Hell's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 1 for Heaven or Hell",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_4_2",
-                "track": 2,
-                "title": "Track 2 for Heaven or Hell",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Heaven or Hell go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Heaven or Hell's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 2 for Heaven or Hell",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_4_3",
-                "track": 3,
-                "title": "Track 3 for Heaven or Hell",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Heaven or Hell go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Heaven or Hell's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 3 for Heaven or Hell",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_4_4",
-                "track": 4,
-                "title": "Track 4 for Heaven or Hell",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Heaven or Hell go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Heaven or Hell's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 4 for Heaven or Hell",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_4_5",
-                "track": 5,
-                "title": "Track 5 for Heaven or Hell",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Heaven or Hell go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Heaven or Hell's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 5 for Heaven or Hell",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_4_6",
-                "track": 6,
-                "title": "Track 6 for Heaven or Hell",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Heaven or Hell go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Heaven or Hell's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 6 for Heaven or Hell",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_4_7",
+                "id": "s_alright",
                 "track": 7,
-                "title": "Track 7 for Heaven or Hell",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Heaven or Hell go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Heaven or Hell's message.",
+                "title": "Alright",
+                "duration": "3:39",
+                "lyrics": "Alls my life I has to fight...",
+                "interpretation": "A message of hope.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Hope",
+                    "Resilience"
                 ],
                 "mood": [
-                    "Chill"
+                    "Hype"
                 ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 7 for Heaven or Hell",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_4_8",
-                "track": 8,
-                "title": "Track 8 for Heaven or Hell",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Heaven or Hell go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Heaven or Hell's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 8 for Heaven or Hell",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_4_9",
-                "track": 9,
-                "title": "Track 9 for Heaven or Hell",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Heaven or Hell go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Heaven or Hell's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 9 for Heaven or Hell",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_4_10",
-                "track": 10,
-                "title": "Track 10 for Heaven or Hell",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Heaven or Hell go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Heaven or Hell's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 10 for Heaven or Hell",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_4_11",
-                "track": 11,
-                "title": "Track 11 for Heaven or Hell",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Heaven or Hell go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Heaven or Hell's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Heaven or Hell",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_4_12",
-                "track": 12,
-                "title": "Track 12 for Heaven or Hell",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Heaven or Hell go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Heaven or Hell's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Heaven or Hell",
-                        "explanation": "Deep meaning."
-                    }
-                ]
+                "key_lines": []
             }
         ]
     },
     {
         "id": "alb_5",
-        "title": "Love Sick",
-        "artist": "Don Toliver",
-        "year": "2023",
-        "genre": "Hip-Hop",
+        "title": "Currents",
+        "artist": "Tame Impala",
+        "year": "2015",
+        "genre": "Psych-Pop",
         "cover": "https://images.unsplash.com/photo-1459749411177-042180ceea72?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_5_1",
+                "id": "s_let_it_happen",
                 "track": 1,
-                "title": "Track 1 for Love Sick",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Love Sick go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Love Sick's message.",
+                "title": "Let It Happen",
+                "duration": "7:46",
+                "lyrics": "It's getting closer...",
+                "interpretation": "Accepting change.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Change"
                 ],
                 "mood": [
-                    "Chill"
+                    "Hypnotic"
                 ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 1 for Love Sick",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_5_2",
-                "track": 2,
-                "title": "Track 2 for Love Sick",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Love Sick go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Love Sick's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 2 for Love Sick",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_5_3",
-                "track": 3,
-                "title": "Track 3 for Love Sick",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Love Sick go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Love Sick's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 3 for Love Sick",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_5_4",
-                "track": 4,
-                "title": "Track 4 for Love Sick",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Love Sick go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Love Sick's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 4 for Love Sick",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_5_5",
-                "track": 5,
-                "title": "Track 5 for Love Sick",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Love Sick go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Love Sick's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 5 for Love Sick",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_5_6",
-                "track": 6,
-                "title": "Track 6 for Love Sick",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Love Sick go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Love Sick's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 6 for Love Sick",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_5_7",
-                "track": 7,
-                "title": "Track 7 for Love Sick",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Love Sick go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Love Sick's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 7 for Love Sick",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_5_8",
-                "track": 8,
-                "title": "Track 8 for Love Sick",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Love Sick go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Love Sick's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 8 for Love Sick",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_5_9",
-                "track": 9,
-                "title": "Track 9 for Love Sick",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Love Sick go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Love Sick's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 9 for Love Sick",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_5_10",
-                "track": 10,
-                "title": "Track 10 for Love Sick",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Love Sick go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Love Sick's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 10 for Love Sick",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_5_11",
-                "track": 11,
-                "title": "Track 11 for Love Sick",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Love Sick go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Love Sick's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Love Sick",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_5_12",
-                "track": 12,
-                "title": "Track 12 for Love Sick",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Love Sick go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Love Sick's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Love Sick",
-                        "explanation": "Deep meaning."
-                    }
-                ]
+                "key_lines": []
             }
         ]
     },
     {
         "id": "alb_6",
-        "title": "French Exit",
-        "artist": "TV Girl",
-        "year": "2014",
-        "genre": "Indie",
+        "title": "ASTROWORLD",
+        "artist": "Travis Scott",
+        "year": "2018",
+        "genre": "Hip-Hop",
         "cover": "https://images.unsplash.com/photo-1514525253361-bee8718a300c?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_6_1",
-                "track": 1,
-                "title": "Track 1 for French Exit",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for French Exit go here...",
-                "interpretation": "This track exploring the depths of Track 1 for French Exit's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 1 for French Exit",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_6_2",
-                "track": 2,
-                "title": "Track 2 for French Exit",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for French Exit go here...",
-                "interpretation": "This track exploring the depths of Track 2 for French Exit's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 2 for French Exit",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_6_3",
+                "id": "s_sicko_mode",
                 "track": 3,
-                "title": "Track 3 for French Exit",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for French Exit go here...",
-                "interpretation": "This track exploring the depths of Track 3 for French Exit's message.",
+                "title": "SICKO MODE",
+                "duration": "5:12",
+                "lyrics": "Sun is down, freezin' cold...",
+                "interpretation": "Multi-part anthem.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Success"
                 ],
                 "mood": [
-                    "Chill"
+                    "Hype"
                 ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 3 for French Exit",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_6_4",
-                "track": 4,
-                "title": "Track 4 for French Exit",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for French Exit go here...",
-                "interpretation": "This track exploring the depths of Track 4 for French Exit's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 4 for French Exit",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_6_5",
-                "track": 5,
-                "title": "Track 5 for French Exit",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for French Exit go here...",
-                "interpretation": "This track exploring the depths of Track 5 for French Exit's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 5 for French Exit",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_6_6",
-                "track": 6,
-                "title": "Track 6 for French Exit",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for French Exit go here...",
-                "interpretation": "This track exploring the depths of Track 6 for French Exit's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 6 for French Exit",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_6_7",
-                "track": 7,
-                "title": "Track 7 for French Exit",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for French Exit go here...",
-                "interpretation": "This track exploring the depths of Track 7 for French Exit's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 7 for French Exit",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_6_8",
-                "track": 8,
-                "title": "Track 8 for French Exit",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for French Exit go here...",
-                "interpretation": "This track exploring the depths of Track 8 for French Exit's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 8 for French Exit",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_6_9",
-                "track": 9,
-                "title": "Track 9 for French Exit",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for French Exit go here...",
-                "interpretation": "This track exploring the depths of Track 9 for French Exit's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 9 for French Exit",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_6_10",
-                "track": 10,
-                "title": "Track 10 for French Exit",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for French Exit go here...",
-                "interpretation": "This track exploring the depths of Track 10 for French Exit's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 10 for French Exit",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_6_11",
-                "track": 11,
-                "title": "Track 11 for French Exit",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for French Exit go here...",
-                "interpretation": "This track exploring the depths of Track 11 for French Exit's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for French Exit",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_6_12",
-                "track": 12,
-                "title": "Track 12 for French Exit",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for French Exit go here...",
-                "interpretation": "This track exploring the depths of Track 12 for French Exit's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for French Exit",
-                        "explanation": "Deep meaning."
-                    }
-                ]
+                "key_lines": []
             }
         ]
     },
     {
         "id": "alb_7",
-        "title": "Who Really Cares",
-        "artist": "TV Girl",
-        "year": "2016",
-        "genre": "Indie",
+        "title": "Ctrl",
+        "artist": "SZA",
+        "year": "2017",
+        "genre": "R&B",
         "cover": "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_7_1",
-                "track": 1,
-                "title": "Track 1 for Who Really Cares",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Who Really Cares go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Who Really Cares's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 1 for Who Really Cares",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_7_2",
+                "id": "s_drew_barrymore",
                 "track": 2,
-                "title": "Track 2 for Who Really Cares",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Who Really Cares go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Who Really Cares's message.",
+                "title": "Drew Barrymore",
+                "duration": "3:51",
+                "lyrics": "Why is it so hard...",
+                "interpretation": "Self-doubt.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Insecurity"
                 ],
                 "mood": [
-                    "Chill"
+                    "Sad"
                 ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 2 for Who Really Cares",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_7_3",
-                "track": 3,
-                "title": "Track 3 for Who Really Cares",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Who Really Cares go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Who Really Cares's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 3 for Who Really Cares",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_7_4",
-                "track": 4,
-                "title": "Track 4 for Who Really Cares",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Who Really Cares go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Who Really Cares's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 4 for Who Really Cares",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_7_5",
-                "track": 5,
-                "title": "Track 5 for Who Really Cares",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Who Really Cares go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Who Really Cares's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 5 for Who Really Cares",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_7_6",
-                "track": 6,
-                "title": "Track 6 for Who Really Cares",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Who Really Cares go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Who Really Cares's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 6 for Who Really Cares",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_7_7",
-                "track": 7,
-                "title": "Track 7 for Who Really Cares",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Who Really Cares go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Who Really Cares's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 7 for Who Really Cares",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_7_8",
-                "track": 8,
-                "title": "Track 8 for Who Really Cares",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Who Really Cares go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Who Really Cares's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 8 for Who Really Cares",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_7_9",
-                "track": 9,
-                "title": "Track 9 for Who Really Cares",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Who Really Cares go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Who Really Cares's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 9 for Who Really Cares",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_7_10",
-                "track": 10,
-                "title": "Track 10 for Who Really Cares",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Who Really Cares go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Who Really Cares's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 10 for Who Really Cares",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_7_11",
-                "track": 11,
-                "title": "Track 11 for Who Really Cares",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Who Really Cares go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Who Really Cares's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Who Really Cares",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_7_12",
-                "track": 12,
-                "title": "Track 12 for Who Really Cares",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Who Really Cares go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Who Really Cares's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Who Really Cares",
-                        "explanation": "Deep meaning."
-                    }
-                ]
+                "key_lines": []
             }
         ]
     },
     {
         "id": "alb_8",
-        "title": "Death of a Party Girl",
-        "artist": "TV Girl",
-        "year": "2018",
-        "genre": "Indie",
+        "title": "Graduation",
+        "artist": "Kanye West",
+        "year": "2007",
+        "genre": "Hip-Hop",
         "cover": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_8_1",
-                "track": 1,
-                "title": "Track 1 for Death of a Party Girl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Death of a Party Girl go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Death of a Party Girl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 1 for Death of a Party Girl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_8_2",
-                "track": 2,
-                "title": "Track 2 for Death of a Party Girl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Death of a Party Girl go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Death of a Party Girl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 2 for Death of a Party Girl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_8_3",
+                "id": "s_stronger",
                 "track": 3,
-                "title": "Track 3 for Death of a Party Girl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Death of a Party Girl go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Death of a Party Girl's message.",
+                "title": "Stronger",
+                "duration": "5:12",
+                "lyrics": "Work it, make it...",
+                "interpretation": "Triumph.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Success"
                 ],
                 "mood": [
-                    "Chill"
+                    "Hype"
                 ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 3 for Death of a Party Girl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_8_4",
-                "track": 4,
-                "title": "Track 4 for Death of a Party Girl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Death of a Party Girl go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Death of a Party Girl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 4 for Death of a Party Girl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_8_5",
-                "track": 5,
-                "title": "Track 5 for Death of a Party Girl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Death of a Party Girl go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Death of a Party Girl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 5 for Death of a Party Girl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_8_6",
-                "track": 6,
-                "title": "Track 6 for Death of a Party Girl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Death of a Party Girl go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Death of a Party Girl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 6 for Death of a Party Girl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_8_7",
-                "track": 7,
-                "title": "Track 7 for Death of a Party Girl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Death of a Party Girl go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Death of a Party Girl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 7 for Death of a Party Girl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_8_8",
-                "track": 8,
-                "title": "Track 8 for Death of a Party Girl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Death of a Party Girl go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Death of a Party Girl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 8 for Death of a Party Girl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_8_9",
-                "track": 9,
-                "title": "Track 9 for Death of a Party Girl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Death of a Party Girl go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Death of a Party Girl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 9 for Death of a Party Girl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_8_10",
-                "track": 10,
-                "title": "Track 10 for Death of a Party Girl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Death of a Party Girl go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Death of a Party Girl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 10 for Death of a Party Girl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_8_11",
-                "track": 11,
-                "title": "Track 11 for Death of a Party Girl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Death of a Party Girl go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Death of a Party Girl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Death of a Party Girl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_8_12",
-                "track": 12,
-                "title": "Track 12 for Death of a Party Girl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Death of a Party Girl go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Death of a Party Girl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Death of a Party Girl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
+                "key_lines": []
             }
         ]
     },
     {
         "id": "alb_9",
-        "title": "Salad Days",
-        "artist": "Mac DeMarco",
-        "year": "2014",
-        "genre": "Indie",
+        "title": "AM",
+        "artist": "Arctic Monkeys",
+        "year": "2013",
+        "genre": "Rock",
         "cover": "https://images.unsplash.com/photo-1619983081563-430f63602796?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_9_1",
+                "id": "s_do_i_wanna_know?",
                 "track": 1,
-                "title": "Track 1 for Salad Days",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Salad Days go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Salad Days's message.",
+                "title": "Do I Wanna Know?",
+                "duration": "4:32",
+                "lyrics": "Have you got colour in your cheeks?",
+                "interpretation": "Romantic yearning.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Love"
                 ],
                 "mood": [
-                    "Chill"
+                    "Dark"
                 ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 1 for Salad Days",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_9_2",
-                "track": 2,
-                "title": "Track 2 for Salad Days",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Salad Days go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Salad Days's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 2 for Salad Days",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_9_3",
-                "track": 3,
-                "title": "Track 3 for Salad Days",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Salad Days go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Salad Days's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 3 for Salad Days",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_9_4",
-                "track": 4,
-                "title": "Track 4 for Salad Days",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Salad Days go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Salad Days's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 4 for Salad Days",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_9_5",
-                "track": 5,
-                "title": "Track 5 for Salad Days",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Salad Days go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Salad Days's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 5 for Salad Days",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_9_6",
-                "track": 6,
-                "title": "Track 6 for Salad Days",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Salad Days go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Salad Days's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 6 for Salad Days",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_9_7",
-                "track": 7,
-                "title": "Track 7 for Salad Days",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Salad Days go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Salad Days's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 7 for Salad Days",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_9_8",
-                "track": 8,
-                "title": "Track 8 for Salad Days",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Salad Days go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Salad Days's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 8 for Salad Days",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_9_9",
-                "track": 9,
-                "title": "Track 9 for Salad Days",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Salad Days go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Salad Days's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 9 for Salad Days",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_9_10",
-                "track": 10,
-                "title": "Track 10 for Salad Days",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Salad Days go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Salad Days's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 10 for Salad Days",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_9_11",
-                "track": 11,
-                "title": "Track 11 for Salad Days",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Salad Days go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Salad Days's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Salad Days",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_9_12",
-                "track": 12,
-                "title": "Track 12 for Salad Days",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Salad Days go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Salad Days's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Salad Days",
-                        "explanation": "Deep meaning."
-                    }
-                ]
+                "key_lines": []
             }
         ]
     },
     {
         "id": "alb_10",
-        "title": "This Old Dog",
-        "artist": "Mac DeMarco",
+        "title": "Melodrama",
+        "artist": "Lorde",
         "year": "2017",
-        "genre": "Indie",
+        "genre": "Pop",
         "cover": "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_10_1",
+                "id": "s_green_light",
                 "track": 1,
-                "title": "Track 1 for This Old Dog",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for This Old Dog go here...",
-                "interpretation": "This track exploring the depths of Track 1 for This Old Dog's message.",
+                "title": "Green Light",
+                "duration": "3:54",
+                "lyrics": "I do my makeup in somebody else's car...",
+                "interpretation": "Post-breakup energy.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Heartbreak"
                 ],
                 "mood": [
-                    "Chill"
+                    "Hype"
                 ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 1 for This Old Dog",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_10_2",
-                "track": 2,
-                "title": "Track 2 for This Old Dog",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for This Old Dog go here...",
-                "interpretation": "This track exploring the depths of Track 2 for This Old Dog's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 2 for This Old Dog",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_10_3",
-                "track": 3,
-                "title": "Track 3 for This Old Dog",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for This Old Dog go here...",
-                "interpretation": "This track exploring the depths of Track 3 for This Old Dog's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 3 for This Old Dog",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_10_4",
-                "track": 4,
-                "title": "Track 4 for This Old Dog",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for This Old Dog go here...",
-                "interpretation": "This track exploring the depths of Track 4 for This Old Dog's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 4 for This Old Dog",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_10_5",
-                "track": 5,
-                "title": "Track 5 for This Old Dog",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for This Old Dog go here...",
-                "interpretation": "This track exploring the depths of Track 5 for This Old Dog's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 5 for This Old Dog",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_10_6",
-                "track": 6,
-                "title": "Track 6 for This Old Dog",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for This Old Dog go here...",
-                "interpretation": "This track exploring the depths of Track 6 for This Old Dog's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 6 for This Old Dog",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_10_7",
-                "track": 7,
-                "title": "Track 7 for This Old Dog",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for This Old Dog go here...",
-                "interpretation": "This track exploring the depths of Track 7 for This Old Dog's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 7 for This Old Dog",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_10_8",
-                "track": 8,
-                "title": "Track 8 for This Old Dog",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for This Old Dog go here...",
-                "interpretation": "This track exploring the depths of Track 8 for This Old Dog's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 8 for This Old Dog",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_10_9",
-                "track": 9,
-                "title": "Track 9 for This Old Dog",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for This Old Dog go here...",
-                "interpretation": "This track exploring the depths of Track 9 for This Old Dog's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 9 for This Old Dog",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_10_10",
-                "track": 10,
-                "title": "Track 10 for This Old Dog",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for This Old Dog go here...",
-                "interpretation": "This track exploring the depths of Track 10 for This Old Dog's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 10 for This Old Dog",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_10_11",
-                "track": 11,
-                "title": "Track 11 for This Old Dog",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for This Old Dog go here...",
-                "interpretation": "This track exploring the depths of Track 11 for This Old Dog's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for This Old Dog",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_10_12",
-                "track": 12,
-                "title": "Track 12 for This Old Dog",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for This Old Dog go here...",
-                "interpretation": "This track exploring the depths of Track 12 for This Old Dog's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for This Old Dog",
-                        "explanation": "Deep meaning."
-                    }
-                ]
+                "key_lines": []
             }
         ]
     },
     {
         "id": "alb_11",
-        "title": "2",
-        "artist": "Mac DeMarco",
-        "year": "2012",
-        "genre": "Indie",
+        "title": "Utopia",
+        "artist": "Travis Scott",
+        "year": "2023",
+        "genre": "Hip-Hop",
         "cover": "https://images.unsplash.com/photo-1459749411177-042180ceea72?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_11_1",
+                "id": "s_song_1_from_utopia",
                 "track": 1,
-                "title": "Track 1 for 2",
+                "title": "Song 1 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for 2 go here...",
-                "interpretation": "This track exploring the depths of Track 1 for 2's message.",
+                "lyrics": "Full lyrics for track 1 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for 2",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_11_2",
+                "id": "s_song_2_from_utopia",
                 "track": 2,
-                "title": "Track 2 for 2",
+                "title": "Song 2 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for 2 go here...",
-                "interpretation": "This track exploring the depths of Track 2 for 2's message.",
+                "lyrics": "Full lyrics for track 2 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for 2",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_11_3",
+                "id": "s_song_3_from_utopia",
                 "track": 3,
-                "title": "Track 3 for 2",
+                "title": "Song 3 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for 2 go here...",
-                "interpretation": "This track exploring the depths of Track 3 for 2's message.",
+                "lyrics": "Full lyrics for track 3 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for 2",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_11_4",
+                "id": "s_song_4_from_utopia",
                 "track": 4,
-                "title": "Track 4 for 2",
+                "title": "Song 4 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for 2 go here...",
-                "interpretation": "This track exploring the depths of Track 4 for 2's message.",
+                "lyrics": "Full lyrics for track 4 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for 2",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_11_5",
+                "id": "s_song_5_from_utopia",
                 "track": 5,
-                "title": "Track 5 for 2",
+                "title": "Song 5 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for 2 go here...",
-                "interpretation": "This track exploring the depths of Track 5 for 2's message.",
+                "lyrics": "Full lyrics for track 5 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for 2",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_11_6",
+                "id": "s_song_6_from_utopia",
                 "track": 6,
-                "title": "Track 6 for 2",
+                "title": "Song 6 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for 2 go here...",
-                "interpretation": "This track exploring the depths of Track 6 for 2's message.",
+                "lyrics": "Full lyrics for track 6 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for 2",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_11_7",
+                "id": "s_song_7_from_utopia",
                 "track": 7,
-                "title": "Track 7 for 2",
+                "title": "Song 7 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for 2 go here...",
-                "interpretation": "This track exploring the depths of Track 7 for 2's message.",
+                "lyrics": "Full lyrics for track 7 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for 2",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_11_8",
+                "id": "s_song_8_from_utopia",
                 "track": 8,
-                "title": "Track 8 for 2",
+                "title": "Song 8 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for 2 go here...",
-                "interpretation": "This track exploring the depths of Track 8 for 2's message.",
+                "lyrics": "Full lyrics for track 8 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for 2",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_11_9",
+                "id": "s_song_9_from_utopia",
                 "track": 9,
-                "title": "Track 9 for 2",
+                "title": "Song 9 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for 2 go here...",
-                "interpretation": "This track exploring the depths of Track 9 for 2's message.",
+                "lyrics": "Full lyrics for track 9 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for 2",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_11_10",
+                "id": "s_song_10_from_utopia",
                 "track": 10,
-                "title": "Track 10 for 2",
+                "title": "Song 10 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for 2 go here...",
-                "interpretation": "This track exploring the depths of Track 10 for 2's message.",
+                "lyrics": "Full lyrics for track 10 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for 2",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_11_11",
-                "track": 11,
-                "title": "Track 11 for 2",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for 2 go here...",
-                "interpretation": "This track exploring the depths of Track 11 for 2's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for 2",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_11_12",
-                "track": 12,
-                "title": "Track 12 for 2",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for 2 go here...",
-                "interpretation": "This track exploring the depths of Track 12 for 2's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for 2",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -2682,261 +552,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_12",
-        "title": "To Pimp a Butterfly",
-        "artist": "Kendrick Lamar",
-        "year": "2015",
-        "genre": "Hip-Hop",
+        "title": "SOS",
+        "artist": "SZA",
+        "year": "2022",
+        "genre": "R&B",
         "cover": "https://images.unsplash.com/photo-1514525253361-bee8718a300c?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_12_1",
+                "id": "s_song_1_from_sos",
                 "track": 1,
-                "title": "Track 1 for To Pimp a Butterfly",
+                "title": "Song 1 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for To Pimp a Butterfly go here...",
-                "interpretation": "This track exploring the depths of Track 1 for To Pimp a Butterfly's message.",
+                "lyrics": "Full lyrics for track 1 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for To Pimp a Butterfly",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_12_2",
+                "id": "s_song_2_from_sos",
                 "track": 2,
-                "title": "Track 2 for To Pimp a Butterfly",
+                "title": "Song 2 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for To Pimp a Butterfly go here...",
-                "interpretation": "This track exploring the depths of Track 2 for To Pimp a Butterfly's message.",
+                "lyrics": "Full lyrics for track 2 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for To Pimp a Butterfly",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_12_3",
+                "id": "s_song_3_from_sos",
                 "track": 3,
-                "title": "Track 3 for To Pimp a Butterfly",
+                "title": "Song 3 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for To Pimp a Butterfly go here...",
-                "interpretation": "This track exploring the depths of Track 3 for To Pimp a Butterfly's message.",
+                "lyrics": "Full lyrics for track 3 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for To Pimp a Butterfly",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_12_4",
+                "id": "s_song_4_from_sos",
                 "track": 4,
-                "title": "Track 4 for To Pimp a Butterfly",
+                "title": "Song 4 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for To Pimp a Butterfly go here...",
-                "interpretation": "This track exploring the depths of Track 4 for To Pimp a Butterfly's message.",
+                "lyrics": "Full lyrics for track 4 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for To Pimp a Butterfly",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_12_5",
+                "id": "s_song_5_from_sos",
                 "track": 5,
-                "title": "Track 5 for To Pimp a Butterfly",
+                "title": "Song 5 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for To Pimp a Butterfly go here...",
-                "interpretation": "This track exploring the depths of Track 5 for To Pimp a Butterfly's message.",
+                "lyrics": "Full lyrics for track 5 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for To Pimp a Butterfly",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_12_6",
+                "id": "s_song_6_from_sos",
                 "track": 6,
-                "title": "Track 6 for To Pimp a Butterfly",
+                "title": "Song 6 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for To Pimp a Butterfly go here...",
-                "interpretation": "This track exploring the depths of Track 6 for To Pimp a Butterfly's message.",
+                "lyrics": "Full lyrics for track 6 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for To Pimp a Butterfly",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_12_7",
+                "id": "s_song_7_from_sos",
                 "track": 7,
-                "title": "Track 7 for To Pimp a Butterfly",
+                "title": "Song 7 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for To Pimp a Butterfly go here...",
-                "interpretation": "This track exploring the depths of Track 7 for To Pimp a Butterfly's message.",
+                "lyrics": "Full lyrics for track 7 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for To Pimp a Butterfly",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_12_8",
+                "id": "s_song_8_from_sos",
                 "track": 8,
-                "title": "Track 8 for To Pimp a Butterfly",
+                "title": "Song 8 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for To Pimp a Butterfly go here...",
-                "interpretation": "This track exploring the depths of Track 8 for To Pimp a Butterfly's message.",
+                "lyrics": "Full lyrics for track 8 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for To Pimp a Butterfly",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_12_9",
+                "id": "s_song_9_from_sos",
                 "track": 9,
-                "title": "Track 9 for To Pimp a Butterfly",
+                "title": "Song 9 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for To Pimp a Butterfly go here...",
-                "interpretation": "This track exploring the depths of Track 9 for To Pimp a Butterfly's message.",
+                "lyrics": "Full lyrics for track 9 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for To Pimp a Butterfly",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_12_10",
+                "id": "s_song_10_from_sos",
                 "track": 10,
-                "title": "Track 10 for To Pimp a Butterfly",
+                "title": "Song 10 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for To Pimp a Butterfly go here...",
-                "interpretation": "This track exploring the depths of Track 10 for To Pimp a Butterfly's message.",
+                "lyrics": "Full lyrics for track 10 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for To Pimp a Butterfly",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_12_11",
-                "track": 11,
-                "title": "Track 11 for To Pimp a Butterfly",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for To Pimp a Butterfly go here...",
-                "interpretation": "This track exploring the depths of Track 11 for To Pimp a Butterfly's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for To Pimp a Butterfly",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_12_12",
-                "track": 12,
-                "title": "Track 12 for To Pimp a Butterfly",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for To Pimp a Butterfly go here...",
-                "interpretation": "This track exploring the depths of Track 12 for To Pimp a Butterfly's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for To Pimp a Butterfly",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -2944,261 +762,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_13",
-        "title": "good kid, m.A.A.d city",
-        "artist": "Kendrick Lamar",
-        "year": "2012",
-        "genre": "Hip-Hop",
+        "title": "Renaissance",
+        "artist": "Beyonc\u00e9",
+        "year": "2022",
+        "genre": "Dance",
         "cover": "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_13_1",
+                "id": "s_song_1_from_renaissance",
                 "track": 1,
-                "title": "Track 1 for good kid, m.A.A.d city",
+                "title": "Song 1 from Renaissance",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for good kid, m.A.A.d city go here...",
-                "interpretation": "This track exploring the depths of Track 1 for good kid, m.A.A.d city's message.",
+                "lyrics": "Full lyrics for track 1 of Renaissance by Beyonc\u00e9 go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for good kid, m.A.A.d city",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_13_2",
+                "id": "s_song_2_from_renaissance",
                 "track": 2,
-                "title": "Track 2 for good kid, m.A.A.d city",
+                "title": "Song 2 from Renaissance",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for good kid, m.A.A.d city go here...",
-                "interpretation": "This track exploring the depths of Track 2 for good kid, m.A.A.d city's message.",
+                "lyrics": "Full lyrics for track 2 of Renaissance by Beyonc\u00e9 go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for good kid, m.A.A.d city",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_13_3",
+                "id": "s_song_3_from_renaissance",
                 "track": 3,
-                "title": "Track 3 for good kid, m.A.A.d city",
+                "title": "Song 3 from Renaissance",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for good kid, m.A.A.d city go here...",
-                "interpretation": "This track exploring the depths of Track 3 for good kid, m.A.A.d city's message.",
+                "lyrics": "Full lyrics for track 3 of Renaissance by Beyonc\u00e9 go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for good kid, m.A.A.d city",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_13_4",
+                "id": "s_song_4_from_renaissance",
                 "track": 4,
-                "title": "Track 4 for good kid, m.A.A.d city",
+                "title": "Song 4 from Renaissance",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for good kid, m.A.A.d city go here...",
-                "interpretation": "This track exploring the depths of Track 4 for good kid, m.A.A.d city's message.",
+                "lyrics": "Full lyrics for track 4 of Renaissance by Beyonc\u00e9 go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for good kid, m.A.A.d city",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_13_5",
+                "id": "s_song_5_from_renaissance",
                 "track": 5,
-                "title": "Track 5 for good kid, m.A.A.d city",
+                "title": "Song 5 from Renaissance",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for good kid, m.A.A.d city go here...",
-                "interpretation": "This track exploring the depths of Track 5 for good kid, m.A.A.d city's message.",
+                "lyrics": "Full lyrics for track 5 of Renaissance by Beyonc\u00e9 go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for good kid, m.A.A.d city",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_13_6",
+                "id": "s_song_6_from_renaissance",
                 "track": 6,
-                "title": "Track 6 for good kid, m.A.A.d city",
+                "title": "Song 6 from Renaissance",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for good kid, m.A.A.d city go here...",
-                "interpretation": "This track exploring the depths of Track 6 for good kid, m.A.A.d city's message.",
+                "lyrics": "Full lyrics for track 6 of Renaissance by Beyonc\u00e9 go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for good kid, m.A.A.d city",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_13_7",
+                "id": "s_song_7_from_renaissance",
                 "track": 7,
-                "title": "Track 7 for good kid, m.A.A.d city",
+                "title": "Song 7 from Renaissance",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for good kid, m.A.A.d city go here...",
-                "interpretation": "This track exploring the depths of Track 7 for good kid, m.A.A.d city's message.",
+                "lyrics": "Full lyrics for track 7 of Renaissance by Beyonc\u00e9 go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for good kid, m.A.A.d city",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_13_8",
+                "id": "s_song_8_from_renaissance",
                 "track": 8,
-                "title": "Track 8 for good kid, m.A.A.d city",
+                "title": "Song 8 from Renaissance",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for good kid, m.A.A.d city go here...",
-                "interpretation": "This track exploring the depths of Track 8 for good kid, m.A.A.d city's message.",
+                "lyrics": "Full lyrics for track 8 of Renaissance by Beyonc\u00e9 go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for good kid, m.A.A.d city",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_13_9",
+                "id": "s_song_9_from_renaissance",
                 "track": 9,
-                "title": "Track 9 for good kid, m.A.A.d city",
+                "title": "Song 9 from Renaissance",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for good kid, m.A.A.d city go here...",
-                "interpretation": "This track exploring the depths of Track 9 for good kid, m.A.A.d city's message.",
+                "lyrics": "Full lyrics for track 9 of Renaissance by Beyonc\u00e9 go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for good kid, m.A.A.d city",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_13_10",
+                "id": "s_song_10_from_renaissance",
                 "track": 10,
-                "title": "Track 10 for good kid, m.A.A.d city",
+                "title": "Song 10 from Renaissance",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for good kid, m.A.A.d city go here...",
-                "interpretation": "This track exploring the depths of Track 10 for good kid, m.A.A.d city's message.",
+                "lyrics": "Full lyrics for track 10 of Renaissance by Beyonc\u00e9 go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for good kid, m.A.A.d city",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_13_11",
-                "track": 11,
-                "title": "Track 11 for good kid, m.A.A.d city",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for good kid, m.A.A.d city go here...",
-                "interpretation": "This track exploring the depths of Track 11 for good kid, m.A.A.d city's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for good kid, m.A.A.d city",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_13_12",
-                "track": 12,
-                "title": "Track 12 for good kid, m.A.A.d city",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for good kid, m.A.A.d city go here...",
-                "interpretation": "This track exploring the depths of Track 12 for good kid, m.A.A.d city's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for good kid, m.A.A.d city",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -3206,261 +972,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_14",
-        "title": "DAMN.",
-        "artist": "Kendrick Lamar",
-        "year": "2017",
-        "genre": "Hip-Hop",
+        "title": "Midnights",
+        "artist": "Taylor Swift",
+        "year": "2022",
+        "genre": "Pop",
         "cover": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_14_1",
+                "id": "s_song_1_from_midnights",
                 "track": 1,
-                "title": "Track 1 for DAMN.",
+                "title": "Song 1 from Midnights",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for DAMN. go here...",
-                "interpretation": "This track exploring the depths of Track 1 for DAMN.'s message.",
+                "lyrics": "Full lyrics for track 1 of Midnights by Taylor Swift go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for DAMN.",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_14_2",
+                "id": "s_song_2_from_midnights",
                 "track": 2,
-                "title": "Track 2 for DAMN.",
+                "title": "Song 2 from Midnights",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for DAMN. go here...",
-                "interpretation": "This track exploring the depths of Track 2 for DAMN.'s message.",
+                "lyrics": "Full lyrics for track 2 of Midnights by Taylor Swift go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for DAMN.",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_14_3",
+                "id": "s_song_3_from_midnights",
                 "track": 3,
-                "title": "Track 3 for DAMN.",
+                "title": "Song 3 from Midnights",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for DAMN. go here...",
-                "interpretation": "This track exploring the depths of Track 3 for DAMN.'s message.",
+                "lyrics": "Full lyrics for track 3 of Midnights by Taylor Swift go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for DAMN.",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_14_4",
+                "id": "s_song_4_from_midnights",
                 "track": 4,
-                "title": "Track 4 for DAMN.",
+                "title": "Song 4 from Midnights",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for DAMN. go here...",
-                "interpretation": "This track exploring the depths of Track 4 for DAMN.'s message.",
+                "lyrics": "Full lyrics for track 4 of Midnights by Taylor Swift go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for DAMN.",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_14_5",
+                "id": "s_song_5_from_midnights",
                 "track": 5,
-                "title": "Track 5 for DAMN.",
+                "title": "Song 5 from Midnights",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for DAMN. go here...",
-                "interpretation": "This track exploring the depths of Track 5 for DAMN.'s message.",
+                "lyrics": "Full lyrics for track 5 of Midnights by Taylor Swift go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for DAMN.",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_14_6",
+                "id": "s_song_6_from_midnights",
                 "track": 6,
-                "title": "Track 6 for DAMN.",
+                "title": "Song 6 from Midnights",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for DAMN. go here...",
-                "interpretation": "This track exploring the depths of Track 6 for DAMN.'s message.",
+                "lyrics": "Full lyrics for track 6 of Midnights by Taylor Swift go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for DAMN.",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_14_7",
+                "id": "s_song_7_from_midnights",
                 "track": 7,
-                "title": "Track 7 for DAMN.",
+                "title": "Song 7 from Midnights",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for DAMN. go here...",
-                "interpretation": "This track exploring the depths of Track 7 for DAMN.'s message.",
+                "lyrics": "Full lyrics for track 7 of Midnights by Taylor Swift go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for DAMN.",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_14_8",
+                "id": "s_song_8_from_midnights",
                 "track": 8,
-                "title": "Track 8 for DAMN.",
+                "title": "Song 8 from Midnights",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for DAMN. go here...",
-                "interpretation": "This track exploring the depths of Track 8 for DAMN.'s message.",
+                "lyrics": "Full lyrics for track 8 of Midnights by Taylor Swift go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for DAMN.",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_14_9",
+                "id": "s_song_9_from_midnights",
                 "track": 9,
-                "title": "Track 9 for DAMN.",
+                "title": "Song 9 from Midnights",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for DAMN. go here...",
-                "interpretation": "This track exploring the depths of Track 9 for DAMN.'s message.",
+                "lyrics": "Full lyrics for track 9 of Midnights by Taylor Swift go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for DAMN.",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_14_10",
+                "id": "s_song_10_from_midnights",
                 "track": 10,
-                "title": "Track 10 for DAMN.",
+                "title": "Song 10 from Midnights",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for DAMN. go here...",
-                "interpretation": "This track exploring the depths of Track 10 for DAMN.'s message.",
+                "lyrics": "Full lyrics for track 10 of Midnights by Taylor Swift go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for DAMN.",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_14_11",
-                "track": 11,
-                "title": "Track 11 for DAMN.",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for DAMN. go here...",
-                "interpretation": "This track exploring the depths of Track 11 for DAMN.'s message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for DAMN.",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_14_12",
-                "track": 12,
-                "title": "Track 12 for DAMN.",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for DAMN. go here...",
-                "interpretation": "This track exploring the depths of Track 12 for DAMN.'s message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for DAMN.",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -3475,254 +1189,202 @@ const STARTER_ALBUMS = [
         "cover": "https://images.unsplash.com/photo-1619983081563-430f63602796?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_15_1",
+                "id": "s_song_1_from_mr._morale_&_the_big_steppers",
                 "track": 1,
-                "title": "Track 1 for Mr. Morale & The Big Steppers",
+                "title": "Song 1 from Mr. Morale & The Big Steppers",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Mr. Morale & The Big Steppers go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Mr. Morale & The Big Steppers's message.",
+                "lyrics": "Full lyrics for track 1 of Mr. Morale & The Big Steppers by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for Mr. Morale & The Big Steppers",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_15_2",
+                "id": "s_song_2_from_mr._morale_&_the_big_steppers",
                 "track": 2,
-                "title": "Track 2 for Mr. Morale & The Big Steppers",
+                "title": "Song 2 from Mr. Morale & The Big Steppers",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Mr. Morale & The Big Steppers go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Mr. Morale & The Big Steppers's message.",
+                "lyrics": "Full lyrics for track 2 of Mr. Morale & The Big Steppers by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for Mr. Morale & The Big Steppers",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_15_3",
+                "id": "s_song_3_from_mr._morale_&_the_big_steppers",
                 "track": 3,
-                "title": "Track 3 for Mr. Morale & The Big Steppers",
+                "title": "Song 3 from Mr. Morale & The Big Steppers",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Mr. Morale & The Big Steppers go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Mr. Morale & The Big Steppers's message.",
+                "lyrics": "Full lyrics for track 3 of Mr. Morale & The Big Steppers by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for Mr. Morale & The Big Steppers",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_15_4",
+                "id": "s_song_4_from_mr._morale_&_the_big_steppers",
                 "track": 4,
-                "title": "Track 4 for Mr. Morale & The Big Steppers",
+                "title": "Song 4 from Mr. Morale & The Big Steppers",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Mr. Morale & The Big Steppers go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Mr. Morale & The Big Steppers's message.",
+                "lyrics": "Full lyrics for track 4 of Mr. Morale & The Big Steppers by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Mr. Morale & The Big Steppers",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_15_5",
+                "id": "s_song_5_from_mr._morale_&_the_big_steppers",
                 "track": 5,
-                "title": "Track 5 for Mr. Morale & The Big Steppers",
+                "title": "Song 5 from Mr. Morale & The Big Steppers",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Mr. Morale & The Big Steppers go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Mr. Morale & The Big Steppers's message.",
+                "lyrics": "Full lyrics for track 5 of Mr. Morale & The Big Steppers by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for Mr. Morale & The Big Steppers",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_15_6",
+                "id": "s_song_6_from_mr._morale_&_the_big_steppers",
                 "track": 6,
-                "title": "Track 6 for Mr. Morale & The Big Steppers",
+                "title": "Song 6 from Mr. Morale & The Big Steppers",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Mr. Morale & The Big Steppers go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Mr. Morale & The Big Steppers's message.",
+                "lyrics": "Full lyrics for track 6 of Mr. Morale & The Big Steppers by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Mr. Morale & The Big Steppers",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_15_7",
+                "id": "s_song_7_from_mr._morale_&_the_big_steppers",
                 "track": 7,
-                "title": "Track 7 for Mr. Morale & The Big Steppers",
+                "title": "Song 7 from Mr. Morale & The Big Steppers",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Mr. Morale & The Big Steppers go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Mr. Morale & The Big Steppers's message.",
+                "lyrics": "Full lyrics for track 7 of Mr. Morale & The Big Steppers by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for Mr. Morale & The Big Steppers",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_15_8",
+                "id": "s_song_8_from_mr._morale_&_the_big_steppers",
                 "track": 8,
-                "title": "Track 8 for Mr. Morale & The Big Steppers",
+                "title": "Song 8 from Mr. Morale & The Big Steppers",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Mr. Morale & The Big Steppers go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Mr. Morale & The Big Steppers's message.",
+                "lyrics": "Full lyrics for track 8 of Mr. Morale & The Big Steppers by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for Mr. Morale & The Big Steppers",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_15_9",
+                "id": "s_song_9_from_mr._morale_&_the_big_steppers",
                 "track": 9,
-                "title": "Track 9 for Mr. Morale & The Big Steppers",
+                "title": "Song 9 from Mr. Morale & The Big Steppers",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Mr. Morale & The Big Steppers go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Mr. Morale & The Big Steppers's message.",
+                "lyrics": "Full lyrics for track 9 of Mr. Morale & The Big Steppers by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for Mr. Morale & The Big Steppers",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_15_10",
+                "id": "s_song_10_from_mr._morale_&_the_big_steppers",
                 "track": 10,
-                "title": "Track 10 for Mr. Morale & The Big Steppers",
+                "title": "Song 10 from Mr. Morale & The Big Steppers",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Mr. Morale & The Big Steppers go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Mr. Morale & The Big Steppers's message.",
+                "lyrics": "Full lyrics for track 10 of Mr. Morale & The Big Steppers by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for Mr. Morale & The Big Steppers",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_15_11",
-                "track": 11,
-                "title": "Track 11 for Mr. Morale & The Big Steppers",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Mr. Morale & The Big Steppers go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Mr. Morale & The Big Steppers's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Mr. Morale & The Big Steppers",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_15_12",
-                "track": 12,
-                "title": "Track 12 for Mr. Morale & The Big Steppers",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Mr. Morale & The Big Steppers go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Mr. Morale & The Big Steppers's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Mr. Morale & The Big Steppers",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -3730,261 +1392,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_16",
-        "title": "2014 Forest Hills Drive",
-        "artist": "J. Cole",
-        "year": "2014",
-        "genre": "Hip-Hop",
+        "title": "Dawn FM",
+        "artist": "The Weeknd",
+        "year": "2022",
+        "genre": "Synth-Pop",
         "cover": "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_16_1",
+                "id": "s_song_1_from_dawn_fm",
                 "track": 1,
-                "title": "Track 1 for 2014 Forest Hills Drive",
+                "title": "Song 1 from Dawn FM",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for 2014 Forest Hills Drive go here...",
-                "interpretation": "This track exploring the depths of Track 1 for 2014 Forest Hills Drive's message.",
+                "lyrics": "Full lyrics for track 1 of Dawn FM by The Weeknd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for 2014 Forest Hills Drive",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_16_2",
+                "id": "s_song_2_from_dawn_fm",
                 "track": 2,
-                "title": "Track 2 for 2014 Forest Hills Drive",
+                "title": "Song 2 from Dawn FM",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for 2014 Forest Hills Drive go here...",
-                "interpretation": "This track exploring the depths of Track 2 for 2014 Forest Hills Drive's message.",
+                "lyrics": "Full lyrics for track 2 of Dawn FM by The Weeknd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for 2014 Forest Hills Drive",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_16_3",
+                "id": "s_song_3_from_dawn_fm",
                 "track": 3,
-                "title": "Track 3 for 2014 Forest Hills Drive",
+                "title": "Song 3 from Dawn FM",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for 2014 Forest Hills Drive go here...",
-                "interpretation": "This track exploring the depths of Track 3 for 2014 Forest Hills Drive's message.",
+                "lyrics": "Full lyrics for track 3 of Dawn FM by The Weeknd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for 2014 Forest Hills Drive",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_16_4",
+                "id": "s_song_4_from_dawn_fm",
                 "track": 4,
-                "title": "Track 4 for 2014 Forest Hills Drive",
+                "title": "Song 4 from Dawn FM",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for 2014 Forest Hills Drive go here...",
-                "interpretation": "This track exploring the depths of Track 4 for 2014 Forest Hills Drive's message.",
+                "lyrics": "Full lyrics for track 4 of Dawn FM by The Weeknd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for 2014 Forest Hills Drive",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_16_5",
+                "id": "s_song_5_from_dawn_fm",
                 "track": 5,
-                "title": "Track 5 for 2014 Forest Hills Drive",
+                "title": "Song 5 from Dawn FM",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for 2014 Forest Hills Drive go here...",
-                "interpretation": "This track exploring the depths of Track 5 for 2014 Forest Hills Drive's message.",
+                "lyrics": "Full lyrics for track 5 of Dawn FM by The Weeknd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for 2014 Forest Hills Drive",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_16_6",
+                "id": "s_song_6_from_dawn_fm",
                 "track": 6,
-                "title": "Track 6 for 2014 Forest Hills Drive",
+                "title": "Song 6 from Dawn FM",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for 2014 Forest Hills Drive go here...",
-                "interpretation": "This track exploring the depths of Track 6 for 2014 Forest Hills Drive's message.",
+                "lyrics": "Full lyrics for track 6 of Dawn FM by The Weeknd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for 2014 Forest Hills Drive",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_16_7",
+                "id": "s_song_7_from_dawn_fm",
                 "track": 7,
-                "title": "Track 7 for 2014 Forest Hills Drive",
+                "title": "Song 7 from Dawn FM",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for 2014 Forest Hills Drive go here...",
-                "interpretation": "This track exploring the depths of Track 7 for 2014 Forest Hills Drive's message.",
+                "lyrics": "Full lyrics for track 7 of Dawn FM by The Weeknd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for 2014 Forest Hills Drive",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_16_8",
+                "id": "s_song_8_from_dawn_fm",
                 "track": 8,
-                "title": "Track 8 for 2014 Forest Hills Drive",
+                "title": "Song 8 from Dawn FM",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for 2014 Forest Hills Drive go here...",
-                "interpretation": "This track exploring the depths of Track 8 for 2014 Forest Hills Drive's message.",
+                "lyrics": "Full lyrics for track 8 of Dawn FM by The Weeknd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for 2014 Forest Hills Drive",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_16_9",
+                "id": "s_song_9_from_dawn_fm",
                 "track": 9,
-                "title": "Track 9 for 2014 Forest Hills Drive",
+                "title": "Song 9 from Dawn FM",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for 2014 Forest Hills Drive go here...",
-                "interpretation": "This track exploring the depths of Track 9 for 2014 Forest Hills Drive's message.",
+                "lyrics": "Full lyrics for track 9 of Dawn FM by The Weeknd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for 2014 Forest Hills Drive",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_16_10",
+                "id": "s_song_10_from_dawn_fm",
                 "track": 10,
-                "title": "Track 10 for 2014 Forest Hills Drive",
+                "title": "Song 10 from Dawn FM",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for 2014 Forest Hills Drive go here...",
-                "interpretation": "This track exploring the depths of Track 10 for 2014 Forest Hills Drive's message.",
+                "lyrics": "Full lyrics for track 10 of Dawn FM by The Weeknd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for 2014 Forest Hills Drive",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_16_11",
-                "track": 11,
-                "title": "Track 11 for 2014 Forest Hills Drive",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for 2014 Forest Hills Drive go here...",
-                "interpretation": "This track exploring the depths of Track 11 for 2014 Forest Hills Drive's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for 2014 Forest Hills Drive",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_16_12",
-                "track": 12,
-                "title": "Track 12 for 2014 Forest Hills Drive",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for 2014 Forest Hills Drive go here...",
-                "interpretation": "This track exploring the depths of Track 12 for 2014 Forest Hills Drive's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for 2014 Forest Hills Drive",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -3992,261 +1602,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_17",
-        "title": "4 Your Eyez Only",
-        "artist": "J. Cole",
-        "year": "2016",
-        "genre": "Hip-Hop",
+        "title": "Harry's House",
+        "artist": "Harry Styles",
+        "year": "2022",
+        "genre": "Pop",
         "cover": "https://images.unsplash.com/photo-1459749411177-042180ceea72?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_17_1",
+                "id": "s_song_1_from_harry's_house",
                 "track": 1,
-                "title": "Track 1 for 4 Your Eyez Only",
+                "title": "Song 1 from Harry's House",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for 4 Your Eyez Only go here...",
-                "interpretation": "This track exploring the depths of Track 1 for 4 Your Eyez Only's message.",
+                "lyrics": "Full lyrics for track 1 of Harry's House by Harry Styles go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for 4 Your Eyez Only",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_17_2",
+                "id": "s_song_2_from_harry's_house",
                 "track": 2,
-                "title": "Track 2 for 4 Your Eyez Only",
+                "title": "Song 2 from Harry's House",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for 4 Your Eyez Only go here...",
-                "interpretation": "This track exploring the depths of Track 2 for 4 Your Eyez Only's message.",
+                "lyrics": "Full lyrics for track 2 of Harry's House by Harry Styles go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for 4 Your Eyez Only",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_17_3",
+                "id": "s_song_3_from_harry's_house",
                 "track": 3,
-                "title": "Track 3 for 4 Your Eyez Only",
+                "title": "Song 3 from Harry's House",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for 4 Your Eyez Only go here...",
-                "interpretation": "This track exploring the depths of Track 3 for 4 Your Eyez Only's message.",
+                "lyrics": "Full lyrics for track 3 of Harry's House by Harry Styles go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for 4 Your Eyez Only",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_17_4",
+                "id": "s_song_4_from_harry's_house",
                 "track": 4,
-                "title": "Track 4 for 4 Your Eyez Only",
+                "title": "Song 4 from Harry's House",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for 4 Your Eyez Only go here...",
-                "interpretation": "This track exploring the depths of Track 4 for 4 Your Eyez Only's message.",
+                "lyrics": "Full lyrics for track 4 of Harry's House by Harry Styles go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for 4 Your Eyez Only",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_17_5",
+                "id": "s_song_5_from_harry's_house",
                 "track": 5,
-                "title": "Track 5 for 4 Your Eyez Only",
+                "title": "Song 5 from Harry's House",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for 4 Your Eyez Only go here...",
-                "interpretation": "This track exploring the depths of Track 5 for 4 Your Eyez Only's message.",
+                "lyrics": "Full lyrics for track 5 of Harry's House by Harry Styles go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for 4 Your Eyez Only",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_17_6",
+                "id": "s_song_6_from_harry's_house",
                 "track": 6,
-                "title": "Track 6 for 4 Your Eyez Only",
+                "title": "Song 6 from Harry's House",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for 4 Your Eyez Only go here...",
-                "interpretation": "This track exploring the depths of Track 6 for 4 Your Eyez Only's message.",
+                "lyrics": "Full lyrics for track 6 of Harry's House by Harry Styles go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for 4 Your Eyez Only",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_17_7",
+                "id": "s_song_7_from_harry's_house",
                 "track": 7,
-                "title": "Track 7 for 4 Your Eyez Only",
+                "title": "Song 7 from Harry's House",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for 4 Your Eyez Only go here...",
-                "interpretation": "This track exploring the depths of Track 7 for 4 Your Eyez Only's message.",
+                "lyrics": "Full lyrics for track 7 of Harry's House by Harry Styles go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for 4 Your Eyez Only",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_17_8",
+                "id": "s_song_8_from_harry's_house",
                 "track": 8,
-                "title": "Track 8 for 4 Your Eyez Only",
+                "title": "Song 8 from Harry's House",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for 4 Your Eyez Only go here...",
-                "interpretation": "This track exploring the depths of Track 8 for 4 Your Eyez Only's message.",
+                "lyrics": "Full lyrics for track 8 of Harry's House by Harry Styles go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for 4 Your Eyez Only",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_17_9",
+                "id": "s_song_9_from_harry's_house",
                 "track": 9,
-                "title": "Track 9 for 4 Your Eyez Only",
+                "title": "Song 9 from Harry's House",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for 4 Your Eyez Only go here...",
-                "interpretation": "This track exploring the depths of Track 9 for 4 Your Eyez Only's message.",
+                "lyrics": "Full lyrics for track 9 of Harry's House by Harry Styles go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for 4 Your Eyez Only",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_17_10",
+                "id": "s_song_10_from_harry's_house",
                 "track": 10,
-                "title": "Track 10 for 4 Your Eyez Only",
+                "title": "Song 10 from Harry's House",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for 4 Your Eyez Only go here...",
-                "interpretation": "This track exploring the depths of Track 10 for 4 Your Eyez Only's message.",
+                "lyrics": "Full lyrics for track 10 of Harry's House by Harry Styles go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for 4 Your Eyez Only",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_17_11",
-                "track": 11,
-                "title": "Track 11 for 4 Your Eyez Only",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for 4 Your Eyez Only go here...",
-                "interpretation": "This track exploring the depths of Track 11 for 4 Your Eyez Only's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for 4 Your Eyez Only",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_17_12",
-                "track": 12,
-                "title": "Track 12 for 4 Your Eyez Only",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for 4 Your Eyez Only go here...",
-                "interpretation": "This track exploring the depths of Track 12 for 4 Your Eyez Only's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for 4 Your Eyez Only",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -4254,261 +1812,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_18",
-        "title": "KOD",
-        "artist": "J. Cole",
-        "year": "2018",
+        "title": "The Forever Story",
+        "artist": "JID",
+        "year": "2022",
         "genre": "Hip-Hop",
         "cover": "https://images.unsplash.com/photo-1514525253361-bee8718a300c?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_18_1",
+                "id": "s_song_1_from_the_forever_story",
                 "track": 1,
-                "title": "Track 1 for KOD",
+                "title": "Song 1 from The Forever Story",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for KOD go here...",
-                "interpretation": "This track exploring the depths of Track 1 for KOD's message.",
+                "lyrics": "Full lyrics for track 1 of The Forever Story by JID go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for KOD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_18_2",
+                "id": "s_song_2_from_the_forever_story",
                 "track": 2,
-                "title": "Track 2 for KOD",
+                "title": "Song 2 from The Forever Story",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for KOD go here...",
-                "interpretation": "This track exploring the depths of Track 2 for KOD's message.",
+                "lyrics": "Full lyrics for track 2 of The Forever Story by JID go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for KOD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_18_3",
+                "id": "s_song_3_from_the_forever_story",
                 "track": 3,
-                "title": "Track 3 for KOD",
+                "title": "Song 3 from The Forever Story",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for KOD go here...",
-                "interpretation": "This track exploring the depths of Track 3 for KOD's message.",
+                "lyrics": "Full lyrics for track 3 of The Forever Story by JID go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for KOD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_18_4",
+                "id": "s_song_4_from_the_forever_story",
                 "track": 4,
-                "title": "Track 4 for KOD",
+                "title": "Song 4 from The Forever Story",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for KOD go here...",
-                "interpretation": "This track exploring the depths of Track 4 for KOD's message.",
+                "lyrics": "Full lyrics for track 4 of The Forever Story by JID go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for KOD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_18_5",
+                "id": "s_song_5_from_the_forever_story",
                 "track": 5,
-                "title": "Track 5 for KOD",
+                "title": "Song 5 from The Forever Story",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for KOD go here...",
-                "interpretation": "This track exploring the depths of Track 5 for KOD's message.",
+                "lyrics": "Full lyrics for track 5 of The Forever Story by JID go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for KOD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_18_6",
+                "id": "s_song_6_from_the_forever_story",
                 "track": 6,
-                "title": "Track 6 for KOD",
+                "title": "Song 6 from The Forever Story",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for KOD go here...",
-                "interpretation": "This track exploring the depths of Track 6 for KOD's message.",
+                "lyrics": "Full lyrics for track 6 of The Forever Story by JID go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for KOD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_18_7",
+                "id": "s_song_7_from_the_forever_story",
                 "track": 7,
-                "title": "Track 7 for KOD",
+                "title": "Song 7 from The Forever Story",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for KOD go here...",
-                "interpretation": "This track exploring the depths of Track 7 for KOD's message.",
+                "lyrics": "Full lyrics for track 7 of The Forever Story by JID go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for KOD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_18_8",
+                "id": "s_song_8_from_the_forever_story",
                 "track": 8,
-                "title": "Track 8 for KOD",
+                "title": "Song 8 from The Forever Story",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for KOD go here...",
-                "interpretation": "This track exploring the depths of Track 8 for KOD's message.",
+                "lyrics": "Full lyrics for track 8 of The Forever Story by JID go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for KOD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_18_9",
+                "id": "s_song_9_from_the_forever_story",
                 "track": 9,
-                "title": "Track 9 for KOD",
+                "title": "Song 9 from The Forever Story",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for KOD go here...",
-                "interpretation": "This track exploring the depths of Track 9 for KOD's message.",
+                "lyrics": "Full lyrics for track 9 of The Forever Story by JID go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for KOD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_18_10",
+                "id": "s_song_10_from_the_forever_story",
                 "track": 10,
-                "title": "Track 10 for KOD",
+                "title": "Song 10 from The Forever Story",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for KOD go here...",
-                "interpretation": "This track exploring the depths of Track 10 for KOD's message.",
+                "lyrics": "Full lyrics for track 10 of The Forever Story by JID go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for KOD",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_18_11",
-                "track": 11,
-                "title": "Track 11 for KOD",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for KOD go here...",
-                "interpretation": "This track exploring the depths of Track 11 for KOD's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for KOD",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_18_12",
-                "track": 12,
-                "title": "Track 12 for KOD",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for KOD go here...",
-                "interpretation": "This track exploring the depths of Track 12 for KOD's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for KOD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -4516,261 +2022,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_19",
-        "title": "The Off-Season",
-        "artist": "J. Cole",
-        "year": "2021",
-        "genre": "Hip-Hop",
+        "title": "GUTS",
+        "artist": "Olivia Rodrigo",
+        "year": "2023",
+        "genre": "Pop",
         "cover": "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_19_1",
+                "id": "s_song_1_from_guts",
                 "track": 1,
-                "title": "Track 1 for The Off-Season",
+                "title": "Song 1 from GUTS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for The Off-Season go here...",
-                "interpretation": "This track exploring the depths of Track 1 for The Off-Season's message.",
+                "lyrics": "Full lyrics for track 1 of GUTS by Olivia Rodrigo go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for The Off-Season",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_19_2",
+                "id": "s_song_2_from_guts",
                 "track": 2,
-                "title": "Track 2 for The Off-Season",
+                "title": "Song 2 from GUTS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for The Off-Season go here...",
-                "interpretation": "This track exploring the depths of Track 2 for The Off-Season's message.",
+                "lyrics": "Full lyrics for track 2 of GUTS by Olivia Rodrigo go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for The Off-Season",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_19_3",
+                "id": "s_song_3_from_guts",
                 "track": 3,
-                "title": "Track 3 for The Off-Season",
+                "title": "Song 3 from GUTS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for The Off-Season go here...",
-                "interpretation": "This track exploring the depths of Track 3 for The Off-Season's message.",
+                "lyrics": "Full lyrics for track 3 of GUTS by Olivia Rodrigo go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for The Off-Season",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_19_4",
+                "id": "s_song_4_from_guts",
                 "track": 4,
-                "title": "Track 4 for The Off-Season",
+                "title": "Song 4 from GUTS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for The Off-Season go here...",
-                "interpretation": "This track exploring the depths of Track 4 for The Off-Season's message.",
+                "lyrics": "Full lyrics for track 4 of GUTS by Olivia Rodrigo go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for The Off-Season",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_19_5",
+                "id": "s_song_5_from_guts",
                 "track": 5,
-                "title": "Track 5 for The Off-Season",
+                "title": "Song 5 from GUTS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for The Off-Season go here...",
-                "interpretation": "This track exploring the depths of Track 5 for The Off-Season's message.",
+                "lyrics": "Full lyrics for track 5 of GUTS by Olivia Rodrigo go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for The Off-Season",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_19_6",
+                "id": "s_song_6_from_guts",
                 "track": 6,
-                "title": "Track 6 for The Off-Season",
+                "title": "Song 6 from GUTS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for The Off-Season go here...",
-                "interpretation": "This track exploring the depths of Track 6 for The Off-Season's message.",
+                "lyrics": "Full lyrics for track 6 of GUTS by Olivia Rodrigo go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for The Off-Season",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_19_7",
+                "id": "s_song_7_from_guts",
                 "track": 7,
-                "title": "Track 7 for The Off-Season",
+                "title": "Song 7 from GUTS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for The Off-Season go here...",
-                "interpretation": "This track exploring the depths of Track 7 for The Off-Season's message.",
+                "lyrics": "Full lyrics for track 7 of GUTS by Olivia Rodrigo go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for The Off-Season",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_19_8",
+                "id": "s_song_8_from_guts",
                 "track": 8,
-                "title": "Track 8 for The Off-Season",
+                "title": "Song 8 from GUTS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for The Off-Season go here...",
-                "interpretation": "This track exploring the depths of Track 8 for The Off-Season's message.",
+                "lyrics": "Full lyrics for track 8 of GUTS by Olivia Rodrigo go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for The Off-Season",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_19_9",
+                "id": "s_song_9_from_guts",
                 "track": 9,
-                "title": "Track 9 for The Off-Season",
+                "title": "Song 9 from GUTS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for The Off-Season go here...",
-                "interpretation": "This track exploring the depths of Track 9 for The Off-Season's message.",
+                "lyrics": "Full lyrics for track 9 of GUTS by Olivia Rodrigo go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for The Off-Season",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_19_10",
+                "id": "s_song_10_from_guts",
                 "track": 10,
-                "title": "Track 10 for The Off-Season",
+                "title": "Song 10 from GUTS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for The Off-Season go here...",
-                "interpretation": "This track exploring the depths of Track 10 for The Off-Season's message.",
+                "lyrics": "Full lyrics for track 10 of GUTS by Olivia Rodrigo go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for The Off-Season",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_19_11",
-                "track": 11,
-                "title": "Track 11 for The Off-Season",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for The Off-Season go here...",
-                "interpretation": "This track exploring the depths of Track 11 for The Off-Season's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for The Off-Season",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_19_12",
-                "track": 12,
-                "title": "Track 12 for The Off-Season",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for The Off-Season go here...",
-                "interpretation": "This track exploring the depths of Track 12 for The Off-Season's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for The Off-Season",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -4778,261 +2232,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_20",
-        "title": "IGOR",
-        "artist": "Tyler, The Creator",
-        "year": "2019",
-        "genre": "Hip-Hop",
+        "title": "HOSONO HOUSE",
+        "artist": "Haruomi Hosono",
+        "year": "1973",
+        "genre": "Pop",
         "cover": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_20_1",
+                "id": "s_song_1_from_hosono_house",
                 "track": 1,
-                "title": "Track 1 for IGOR",
+                "title": "Song 1 from HOSONO HOUSE",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for IGOR go here...",
-                "interpretation": "This track exploring the depths of Track 1 for IGOR's message.",
+                "lyrics": "Full lyrics for track 1 of HOSONO HOUSE by Haruomi Hosono go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for IGOR",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_20_2",
+                "id": "s_song_2_from_hosono_house",
                 "track": 2,
-                "title": "Track 2 for IGOR",
+                "title": "Song 2 from HOSONO HOUSE",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for IGOR go here...",
-                "interpretation": "This track exploring the depths of Track 2 for IGOR's message.",
+                "lyrics": "Full lyrics for track 2 of HOSONO HOUSE by Haruomi Hosono go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for IGOR",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_20_3",
+                "id": "s_song_3_from_hosono_house",
                 "track": 3,
-                "title": "Track 3 for IGOR",
+                "title": "Song 3 from HOSONO HOUSE",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for IGOR go here...",
-                "interpretation": "This track exploring the depths of Track 3 for IGOR's message.",
+                "lyrics": "Full lyrics for track 3 of HOSONO HOUSE by Haruomi Hosono go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for IGOR",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_20_4",
+                "id": "s_song_4_from_hosono_house",
                 "track": 4,
-                "title": "Track 4 for IGOR",
+                "title": "Song 4 from HOSONO HOUSE",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for IGOR go here...",
-                "interpretation": "This track exploring the depths of Track 4 for IGOR's message.",
+                "lyrics": "Full lyrics for track 4 of HOSONO HOUSE by Haruomi Hosono go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for IGOR",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_20_5",
+                "id": "s_song_5_from_hosono_house",
                 "track": 5,
-                "title": "Track 5 for IGOR",
+                "title": "Song 5 from HOSONO HOUSE",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for IGOR go here...",
-                "interpretation": "This track exploring the depths of Track 5 for IGOR's message.",
+                "lyrics": "Full lyrics for track 5 of HOSONO HOUSE by Haruomi Hosono go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for IGOR",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_20_6",
+                "id": "s_song_6_from_hosono_house",
                 "track": 6,
-                "title": "Track 6 for IGOR",
+                "title": "Song 6 from HOSONO HOUSE",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for IGOR go here...",
-                "interpretation": "This track exploring the depths of Track 6 for IGOR's message.",
+                "lyrics": "Full lyrics for track 6 of HOSONO HOUSE by Haruomi Hosono go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for IGOR",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_20_7",
+                "id": "s_song_7_from_hosono_house",
                 "track": 7,
-                "title": "Track 7 for IGOR",
+                "title": "Song 7 from HOSONO HOUSE",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for IGOR go here...",
-                "interpretation": "This track exploring the depths of Track 7 for IGOR's message.",
+                "lyrics": "Full lyrics for track 7 of HOSONO HOUSE by Haruomi Hosono go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for IGOR",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_20_8",
+                "id": "s_song_8_from_hosono_house",
                 "track": 8,
-                "title": "Track 8 for IGOR",
+                "title": "Song 8 from HOSONO HOUSE",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for IGOR go here...",
-                "interpretation": "This track exploring the depths of Track 8 for IGOR's message.",
+                "lyrics": "Full lyrics for track 8 of HOSONO HOUSE by Haruomi Hosono go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for IGOR",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_20_9",
+                "id": "s_song_9_from_hosono_house",
                 "track": 9,
-                "title": "Track 9 for IGOR",
+                "title": "Song 9 from HOSONO HOUSE",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for IGOR go here...",
-                "interpretation": "This track exploring the depths of Track 9 for IGOR's message.",
+                "lyrics": "Full lyrics for track 9 of HOSONO HOUSE by Haruomi Hosono go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for IGOR",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_20_10",
+                "id": "s_song_10_from_hosono_house",
                 "track": 10,
-                "title": "Track 10 for IGOR",
+                "title": "Song 10 from HOSONO HOUSE",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for IGOR go here...",
-                "interpretation": "This track exploring the depths of Track 10 for IGOR's message.",
+                "lyrics": "Full lyrics for track 10 of HOSONO HOUSE by Haruomi Hosono go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for IGOR",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_20_11",
-                "track": 11,
-                "title": "Track 11 for IGOR",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for IGOR go here...",
-                "interpretation": "This track exploring the depths of Track 11 for IGOR's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for IGOR",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_20_12",
-                "track": 12,
-                "title": "Track 12 for IGOR",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for IGOR go here...",
-                "interpretation": "This track exploring the depths of Track 12 for IGOR's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for IGOR",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -5040,261 +2442,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_21",
-        "title": "Flower Boy",
-        "artist": "Tyler, The Creator",
-        "year": "2017",
-        "genre": "Hip-Hop",
+        "title": "Plastic Beach",
+        "artist": "Gorillaz",
+        "year": "2010",
+        "genre": "Electronic",
         "cover": "https://images.unsplash.com/photo-1619983081563-430f63602796?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_21_1",
+                "id": "s_song_1_from_plastic_beach",
                 "track": 1,
-                "title": "Track 1 for Flower Boy",
+                "title": "Song 1 from Plastic Beach",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Flower Boy go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Flower Boy's message.",
+                "lyrics": "Full lyrics for track 1 of Plastic Beach by Gorillaz go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for Flower Boy",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_21_2",
+                "id": "s_song_2_from_plastic_beach",
                 "track": 2,
-                "title": "Track 2 for Flower Boy",
+                "title": "Song 2 from Plastic Beach",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Flower Boy go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Flower Boy's message.",
+                "lyrics": "Full lyrics for track 2 of Plastic Beach by Gorillaz go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for Flower Boy",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_21_3",
+                "id": "s_song_3_from_plastic_beach",
                 "track": 3,
-                "title": "Track 3 for Flower Boy",
+                "title": "Song 3 from Plastic Beach",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Flower Boy go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Flower Boy's message.",
+                "lyrics": "Full lyrics for track 3 of Plastic Beach by Gorillaz go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for Flower Boy",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_21_4",
+                "id": "s_song_4_from_plastic_beach",
                 "track": 4,
-                "title": "Track 4 for Flower Boy",
+                "title": "Song 4 from Plastic Beach",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Flower Boy go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Flower Boy's message.",
+                "lyrics": "Full lyrics for track 4 of Plastic Beach by Gorillaz go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Flower Boy",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_21_5",
+                "id": "s_song_5_from_plastic_beach",
                 "track": 5,
-                "title": "Track 5 for Flower Boy",
+                "title": "Song 5 from Plastic Beach",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Flower Boy go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Flower Boy's message.",
+                "lyrics": "Full lyrics for track 5 of Plastic Beach by Gorillaz go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for Flower Boy",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_21_6",
+                "id": "s_song_6_from_plastic_beach",
                 "track": 6,
-                "title": "Track 6 for Flower Boy",
+                "title": "Song 6 from Plastic Beach",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Flower Boy go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Flower Boy's message.",
+                "lyrics": "Full lyrics for track 6 of Plastic Beach by Gorillaz go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Flower Boy",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_21_7",
+                "id": "s_song_7_from_plastic_beach",
                 "track": 7,
-                "title": "Track 7 for Flower Boy",
+                "title": "Song 7 from Plastic Beach",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Flower Boy go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Flower Boy's message.",
+                "lyrics": "Full lyrics for track 7 of Plastic Beach by Gorillaz go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for Flower Boy",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_21_8",
+                "id": "s_song_8_from_plastic_beach",
                 "track": 8,
-                "title": "Track 8 for Flower Boy",
+                "title": "Song 8 from Plastic Beach",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Flower Boy go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Flower Boy's message.",
+                "lyrics": "Full lyrics for track 8 of Plastic Beach by Gorillaz go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for Flower Boy",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_21_9",
+                "id": "s_song_9_from_plastic_beach",
                 "track": 9,
-                "title": "Track 9 for Flower Boy",
+                "title": "Song 9 from Plastic Beach",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Flower Boy go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Flower Boy's message.",
+                "lyrics": "Full lyrics for track 9 of Plastic Beach by Gorillaz go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for Flower Boy",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_21_10",
+                "id": "s_song_10_from_plastic_beach",
                 "track": 10,
-                "title": "Track 10 for Flower Boy",
+                "title": "Song 10 from Plastic Beach",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Flower Boy go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Flower Boy's message.",
+                "lyrics": "Full lyrics for track 10 of Plastic Beach by Gorillaz go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for Flower Boy",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_21_11",
-                "track": 11,
-                "title": "Track 11 for Flower Boy",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Flower Boy go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Flower Boy's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Flower Boy",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_21_12",
-                "track": 12,
-                "title": "Track 12 for Flower Boy",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Flower Boy go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Flower Boy's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Flower Boy",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -5302,261 +2652,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_22",
-        "title": "Call Me If You Get Lost",
-        "artist": "Tyler, The Creator",
-        "year": "2021",
-        "genre": "Hip-Hop",
+        "title": "Discovery",
+        "artist": "Daft Punk",
+        "year": "2001",
+        "genre": "Electronic",
         "cover": "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_22_1",
+                "id": "s_song_1_from_discovery",
                 "track": 1,
-                "title": "Track 1 for Call Me If You Get Lost",
+                "title": "Song 1 from Discovery",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Call Me If You Get Lost go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Call Me If You Get Lost's message.",
+                "lyrics": "Full lyrics for track 1 of Discovery by Daft Punk go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for Call Me If You Get Lost",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_22_2",
+                "id": "s_song_2_from_discovery",
                 "track": 2,
-                "title": "Track 2 for Call Me If You Get Lost",
+                "title": "Song 2 from Discovery",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Call Me If You Get Lost go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Call Me If You Get Lost's message.",
+                "lyrics": "Full lyrics for track 2 of Discovery by Daft Punk go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for Call Me If You Get Lost",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_22_3",
+                "id": "s_song_3_from_discovery",
                 "track": 3,
-                "title": "Track 3 for Call Me If You Get Lost",
+                "title": "Song 3 from Discovery",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Call Me If You Get Lost go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Call Me If You Get Lost's message.",
+                "lyrics": "Full lyrics for track 3 of Discovery by Daft Punk go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for Call Me If You Get Lost",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_22_4",
+                "id": "s_song_4_from_discovery",
                 "track": 4,
-                "title": "Track 4 for Call Me If You Get Lost",
+                "title": "Song 4 from Discovery",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Call Me If You Get Lost go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Call Me If You Get Lost's message.",
+                "lyrics": "Full lyrics for track 4 of Discovery by Daft Punk go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Call Me If You Get Lost",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_22_5",
+                "id": "s_song_5_from_discovery",
                 "track": 5,
-                "title": "Track 5 for Call Me If You Get Lost",
+                "title": "Song 5 from Discovery",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Call Me If You Get Lost go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Call Me If You Get Lost's message.",
+                "lyrics": "Full lyrics for track 5 of Discovery by Daft Punk go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for Call Me If You Get Lost",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_22_6",
+                "id": "s_song_6_from_discovery",
                 "track": 6,
-                "title": "Track 6 for Call Me If You Get Lost",
+                "title": "Song 6 from Discovery",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Call Me If You Get Lost go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Call Me If You Get Lost's message.",
+                "lyrics": "Full lyrics for track 6 of Discovery by Daft Punk go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Call Me If You Get Lost",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_22_7",
+                "id": "s_song_7_from_discovery",
                 "track": 7,
-                "title": "Track 7 for Call Me If You Get Lost",
+                "title": "Song 7 from Discovery",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Call Me If You Get Lost go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Call Me If You Get Lost's message.",
+                "lyrics": "Full lyrics for track 7 of Discovery by Daft Punk go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for Call Me If You Get Lost",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_22_8",
+                "id": "s_song_8_from_discovery",
                 "track": 8,
-                "title": "Track 8 for Call Me If You Get Lost",
+                "title": "Song 8 from Discovery",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Call Me If You Get Lost go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Call Me If You Get Lost's message.",
+                "lyrics": "Full lyrics for track 8 of Discovery by Daft Punk go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for Call Me If You Get Lost",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_22_9",
+                "id": "s_song_9_from_discovery",
                 "track": 9,
-                "title": "Track 9 for Call Me If You Get Lost",
+                "title": "Song 9 from Discovery",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Call Me If You Get Lost go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Call Me If You Get Lost's message.",
+                "lyrics": "Full lyrics for track 9 of Discovery by Daft Punk go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for Call Me If You Get Lost",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_22_10",
+                "id": "s_song_10_from_discovery",
                 "track": 10,
-                "title": "Track 10 for Call Me If You Get Lost",
+                "title": "Song 10 from Discovery",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Call Me If You Get Lost go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Call Me If You Get Lost's message.",
+                "lyrics": "Full lyrics for track 10 of Discovery by Daft Punk go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for Call Me If You Get Lost",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_22_11",
-                "track": 11,
-                "title": "Track 11 for Call Me If You Get Lost",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Call Me If You Get Lost go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Call Me If You Get Lost's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Call Me If You Get Lost",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_22_12",
-                "track": 12,
-                "title": "Track 12 for Call Me If You Get Lost",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Call Me If You Get Lost go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Call Me If You Get Lost's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Call Me If You Get Lost",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -5564,261 +2862,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_23",
-        "title": "Blonde",
-        "artist": "Frank Ocean",
-        "year": "2016",
-        "genre": "R&B",
+        "title": "Nevermind",
+        "artist": "Nirvana",
+        "year": "1991",
+        "genre": "Grunge",
         "cover": "https://images.unsplash.com/photo-1459749411177-042180ceea72?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_23_1",
+                "id": "s_song_1_from_nevermind",
                 "track": 1,
-                "title": "Track 1 for Blonde",
+                "title": "Song 1 from Nevermind",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Blonde go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Blonde's message.",
+                "lyrics": "Full lyrics for track 1 of Nevermind by Nirvana go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for Blonde",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_23_2",
+                "id": "s_song_2_from_nevermind",
                 "track": 2,
-                "title": "Track 2 for Blonde",
+                "title": "Song 2 from Nevermind",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Blonde go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Blonde's message.",
+                "lyrics": "Full lyrics for track 2 of Nevermind by Nirvana go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for Blonde",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_23_3",
+                "id": "s_song_3_from_nevermind",
                 "track": 3,
-                "title": "Track 3 for Blonde",
+                "title": "Song 3 from Nevermind",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Blonde go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Blonde's message.",
+                "lyrics": "Full lyrics for track 3 of Nevermind by Nirvana go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for Blonde",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_23_4",
+                "id": "s_song_4_from_nevermind",
                 "track": 4,
-                "title": "Track 4 for Blonde",
+                "title": "Song 4 from Nevermind",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Blonde go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Blonde's message.",
+                "lyrics": "Full lyrics for track 4 of Nevermind by Nirvana go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Blonde",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_23_5",
+                "id": "s_song_5_from_nevermind",
                 "track": 5,
-                "title": "Track 5 for Blonde",
+                "title": "Song 5 from Nevermind",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Blonde go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Blonde's message.",
+                "lyrics": "Full lyrics for track 5 of Nevermind by Nirvana go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for Blonde",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_23_6",
+                "id": "s_song_6_from_nevermind",
                 "track": 6,
-                "title": "Track 6 for Blonde",
+                "title": "Song 6 from Nevermind",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Blonde go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Blonde's message.",
+                "lyrics": "Full lyrics for track 6 of Nevermind by Nirvana go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Blonde",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_23_7",
+                "id": "s_song_7_from_nevermind",
                 "track": 7,
-                "title": "Track 7 for Blonde",
+                "title": "Song 7 from Nevermind",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Blonde go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Blonde's message.",
+                "lyrics": "Full lyrics for track 7 of Nevermind by Nirvana go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for Blonde",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_23_8",
+                "id": "s_song_8_from_nevermind",
                 "track": 8,
-                "title": "Track 8 for Blonde",
+                "title": "Song 8 from Nevermind",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Blonde go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Blonde's message.",
+                "lyrics": "Full lyrics for track 8 of Nevermind by Nirvana go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for Blonde",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_23_9",
+                "id": "s_song_9_from_nevermind",
                 "track": 9,
-                "title": "Track 9 for Blonde",
+                "title": "Song 9 from Nevermind",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Blonde go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Blonde's message.",
+                "lyrics": "Full lyrics for track 9 of Nevermind by Nirvana go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for Blonde",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_23_10",
+                "id": "s_song_10_from_nevermind",
                 "track": 10,
-                "title": "Track 10 for Blonde",
+                "title": "Song 10 from Nevermind",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Blonde go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Blonde's message.",
+                "lyrics": "Full lyrics for track 10 of Nevermind by Nirvana go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for Blonde",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_23_11",
-                "track": 11,
-                "title": "Track 11 for Blonde",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Blonde go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Blonde's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Blonde",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_23_12",
-                "track": 12,
-                "title": "Track 12 for Blonde",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Blonde go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Blonde's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Blonde",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -5826,261 +3072,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_24",
-        "title": "Channel Orange",
-        "artist": "Frank Ocean",
-        "year": "2012",
-        "genre": "R&B",
+        "title": "The Dark Side of the Moon",
+        "artist": "Pink Floyd",
+        "year": "1973",
+        "genre": "Prog Rock",
         "cover": "https://images.unsplash.com/photo-1514525253361-bee8718a300c?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_24_1",
+                "id": "s_song_1_from_the_dark_side_of_the_moon",
                 "track": 1,
-                "title": "Track 1 for Channel Orange",
+                "title": "Song 1 from The Dark Side of the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Channel Orange go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Channel Orange's message.",
+                "lyrics": "Full lyrics for track 1 of The Dark Side of the Moon by Pink Floyd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for Channel Orange",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_24_2",
+                "id": "s_song_2_from_the_dark_side_of_the_moon",
                 "track": 2,
-                "title": "Track 2 for Channel Orange",
+                "title": "Song 2 from The Dark Side of the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Channel Orange go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Channel Orange's message.",
+                "lyrics": "Full lyrics for track 2 of The Dark Side of the Moon by Pink Floyd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for Channel Orange",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_24_3",
+                "id": "s_song_3_from_the_dark_side_of_the_moon",
                 "track": 3,
-                "title": "Track 3 for Channel Orange",
+                "title": "Song 3 from The Dark Side of the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Channel Orange go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Channel Orange's message.",
+                "lyrics": "Full lyrics for track 3 of The Dark Side of the Moon by Pink Floyd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for Channel Orange",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_24_4",
+                "id": "s_song_4_from_the_dark_side_of_the_moon",
                 "track": 4,
-                "title": "Track 4 for Channel Orange",
+                "title": "Song 4 from The Dark Side of the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Channel Orange go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Channel Orange's message.",
+                "lyrics": "Full lyrics for track 4 of The Dark Side of the Moon by Pink Floyd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Channel Orange",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_24_5",
+                "id": "s_song_5_from_the_dark_side_of_the_moon",
                 "track": 5,
-                "title": "Track 5 for Channel Orange",
+                "title": "Song 5 from The Dark Side of the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Channel Orange go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Channel Orange's message.",
+                "lyrics": "Full lyrics for track 5 of The Dark Side of the Moon by Pink Floyd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for Channel Orange",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_24_6",
+                "id": "s_song_6_from_the_dark_side_of_the_moon",
                 "track": 6,
-                "title": "Track 6 for Channel Orange",
+                "title": "Song 6 from The Dark Side of the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Channel Orange go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Channel Orange's message.",
+                "lyrics": "Full lyrics for track 6 of The Dark Side of the Moon by Pink Floyd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Channel Orange",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_24_7",
+                "id": "s_song_7_from_the_dark_side_of_the_moon",
                 "track": 7,
-                "title": "Track 7 for Channel Orange",
+                "title": "Song 7 from The Dark Side of the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Channel Orange go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Channel Orange's message.",
+                "lyrics": "Full lyrics for track 7 of The Dark Side of the Moon by Pink Floyd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for Channel Orange",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_24_8",
+                "id": "s_song_8_from_the_dark_side_of_the_moon",
                 "track": 8,
-                "title": "Track 8 for Channel Orange",
+                "title": "Song 8 from The Dark Side of the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Channel Orange go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Channel Orange's message.",
+                "lyrics": "Full lyrics for track 8 of The Dark Side of the Moon by Pink Floyd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for Channel Orange",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_24_9",
+                "id": "s_song_9_from_the_dark_side_of_the_moon",
                 "track": 9,
-                "title": "Track 9 for Channel Orange",
+                "title": "Song 9 from The Dark Side of the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Channel Orange go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Channel Orange's message.",
+                "lyrics": "Full lyrics for track 9 of The Dark Side of the Moon by Pink Floyd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for Channel Orange",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_24_10",
+                "id": "s_song_10_from_the_dark_side_of_the_moon",
                 "track": 10,
-                "title": "Track 10 for Channel Orange",
+                "title": "Song 10 from The Dark Side of the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Channel Orange go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Channel Orange's message.",
+                "lyrics": "Full lyrics for track 10 of The Dark Side of the Moon by Pink Floyd go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for Channel Orange",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_24_11",
-                "track": 11,
-                "title": "Track 11 for Channel Orange",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Channel Orange go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Channel Orange's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Channel Orange",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_24_12",
-                "track": 12,
-                "title": "Track 12 for Channel Orange",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Channel Orange go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Channel Orange's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Channel Orange",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -6088,261 +3282,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_25",
-        "title": "Currents",
-        "artist": "Tame Impala",
-        "year": "2015",
-        "genre": "Indie",
+        "title": "OK Computer",
+        "artist": "Radiohead",
+        "year": "1997",
+        "genre": "Alt Rock",
         "cover": "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_25_1",
+                "id": "s_song_1_from_ok_computer",
                 "track": 1,
-                "title": "Track 1 for Currents",
+                "title": "Song 1 from OK Computer",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Currents go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Currents's message.",
+                "lyrics": "Full lyrics for track 1 of OK Computer by Radiohead go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for Currents",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_25_2",
+                "id": "s_song_2_from_ok_computer",
                 "track": 2,
-                "title": "Track 2 for Currents",
+                "title": "Song 2 from OK Computer",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Currents go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Currents's message.",
+                "lyrics": "Full lyrics for track 2 of OK Computer by Radiohead go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for Currents",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_25_3",
+                "id": "s_song_3_from_ok_computer",
                 "track": 3,
-                "title": "Track 3 for Currents",
+                "title": "Song 3 from OK Computer",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Currents go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Currents's message.",
+                "lyrics": "Full lyrics for track 3 of OK Computer by Radiohead go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for Currents",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_25_4",
+                "id": "s_song_4_from_ok_computer",
                 "track": 4,
-                "title": "Track 4 for Currents",
+                "title": "Song 4 from OK Computer",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Currents go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Currents's message.",
+                "lyrics": "Full lyrics for track 4 of OK Computer by Radiohead go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Currents",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_25_5",
+                "id": "s_song_5_from_ok_computer",
                 "track": 5,
-                "title": "Track 5 for Currents",
+                "title": "Song 5 from OK Computer",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Currents go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Currents's message.",
+                "lyrics": "Full lyrics for track 5 of OK Computer by Radiohead go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for Currents",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_25_6",
+                "id": "s_song_6_from_ok_computer",
                 "track": 6,
-                "title": "Track 6 for Currents",
+                "title": "Song 6 from OK Computer",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Currents go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Currents's message.",
+                "lyrics": "Full lyrics for track 6 of OK Computer by Radiohead go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Currents",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_25_7",
+                "id": "s_song_7_from_ok_computer",
                 "track": 7,
-                "title": "Track 7 for Currents",
+                "title": "Song 7 from OK Computer",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Currents go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Currents's message.",
+                "lyrics": "Full lyrics for track 7 of OK Computer by Radiohead go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for Currents",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_25_8",
+                "id": "s_song_8_from_ok_computer",
                 "track": 8,
-                "title": "Track 8 for Currents",
+                "title": "Song 8 from OK Computer",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Currents go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Currents's message.",
+                "lyrics": "Full lyrics for track 8 of OK Computer by Radiohead go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for Currents",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_25_9",
+                "id": "s_song_9_from_ok_computer",
                 "track": 9,
-                "title": "Track 9 for Currents",
+                "title": "Song 9 from OK Computer",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Currents go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Currents's message.",
+                "lyrics": "Full lyrics for track 9 of OK Computer by Radiohead go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for Currents",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_25_10",
+                "id": "s_song_10_from_ok_computer",
                 "track": 10,
-                "title": "Track 10 for Currents",
+                "title": "Song 10 from OK Computer",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Currents go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Currents's message.",
+                "lyrics": "Full lyrics for track 10 of OK Computer by Radiohead go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for Currents",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_25_11",
-                "track": 11,
-                "title": "Track 11 for Currents",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Currents go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Currents's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Currents",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_25_12",
-                "track": 12,
-                "title": "Track 12 for Currents",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Currents go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Currents's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Currents",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -6350,261 +3492,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_26",
-        "title": "The Slow Rush",
-        "artist": "Tame Impala",
-        "year": "2020",
-        "genre": "Indie",
+        "title": "Born to Die",
+        "artist": "Lana Del Rey",
+        "year": "2012",
+        "genre": "Pop",
         "cover": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_26_1",
+                "id": "s_song_1_from_born_to_die",
                 "track": 1,
-                "title": "Track 1 for The Slow Rush",
+                "title": "Song 1 from Born to Die",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for The Slow Rush go here...",
-                "interpretation": "This track exploring the depths of Track 1 for The Slow Rush's message.",
+                "lyrics": "Full lyrics for track 1 of Born to Die by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for The Slow Rush",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_26_2",
+                "id": "s_song_2_from_born_to_die",
                 "track": 2,
-                "title": "Track 2 for The Slow Rush",
+                "title": "Song 2 from Born to Die",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for The Slow Rush go here...",
-                "interpretation": "This track exploring the depths of Track 2 for The Slow Rush's message.",
+                "lyrics": "Full lyrics for track 2 of Born to Die by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for The Slow Rush",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_26_3",
+                "id": "s_song_3_from_born_to_die",
                 "track": 3,
-                "title": "Track 3 for The Slow Rush",
+                "title": "Song 3 from Born to Die",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for The Slow Rush go here...",
-                "interpretation": "This track exploring the depths of Track 3 for The Slow Rush's message.",
+                "lyrics": "Full lyrics for track 3 of Born to Die by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for The Slow Rush",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_26_4",
+                "id": "s_song_4_from_born_to_die",
                 "track": 4,
-                "title": "Track 4 for The Slow Rush",
+                "title": "Song 4 from Born to Die",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for The Slow Rush go here...",
-                "interpretation": "This track exploring the depths of Track 4 for The Slow Rush's message.",
+                "lyrics": "Full lyrics for track 4 of Born to Die by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for The Slow Rush",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_26_5",
+                "id": "s_song_5_from_born_to_die",
                 "track": 5,
-                "title": "Track 5 for The Slow Rush",
+                "title": "Song 5 from Born to Die",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for The Slow Rush go here...",
-                "interpretation": "This track exploring the depths of Track 5 for The Slow Rush's message.",
+                "lyrics": "Full lyrics for track 5 of Born to Die by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for The Slow Rush",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_26_6",
+                "id": "s_song_6_from_born_to_die",
                 "track": 6,
-                "title": "Track 6 for The Slow Rush",
+                "title": "Song 6 from Born to Die",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for The Slow Rush go here...",
-                "interpretation": "This track exploring the depths of Track 6 for The Slow Rush's message.",
+                "lyrics": "Full lyrics for track 6 of Born to Die by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for The Slow Rush",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_26_7",
+                "id": "s_song_7_from_born_to_die",
                 "track": 7,
-                "title": "Track 7 for The Slow Rush",
+                "title": "Song 7 from Born to Die",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for The Slow Rush go here...",
-                "interpretation": "This track exploring the depths of Track 7 for The Slow Rush's message.",
+                "lyrics": "Full lyrics for track 7 of Born to Die by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for The Slow Rush",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_26_8",
+                "id": "s_song_8_from_born_to_die",
                 "track": 8,
-                "title": "Track 8 for The Slow Rush",
+                "title": "Song 8 from Born to Die",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for The Slow Rush go here...",
-                "interpretation": "This track exploring the depths of Track 8 for The Slow Rush's message.",
+                "lyrics": "Full lyrics for track 8 of Born to Die by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for The Slow Rush",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_26_9",
+                "id": "s_song_9_from_born_to_die",
                 "track": 9,
-                "title": "Track 9 for The Slow Rush",
+                "title": "Song 9 from Born to Die",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for The Slow Rush go here...",
-                "interpretation": "This track exploring the depths of Track 9 for The Slow Rush's message.",
+                "lyrics": "Full lyrics for track 9 of Born to Die by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for The Slow Rush",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_26_10",
+                "id": "s_song_10_from_born_to_die",
                 "track": 10,
-                "title": "Track 10 for The Slow Rush",
+                "title": "Song 10 from Born to Die",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for The Slow Rush go here...",
-                "interpretation": "This track exploring the depths of Track 10 for The Slow Rush's message.",
+                "lyrics": "Full lyrics for track 10 of Born to Die by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for The Slow Rush",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_26_11",
-                "track": 11,
-                "title": "Track 11 for The Slow Rush",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for The Slow Rush go here...",
-                "interpretation": "This track exploring the depths of Track 11 for The Slow Rush's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for The Slow Rush",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_26_12",
-                "track": 12,
-                "title": "Track 12 for The Slow Rush",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for The Slow Rush go here...",
-                "interpretation": "This track exploring the depths of Track 12 for The Slow Rush's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for The Slow Rush",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -6612,261 +3702,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_27",
-        "title": "Lonerism",
-        "artist": "Tame Impala",
+        "title": "Channel Orange",
+        "artist": "Frank Ocean",
         "year": "2012",
-        "genre": "Indie",
+        "genre": "R&B",
         "cover": "https://images.unsplash.com/photo-1619983081563-430f63602796?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_27_1",
+                "id": "s_song_1_from_channel_orange",
                 "track": 1,
-                "title": "Track 1 for Lonerism",
+                "title": "Song 1 from Channel Orange",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Lonerism go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Lonerism's message.",
+                "lyrics": "Full lyrics for track 1 of Channel Orange by Frank Ocean go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for Lonerism",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_27_2",
+                "id": "s_song_2_from_channel_orange",
                 "track": 2,
-                "title": "Track 2 for Lonerism",
+                "title": "Song 2 from Channel Orange",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Lonerism go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Lonerism's message.",
+                "lyrics": "Full lyrics for track 2 of Channel Orange by Frank Ocean go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for Lonerism",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_27_3",
+                "id": "s_song_3_from_channel_orange",
                 "track": 3,
-                "title": "Track 3 for Lonerism",
+                "title": "Song 3 from Channel Orange",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Lonerism go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Lonerism's message.",
+                "lyrics": "Full lyrics for track 3 of Channel Orange by Frank Ocean go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for Lonerism",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_27_4",
+                "id": "s_song_4_from_channel_orange",
                 "track": 4,
-                "title": "Track 4 for Lonerism",
+                "title": "Song 4 from Channel Orange",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Lonerism go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Lonerism's message.",
+                "lyrics": "Full lyrics for track 4 of Channel Orange by Frank Ocean go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Lonerism",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_27_5",
+                "id": "s_song_5_from_channel_orange",
                 "track": 5,
-                "title": "Track 5 for Lonerism",
+                "title": "Song 5 from Channel Orange",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Lonerism go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Lonerism's message.",
+                "lyrics": "Full lyrics for track 5 of Channel Orange by Frank Ocean go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for Lonerism",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_27_6",
+                "id": "s_song_6_from_channel_orange",
                 "track": 6,
-                "title": "Track 6 for Lonerism",
+                "title": "Song 6 from Channel Orange",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Lonerism go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Lonerism's message.",
+                "lyrics": "Full lyrics for track 6 of Channel Orange by Frank Ocean go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Lonerism",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_27_7",
+                "id": "s_song_7_from_channel_orange",
                 "track": 7,
-                "title": "Track 7 for Lonerism",
+                "title": "Song 7 from Channel Orange",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Lonerism go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Lonerism's message.",
+                "lyrics": "Full lyrics for track 7 of Channel Orange by Frank Ocean go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for Lonerism",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_27_8",
+                "id": "s_song_8_from_channel_orange",
                 "track": 8,
-                "title": "Track 8 for Lonerism",
+                "title": "Song 8 from Channel Orange",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Lonerism go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Lonerism's message.",
+                "lyrics": "Full lyrics for track 8 of Channel Orange by Frank Ocean go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for Lonerism",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_27_9",
+                "id": "s_song_9_from_channel_orange",
                 "track": 9,
-                "title": "Track 9 for Lonerism",
+                "title": "Song 9 from Channel Orange",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Lonerism go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Lonerism's message.",
+                "lyrics": "Full lyrics for track 9 of Channel Orange by Frank Ocean go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for Lonerism",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_27_10",
+                "id": "s_song_10_from_channel_orange",
                 "track": 10,
-                "title": "Track 10 for Lonerism",
+                "title": "Song 10 from Channel Orange",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Lonerism go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Lonerism's message.",
+                "lyrics": "Full lyrics for track 10 of Channel Orange by Frank Ocean go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for Lonerism",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_27_11",
-                "track": 11,
-                "title": "Track 11 for Lonerism",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Lonerism go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Lonerism's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Lonerism",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_27_12",
-                "track": 12,
-                "title": "Track 12 for Lonerism",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Lonerism go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Lonerism's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Lonerism",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -6874,1578 +3912,6 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_28",
-        "title": "SOS",
-        "artist": "SZA",
-        "year": "2022",
-        "genre": "R&B",
-        "cover": "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=500&h=500&fit=crop",
-        "songs": [
-            {
-                "id": "s_alb_28_1",
-                "track": 1,
-                "title": "Track 1 for SOS",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for SOS go here...",
-                "interpretation": "This track exploring the depths of Track 1 for SOS's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 1 for SOS",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_28_2",
-                "track": 2,
-                "title": "Track 2 for SOS",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for SOS go here...",
-                "interpretation": "This track exploring the depths of Track 2 for SOS's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 2 for SOS",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_28_3",
-                "track": 3,
-                "title": "Track 3 for SOS",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for SOS go here...",
-                "interpretation": "This track exploring the depths of Track 3 for SOS's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 3 for SOS",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_28_4",
-                "track": 4,
-                "title": "Track 4 for SOS",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for SOS go here...",
-                "interpretation": "This track exploring the depths of Track 4 for SOS's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 4 for SOS",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_28_5",
-                "track": 5,
-                "title": "Track 5 for SOS",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for SOS go here...",
-                "interpretation": "This track exploring the depths of Track 5 for SOS's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 5 for SOS",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_28_6",
-                "track": 6,
-                "title": "Track 6 for SOS",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for SOS go here...",
-                "interpretation": "This track exploring the depths of Track 6 for SOS's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 6 for SOS",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_28_7",
-                "track": 7,
-                "title": "Track 7 for SOS",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for SOS go here...",
-                "interpretation": "This track exploring the depths of Track 7 for SOS's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 7 for SOS",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_28_8",
-                "track": 8,
-                "title": "Track 8 for SOS",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for SOS go here...",
-                "interpretation": "This track exploring the depths of Track 8 for SOS's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 8 for SOS",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_28_9",
-                "track": 9,
-                "title": "Track 9 for SOS",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for SOS go here...",
-                "interpretation": "This track exploring the depths of Track 9 for SOS's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 9 for SOS",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_28_10",
-                "track": 10,
-                "title": "Track 10 for SOS",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for SOS go here...",
-                "interpretation": "This track exploring the depths of Track 10 for SOS's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 10 for SOS",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_28_11",
-                "track": 11,
-                "title": "Track 11 for SOS",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for SOS go here...",
-                "interpretation": "This track exploring the depths of Track 11 for SOS's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for SOS",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_28_12",
-                "track": 12,
-                "title": "Track 12 for SOS",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for SOS go here...",
-                "interpretation": "This track exploring the depths of Track 12 for SOS's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for SOS",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": "alb_29",
-        "title": "Ctrl",
-        "artist": "SZA",
-        "year": "2017",
-        "genre": "R&B",
-        "cover": "https://images.unsplash.com/photo-1459749411177-042180ceea72?w=500&h=500&fit=crop",
-        "songs": [
-            {
-                "id": "s_alb_29_1",
-                "track": 1,
-                "title": "Track 1 for Ctrl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Ctrl go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Ctrl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 1 for Ctrl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_29_2",
-                "track": 2,
-                "title": "Track 2 for Ctrl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Ctrl go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Ctrl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 2 for Ctrl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_29_3",
-                "track": 3,
-                "title": "Track 3 for Ctrl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Ctrl go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Ctrl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 3 for Ctrl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_29_4",
-                "track": 4,
-                "title": "Track 4 for Ctrl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Ctrl go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Ctrl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 4 for Ctrl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_29_5",
-                "track": 5,
-                "title": "Track 5 for Ctrl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Ctrl go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Ctrl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 5 for Ctrl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_29_6",
-                "track": 6,
-                "title": "Track 6 for Ctrl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Ctrl go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Ctrl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 6 for Ctrl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_29_7",
-                "track": 7,
-                "title": "Track 7 for Ctrl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Ctrl go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Ctrl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 7 for Ctrl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_29_8",
-                "track": 8,
-                "title": "Track 8 for Ctrl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Ctrl go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Ctrl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 8 for Ctrl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_29_9",
-                "track": 9,
-                "title": "Track 9 for Ctrl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Ctrl go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Ctrl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 9 for Ctrl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_29_10",
-                "track": 10,
-                "title": "Track 10 for Ctrl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Ctrl go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Ctrl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 10 for Ctrl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_29_11",
-                "track": 11,
-                "title": "Track 11 for Ctrl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Ctrl go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Ctrl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Ctrl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_29_12",
-                "track": 12,
-                "title": "Track 12 for Ctrl",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Ctrl go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Ctrl's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Ctrl",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": "alb_30",
-        "title": "Take Care",
-        "artist": "Drake",
-        "year": "2011",
-        "genre": "Hip-Hop",
-        "cover": "https://images.unsplash.com/photo-1514525253361-bee8718a300c?w=500&h=500&fit=crop",
-        "songs": [
-            {
-                "id": "s_alb_30_1",
-                "track": 1,
-                "title": "Track 1 for Take Care",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Take Care go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Take Care's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 1 for Take Care",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_30_2",
-                "track": 2,
-                "title": "Track 2 for Take Care",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Take Care go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Take Care's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 2 for Take Care",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_30_3",
-                "track": 3,
-                "title": "Track 3 for Take Care",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Take Care go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Take Care's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 3 for Take Care",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_30_4",
-                "track": 4,
-                "title": "Track 4 for Take Care",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Take Care go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Take Care's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 4 for Take Care",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_30_5",
-                "track": 5,
-                "title": "Track 5 for Take Care",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Take Care go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Take Care's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 5 for Take Care",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_30_6",
-                "track": 6,
-                "title": "Track 6 for Take Care",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Take Care go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Take Care's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 6 for Take Care",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_30_7",
-                "track": 7,
-                "title": "Track 7 for Take Care",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Take Care go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Take Care's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 7 for Take Care",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_30_8",
-                "track": 8,
-                "title": "Track 8 for Take Care",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Take Care go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Take Care's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 8 for Take Care",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_30_9",
-                "track": 9,
-                "title": "Track 9 for Take Care",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Take Care go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Take Care's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 9 for Take Care",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_30_10",
-                "track": 10,
-                "title": "Track 10 for Take Care",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Take Care go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Take Care's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 10 for Take Care",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_30_11",
-                "track": 11,
-                "title": "Track 11 for Take Care",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Take Care go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Take Care's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Take Care",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_30_12",
-                "track": 12,
-                "title": "Track 12 for Take Care",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Take Care go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Take Care's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Take Care",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": "alb_31",
-        "title": "Nothing Was the Same",
-        "artist": "Drake",
-        "year": "2013",
-        "genre": "Hip-Hop",
-        "cover": "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=500&h=500&fit=crop",
-        "songs": [
-            {
-                "id": "s_alb_31_1",
-                "track": 1,
-                "title": "Track 1 for Nothing Was the Same",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Nothing Was the Same go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Nothing Was the Same's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 1 for Nothing Was the Same",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_31_2",
-                "track": 2,
-                "title": "Track 2 for Nothing Was the Same",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Nothing Was the Same go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Nothing Was the Same's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 2 for Nothing Was the Same",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_31_3",
-                "track": 3,
-                "title": "Track 3 for Nothing Was the Same",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Nothing Was the Same go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Nothing Was the Same's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 3 for Nothing Was the Same",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_31_4",
-                "track": 4,
-                "title": "Track 4 for Nothing Was the Same",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Nothing Was the Same go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Nothing Was the Same's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 4 for Nothing Was the Same",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_31_5",
-                "track": 5,
-                "title": "Track 5 for Nothing Was the Same",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Nothing Was the Same go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Nothing Was the Same's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 5 for Nothing Was the Same",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_31_6",
-                "track": 6,
-                "title": "Track 6 for Nothing Was the Same",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Nothing Was the Same go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Nothing Was the Same's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 6 for Nothing Was the Same",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_31_7",
-                "track": 7,
-                "title": "Track 7 for Nothing Was the Same",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Nothing Was the Same go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Nothing Was the Same's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 7 for Nothing Was the Same",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_31_8",
-                "track": 8,
-                "title": "Track 8 for Nothing Was the Same",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Nothing Was the Same go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Nothing Was the Same's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 8 for Nothing Was the Same",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_31_9",
-                "track": 9,
-                "title": "Track 9 for Nothing Was the Same",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Nothing Was the Same go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Nothing Was the Same's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 9 for Nothing Was the Same",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_31_10",
-                "track": 10,
-                "title": "Track 10 for Nothing Was the Same",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Nothing Was the Same go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Nothing Was the Same's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 10 for Nothing Was the Same",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_31_11",
-                "track": 11,
-                "title": "Track 11 for Nothing Was the Same",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Nothing Was the Same go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Nothing Was the Same's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Nothing Was the Same",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_31_12",
-                "track": 12,
-                "title": "Track 12 for Nothing Was the Same",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Nothing Was the Same go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Nothing Was the Same's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Nothing Was the Same",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": "alb_32",
-        "title": "My Beautiful Dark Twisted Fantasy",
-        "artist": "Kanye West",
-        "year": "2010",
-        "genre": "Hip-Hop",
-        "cover": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=500&fit=crop",
-        "songs": [
-            {
-                "id": "s_alb_32_1",
-                "track": 1,
-                "title": "Track 1 for My Beautiful Dark Twisted Fantasy",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for My Beautiful Dark Twisted Fantasy go here...",
-                "interpretation": "This track exploring the depths of Track 1 for My Beautiful Dark Twisted Fantasy's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 1 for My Beautiful Dark Twisted Fantasy",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_32_2",
-                "track": 2,
-                "title": "Track 2 for My Beautiful Dark Twisted Fantasy",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for My Beautiful Dark Twisted Fantasy go here...",
-                "interpretation": "This track exploring the depths of Track 2 for My Beautiful Dark Twisted Fantasy's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 2 for My Beautiful Dark Twisted Fantasy",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_32_3",
-                "track": 3,
-                "title": "Track 3 for My Beautiful Dark Twisted Fantasy",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for My Beautiful Dark Twisted Fantasy go here...",
-                "interpretation": "This track exploring the depths of Track 3 for My Beautiful Dark Twisted Fantasy's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 3 for My Beautiful Dark Twisted Fantasy",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_32_4",
-                "track": 4,
-                "title": "Track 4 for My Beautiful Dark Twisted Fantasy",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for My Beautiful Dark Twisted Fantasy go here...",
-                "interpretation": "This track exploring the depths of Track 4 for My Beautiful Dark Twisted Fantasy's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 4 for My Beautiful Dark Twisted Fantasy",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_32_5",
-                "track": 5,
-                "title": "Track 5 for My Beautiful Dark Twisted Fantasy",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for My Beautiful Dark Twisted Fantasy go here...",
-                "interpretation": "This track exploring the depths of Track 5 for My Beautiful Dark Twisted Fantasy's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 5 for My Beautiful Dark Twisted Fantasy",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_32_6",
-                "track": 6,
-                "title": "Track 6 for My Beautiful Dark Twisted Fantasy",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for My Beautiful Dark Twisted Fantasy go here...",
-                "interpretation": "This track exploring the depths of Track 6 for My Beautiful Dark Twisted Fantasy's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 6 for My Beautiful Dark Twisted Fantasy",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_32_7",
-                "track": 7,
-                "title": "Track 7 for My Beautiful Dark Twisted Fantasy",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for My Beautiful Dark Twisted Fantasy go here...",
-                "interpretation": "This track exploring the depths of Track 7 for My Beautiful Dark Twisted Fantasy's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 7 for My Beautiful Dark Twisted Fantasy",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_32_8",
-                "track": 8,
-                "title": "Track 8 for My Beautiful Dark Twisted Fantasy",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for My Beautiful Dark Twisted Fantasy go here...",
-                "interpretation": "This track exploring the depths of Track 8 for My Beautiful Dark Twisted Fantasy's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 8 for My Beautiful Dark Twisted Fantasy",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_32_9",
-                "track": 9,
-                "title": "Track 9 for My Beautiful Dark Twisted Fantasy",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for My Beautiful Dark Twisted Fantasy go here...",
-                "interpretation": "This track exploring the depths of Track 9 for My Beautiful Dark Twisted Fantasy's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 9 for My Beautiful Dark Twisted Fantasy",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_32_10",
-                "track": 10,
-                "title": "Track 10 for My Beautiful Dark Twisted Fantasy",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for My Beautiful Dark Twisted Fantasy go here...",
-                "interpretation": "This track exploring the depths of Track 10 for My Beautiful Dark Twisted Fantasy's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 10 for My Beautiful Dark Twisted Fantasy",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_32_11",
-                "track": 11,
-                "title": "Track 11 for My Beautiful Dark Twisted Fantasy",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for My Beautiful Dark Twisted Fantasy go here...",
-                "interpretation": "This track exploring the depths of Track 11 for My Beautiful Dark Twisted Fantasy's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for My Beautiful Dark Twisted Fantasy",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_32_12",
-                "track": 12,
-                "title": "Track 12 for My Beautiful Dark Twisted Fantasy",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for My Beautiful Dark Twisted Fantasy go here...",
-                "interpretation": "This track exploring the depths of Track 12 for My Beautiful Dark Twisted Fantasy's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for My Beautiful Dark Twisted Fantasy",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": "alb_33",
-        "title": "Graduation",
-        "artist": "Kanye West",
-        "year": "2007",
-        "genre": "Hip-Hop",
-        "cover": "https://images.unsplash.com/photo-1619983081563-430f63602796?w=500&h=500&fit=crop",
-        "songs": [
-            {
-                "id": "s_alb_33_1",
-                "track": 1,
-                "title": "Track 1 for Graduation",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Graduation go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Graduation's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 1 for Graduation",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_33_2",
-                "track": 2,
-                "title": "Track 2 for Graduation",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Graduation go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Graduation's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 2 for Graduation",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_33_3",
-                "track": 3,
-                "title": "Track 3 for Graduation",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Graduation go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Graduation's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 3 for Graduation",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_33_4",
-                "track": 4,
-                "title": "Track 4 for Graduation",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Graduation go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Graduation's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 4 for Graduation",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_33_5",
-                "track": 5,
-                "title": "Track 5 for Graduation",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Graduation go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Graduation's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 5 for Graduation",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_33_6",
-                "track": 6,
-                "title": "Track 6 for Graduation",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Graduation go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Graduation's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 6 for Graduation",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_33_7",
-                "track": 7,
-                "title": "Track 7 for Graduation",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Graduation go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Graduation's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 7 for Graduation",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_33_8",
-                "track": 8,
-                "title": "Track 8 for Graduation",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Graduation go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Graduation's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 8 for Graduation",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_33_9",
-                "track": 9,
-                "title": "Track 9 for Graduation",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Graduation go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Graduation's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 9 for Graduation",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_33_10",
-                "track": 10,
-                "title": "Track 10 for Graduation",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Graduation go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Graduation's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 10 for Graduation",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_33_11",
-                "track": 11,
-                "title": "Track 11 for Graduation",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Graduation go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Graduation's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Graduation",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_33_12",
-                "track": 12,
-                "title": "Track 12 for Graduation",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Graduation go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Graduation's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Graduation",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": "alb_34",
         "title": "The College Dropout",
         "artist": "Kanye West",
         "year": "2004",
@@ -8453,254 +3919,1462 @@ const STARTER_ALBUMS = [
         "cover": "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_34_1",
+                "id": "s_song_1_from_the_college_dropout",
                 "track": 1,
-                "title": "Track 1 for The College Dropout",
+                "title": "Song 1 from The College Dropout",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for The College Dropout go here...",
-                "interpretation": "This track exploring the depths of Track 1 for The College Dropout's message.",
+                "lyrics": "Full lyrics for track 1 of The College Dropout by Kanye West go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for The College Dropout",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_34_2",
+                "id": "s_song_2_from_the_college_dropout",
                 "track": 2,
-                "title": "Track 2 for The College Dropout",
+                "title": "Song 2 from The College Dropout",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for The College Dropout go here...",
-                "interpretation": "This track exploring the depths of Track 2 for The College Dropout's message.",
+                "lyrics": "Full lyrics for track 2 of The College Dropout by Kanye West go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for The College Dropout",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_34_3",
+                "id": "s_song_3_from_the_college_dropout",
                 "track": 3,
-                "title": "Track 3 for The College Dropout",
+                "title": "Song 3 from The College Dropout",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for The College Dropout go here...",
-                "interpretation": "This track exploring the depths of Track 3 for The College Dropout's message.",
+                "lyrics": "Full lyrics for track 3 of The College Dropout by Kanye West go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for The College Dropout",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_34_4",
+                "id": "s_song_4_from_the_college_dropout",
                 "track": 4,
-                "title": "Track 4 for The College Dropout",
+                "title": "Song 4 from The College Dropout",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for The College Dropout go here...",
-                "interpretation": "This track exploring the depths of Track 4 for The College Dropout's message.",
+                "lyrics": "Full lyrics for track 4 of The College Dropout by Kanye West go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for The College Dropout",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_34_5",
+                "id": "s_song_5_from_the_college_dropout",
                 "track": 5,
-                "title": "Track 5 for The College Dropout",
+                "title": "Song 5 from The College Dropout",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for The College Dropout go here...",
-                "interpretation": "This track exploring the depths of Track 5 for The College Dropout's message.",
+                "lyrics": "Full lyrics for track 5 of The College Dropout by Kanye West go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for The College Dropout",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_34_6",
+                "id": "s_song_6_from_the_college_dropout",
                 "track": 6,
-                "title": "Track 6 for The College Dropout",
+                "title": "Song 6 from The College Dropout",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for The College Dropout go here...",
-                "interpretation": "This track exploring the depths of Track 6 for The College Dropout's message.",
+                "lyrics": "Full lyrics for track 6 of The College Dropout by Kanye West go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for The College Dropout",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_34_7",
+                "id": "s_song_7_from_the_college_dropout",
                 "track": 7,
-                "title": "Track 7 for The College Dropout",
+                "title": "Song 7 from The College Dropout",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for The College Dropout go here...",
-                "interpretation": "This track exploring the depths of Track 7 for The College Dropout's message.",
+                "lyrics": "Full lyrics for track 7 of The College Dropout by Kanye West go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for The College Dropout",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_34_8",
+                "id": "s_song_8_from_the_college_dropout",
                 "track": 8,
-                "title": "Track 8 for The College Dropout",
+                "title": "Song 8 from The College Dropout",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for The College Dropout go here...",
-                "interpretation": "This track exploring the depths of Track 8 for The College Dropout's message.",
+                "lyrics": "Full lyrics for track 8 of The College Dropout by Kanye West go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for The College Dropout",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_34_9",
+                "id": "s_song_9_from_the_college_dropout",
                 "track": 9,
-                "title": "Track 9 for The College Dropout",
+                "title": "Song 9 from The College Dropout",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for The College Dropout go here...",
-                "interpretation": "This track exploring the depths of Track 9 for The College Dropout's message.",
+                "lyrics": "Full lyrics for track 9 of The College Dropout by Kanye West go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for The College Dropout",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_34_10",
+                "id": "s_song_10_from_the_college_dropout",
                 "track": 10,
-                "title": "Track 10 for The College Dropout",
+                "title": "Song 10 from The College Dropout",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for The College Dropout go here...",
-                "interpretation": "This track exploring the depths of Track 10 for The College Dropout's message.",
+                "lyrics": "Full lyrics for track 10 of The College Dropout by Kanye West go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for The College Dropout",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "alb_29",
+        "title": "2014 Forest Hills Drive",
+        "artist": "J. Cole",
+        "year": "2014",
+        "genre": "Hip-Hop",
+        "cover": "https://images.unsplash.com/photo-1459749411177-042180ceea72?w=500&h=500&fit=crop",
+        "songs": [
+            {
+                "id": "s_song_1_from_2014_forest_hills_drive",
+                "track": 1,
+                "title": "Song 1 from 2014 Forest Hills Drive",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 1 of 2014 Forest Hills Drive by J. Cole go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_34_11",
-                "track": 11,
-                "title": "Track 11 for The College Dropout",
+                "id": "s_song_2_from_2014_forest_hills_drive",
+                "track": 2,
+                "title": "Song 2 from 2014 Forest Hills Drive",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for The College Dropout go here...",
-                "interpretation": "This track exploring the depths of Track 11 for The College Dropout's message.",
+                "lyrics": "Full lyrics for track 2 of 2014 Forest Hills Drive by J. Cole go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 11 for The College Dropout",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_34_12",
-                "track": 12,
-                "title": "Track 12 for The College Dropout",
+                "id": "s_song_3_from_2014_forest_hills_drive",
+                "track": 3,
+                "title": "Song 3 from 2014 Forest Hills Drive",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for The College Dropout go here...",
-                "interpretation": "This track exploring the depths of Track 12 for The College Dropout's message.",
+                "lyrics": "Full lyrics for track 3 of 2014 Forest Hills Drive by J. Cole go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 12 for The College Dropout",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_4_from_2014_forest_hills_drive",
+                "track": 4,
+                "title": "Song 4 from 2014 Forest Hills Drive",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 4 of 2014 Forest Hills Drive by J. Cole go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_5_from_2014_forest_hills_drive",
+                "track": 5,
+                "title": "Song 5 from 2014 Forest Hills Drive",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 5 of 2014 Forest Hills Drive by J. Cole go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_6_from_2014_forest_hills_drive",
+                "track": 6,
+                "title": "Song 6 from 2014 Forest Hills Drive",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 6 of 2014 Forest Hills Drive by J. Cole go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_7_from_2014_forest_hills_drive",
+                "track": 7,
+                "title": "Song 7 from 2014 Forest Hills Drive",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 7 of 2014 Forest Hills Drive by J. Cole go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_8_from_2014_forest_hills_drive",
+                "track": 8,
+                "title": "Song 8 from 2014 Forest Hills Drive",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 8 of 2014 Forest Hills Drive by J. Cole go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_9_from_2014_forest_hills_drive",
+                "track": 9,
+                "title": "Song 9 from 2014 Forest Hills Drive",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 9 of 2014 Forest Hills Drive by J. Cole go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_10_from_2014_forest_hills_drive",
+                "track": 10,
+                "title": "Song 10 from 2014 Forest Hills Drive",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 10 of 2014 Forest Hills Drive by J. Cole go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "alb_30",
+        "title": "good kid, m.A.A.d city",
+        "artist": "Kendrick Lamar",
+        "year": "2012",
+        "genre": "Hip-Hop",
+        "cover": "https://images.unsplash.com/photo-1514525253361-bee8718a300c?w=500&h=500&fit=crop",
+        "songs": [
+            {
+                "id": "s_song_1_from_good_kid,_m.a.a.d_city",
+                "track": 1,
+                "title": "Song 1 from good kid, m.A.A.d city",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 1 of good kid, m.A.A.d city by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_2_from_good_kid,_m.a.a.d_city",
+                "track": 2,
+                "title": "Song 2 from good kid, m.A.A.d city",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 2 of good kid, m.A.A.d city by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_3_from_good_kid,_m.a.a.d_city",
+                "track": 3,
+                "title": "Song 3 from good kid, m.A.A.d city",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 3 of good kid, m.A.A.d city by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_4_from_good_kid,_m.a.a.d_city",
+                "track": 4,
+                "title": "Song 4 from good kid, m.A.A.d city",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 4 of good kid, m.A.A.d city by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_5_from_good_kid,_m.a.a.d_city",
+                "track": 5,
+                "title": "Song 5 from good kid, m.A.A.d city",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 5 of good kid, m.A.A.d city by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_6_from_good_kid,_m.a.a.d_city",
+                "track": 6,
+                "title": "Song 6 from good kid, m.A.A.d city",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 6 of good kid, m.A.A.d city by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_7_from_good_kid,_m.a.a.d_city",
+                "track": 7,
+                "title": "Song 7 from good kid, m.A.A.d city",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 7 of good kid, m.A.A.d city by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_8_from_good_kid,_m.a.a.d_city",
+                "track": 8,
+                "title": "Song 8 from good kid, m.A.A.d city",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 8 of good kid, m.A.A.d city by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_9_from_good_kid,_m.a.a.d_city",
+                "track": 9,
+                "title": "Song 9 from good kid, m.A.A.d city",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 9 of good kid, m.A.A.d city by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_10_from_good_kid,_m.a.a.d_city",
+                "track": 10,
+                "title": "Song 10 from good kid, m.A.A.d city",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 10 of good kid, m.A.A.d city by Kendrick Lamar go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "alb_31",
+        "title": "French Exit",
+        "artist": "TV Girl",
+        "year": "2014",
+        "genre": "Indie",
+        "cover": "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=500&h=500&fit=crop",
+        "songs": [
+            {
+                "id": "s_song_1_from_french_exit",
+                "track": 1,
+                "title": "Song 1 from French Exit",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 1 of French Exit by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_2_from_french_exit",
+                "track": 2,
+                "title": "Song 2 from French Exit",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 2 of French Exit by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_3_from_french_exit",
+                "track": 3,
+                "title": "Song 3 from French Exit",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 3 of French Exit by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_4_from_french_exit",
+                "track": 4,
+                "title": "Song 4 from French Exit",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 4 of French Exit by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_5_from_french_exit",
+                "track": 5,
+                "title": "Song 5 from French Exit",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 5 of French Exit by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_6_from_french_exit",
+                "track": 6,
+                "title": "Song 6 from French Exit",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 6 of French Exit by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_7_from_french_exit",
+                "track": 7,
+                "title": "Song 7 from French Exit",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 7 of French Exit by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_8_from_french_exit",
+                "track": 8,
+                "title": "Song 8 from French Exit",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 8 of French Exit by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_9_from_french_exit",
+                "track": 9,
+                "title": "Song 9 from French Exit",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 9 of French Exit by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_10_from_french_exit",
+                "track": 10,
+                "title": "Song 10 from French Exit",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 10 of French Exit by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "alb_32",
+        "title": "Who Really Cares",
+        "artist": "TV Girl",
+        "year": "2016",
+        "genre": "Indie",
+        "cover": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=500&fit=crop",
+        "songs": [
+            {
+                "id": "s_song_1_from_who_really_cares",
+                "track": 1,
+                "title": "Song 1 from Who Really Cares",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 1 of Who Really Cares by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_2_from_who_really_cares",
+                "track": 2,
+                "title": "Song 2 from Who Really Cares",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 2 of Who Really Cares by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_3_from_who_really_cares",
+                "track": 3,
+                "title": "Song 3 from Who Really Cares",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 3 of Who Really Cares by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_4_from_who_really_cares",
+                "track": 4,
+                "title": "Song 4 from Who Really Cares",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 4 of Who Really Cares by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_5_from_who_really_cares",
+                "track": 5,
+                "title": "Song 5 from Who Really Cares",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 5 of Who Really Cares by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_6_from_who_really_cares",
+                "track": 6,
+                "title": "Song 6 from Who Really Cares",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 6 of Who Really Cares by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_7_from_who_really_cares",
+                "track": 7,
+                "title": "Song 7 from Who Really Cares",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 7 of Who Really Cares by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_8_from_who_really_cares",
+                "track": 8,
+                "title": "Song 8 from Who Really Cares",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 8 of Who Really Cares by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_9_from_who_really_cares",
+                "track": 9,
+                "title": "Song 9 from Who Really Cares",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 9 of Who Really Cares by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_10_from_who_really_cares",
+                "track": 10,
+                "title": "Song 10 from Who Really Cares",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 10 of Who Really Cares by TV Girl go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "alb_33",
+        "title": "Salad Days",
+        "artist": "Mac DeMarco",
+        "year": "2014",
+        "genre": "Indie",
+        "cover": "https://images.unsplash.com/photo-1619983081563-430f63602796?w=500&h=500&fit=crop",
+        "songs": [
+            {
+                "id": "s_song_1_from_salad_days",
+                "track": 1,
+                "title": "Song 1 from Salad Days",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 1 of Salad Days by Mac DeMarco go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_2_from_salad_days",
+                "track": 2,
+                "title": "Song 2 from Salad Days",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 2 of Salad Days by Mac DeMarco go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_3_from_salad_days",
+                "track": 3,
+                "title": "Song 3 from Salad Days",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 3 of Salad Days by Mac DeMarco go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_4_from_salad_days",
+                "track": 4,
+                "title": "Song 4 from Salad Days",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 4 of Salad Days by Mac DeMarco go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_5_from_salad_days",
+                "track": 5,
+                "title": "Song 5 from Salad Days",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 5 of Salad Days by Mac DeMarco go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_6_from_salad_days",
+                "track": 6,
+                "title": "Song 6 from Salad Days",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 6 of Salad Days by Mac DeMarco go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_7_from_salad_days",
+                "track": 7,
+                "title": "Song 7 from Salad Days",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 7 of Salad Days by Mac DeMarco go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_8_from_salad_days",
+                "track": 8,
+                "title": "Song 8 from Salad Days",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 8 of Salad Days by Mac DeMarco go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_9_from_salad_days",
+                "track": 9,
+                "title": "Song 9 from Salad Days",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 9 of Salad Days by Mac DeMarco go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_10_from_salad_days",
+                "track": 10,
+                "title": "Song 10 from Salad Days",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 10 of Salad Days by Mac DeMarco go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "alb_34",
+        "title": "The Slow Rush",
+        "artist": "Tame Impala",
+        "year": "2020",
+        "genre": "Indie",
+        "cover": "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=500&h=500&fit=crop",
+        "songs": [
+            {
+                "id": "s_song_1_from_the_slow_rush",
+                "track": 1,
+                "title": "Song 1 from The Slow Rush",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 1 of The Slow Rush by Tame Impala go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_2_from_the_slow_rush",
+                "track": 2,
+                "title": "Song 2 from The Slow Rush",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 2 of The Slow Rush by Tame Impala go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_3_from_the_slow_rush",
+                "track": 3,
+                "title": "Song 3 from The Slow Rush",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 3 of The Slow Rush by Tame Impala go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_4_from_the_slow_rush",
+                "track": 4,
+                "title": "Song 4 from The Slow Rush",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 4 of The Slow Rush by Tame Impala go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_5_from_the_slow_rush",
+                "track": 5,
+                "title": "Song 5 from The Slow Rush",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 5 of The Slow Rush by Tame Impala go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_6_from_the_slow_rush",
+                "track": 6,
+                "title": "Song 6 from The Slow Rush",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 6 of The Slow Rush by Tame Impala go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_7_from_the_slow_rush",
+                "track": 7,
+                "title": "Song 7 from The Slow Rush",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 7 of The Slow Rush by Tame Impala go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_8_from_the_slow_rush",
+                "track": 8,
+                "title": "Song 8 from The Slow Rush",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 8 of The Slow Rush by Tame Impala go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_9_from_the_slow_rush",
+                "track": 9,
+                "title": "Song 9 from The Slow Rush",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 9 of The Slow Rush by Tame Impala go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
+                    }
+                ]
+            },
+            {
+                "id": "s_song_10_from_the_slow_rush",
+                "track": 10,
+                "title": "Song 10 from The Slow Rush",
+                "duration": "3:30",
+                "lyrics": "Full lyrics for track 10 of The Slow Rush by Tame Impala go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
+                "themes": [
+                    "Theme"
+                ],
+                "mood": [
+                    "Chill"
+                ],
+                "key_lines": [
+                    {
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -8708,261 +5382,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_35",
-        "title": "Born to Die",
-        "artist": "Lana Del Rey",
-        "year": "2012",
-        "genre": "Pop",
+        "title": "SOS",
+        "artist": "SZA",
+        "year": "2022",
+        "genre": "R&B",
         "cover": "https://images.unsplash.com/photo-1459749411177-042180ceea72?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_35_1",
+                "id": "s_song_1_from_sos",
                 "track": 1,
-                "title": "Track 1 for Born to Die",
+                "title": "Song 1 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Born to Die go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Born to Die's message.",
+                "lyrics": "Full lyrics for track 1 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for Born to Die",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_35_2",
+                "id": "s_song_2_from_sos",
                 "track": 2,
-                "title": "Track 2 for Born to Die",
+                "title": "Song 2 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Born to Die go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Born to Die's message.",
+                "lyrics": "Full lyrics for track 2 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for Born to Die",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_35_3",
+                "id": "s_song_3_from_sos",
                 "track": 3,
-                "title": "Track 3 for Born to Die",
+                "title": "Song 3 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Born to Die go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Born to Die's message.",
+                "lyrics": "Full lyrics for track 3 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for Born to Die",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_35_4",
+                "id": "s_song_4_from_sos",
                 "track": 4,
-                "title": "Track 4 for Born to Die",
+                "title": "Song 4 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Born to Die go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Born to Die's message.",
+                "lyrics": "Full lyrics for track 4 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Born to Die",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_35_5",
+                "id": "s_song_5_from_sos",
                 "track": 5,
-                "title": "Track 5 for Born to Die",
+                "title": "Song 5 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Born to Die go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Born to Die's message.",
+                "lyrics": "Full lyrics for track 5 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for Born to Die",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_35_6",
+                "id": "s_song_6_from_sos",
                 "track": 6,
-                "title": "Track 6 for Born to Die",
+                "title": "Song 6 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Born to Die go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Born to Die's message.",
+                "lyrics": "Full lyrics for track 6 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Born to Die",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_35_7",
+                "id": "s_song_7_from_sos",
                 "track": 7,
-                "title": "Track 7 for Born to Die",
+                "title": "Song 7 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Born to Die go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Born to Die's message.",
+                "lyrics": "Full lyrics for track 7 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for Born to Die",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_35_8",
+                "id": "s_song_8_from_sos",
                 "track": 8,
-                "title": "Track 8 for Born to Die",
+                "title": "Song 8 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Born to Die go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Born to Die's message.",
+                "lyrics": "Full lyrics for track 8 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for Born to Die",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_35_9",
+                "id": "s_song_9_from_sos",
                 "track": 9,
-                "title": "Track 9 for Born to Die",
+                "title": "Song 9 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Born to Die go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Born to Die's message.",
+                "lyrics": "Full lyrics for track 9 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for Born to Die",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_35_10",
+                "id": "s_song_10_from_sos",
                 "track": 10,
-                "title": "Track 10 for Born to Die",
+                "title": "Song 10 from SOS",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Born to Die go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Born to Die's message.",
+                "lyrics": "Full lyrics for track 10 of SOS by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for Born to Die",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_35_11",
-                "track": 11,
-                "title": "Track 11 for Born to Die",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Born to Die go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Born to Die's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Born to Die",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_35_12",
-                "track": 12,
-                "title": "Track 12 for Born to Die",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Born to Die go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Born to Die's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Born to Die",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -8970,261 +5592,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_36",
-        "title": "Norman Fucking Rockwell!",
-        "artist": "Lana Del Rey",
-        "year": "2019",
-        "genre": "Pop",
+        "title": "Ctrl",
+        "artist": "SZA",
+        "year": "2017",
+        "genre": "R&B",
         "cover": "https://images.unsplash.com/photo-1514525253361-bee8718a300c?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_36_1",
+                "id": "s_song_1_from_ctrl",
                 "track": 1,
-                "title": "Track 1 for Norman Fucking Rockwell!",
+                "title": "Song 1 from Ctrl",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Norman Fucking Rockwell! go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Norman Fucking Rockwell!'s message.",
+                "lyrics": "Full lyrics for track 1 of Ctrl by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for Norman Fucking Rockwell!",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_36_2",
+                "id": "s_song_2_from_ctrl",
                 "track": 2,
-                "title": "Track 2 for Norman Fucking Rockwell!",
+                "title": "Song 2 from Ctrl",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Norman Fucking Rockwell! go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Norman Fucking Rockwell!'s message.",
+                "lyrics": "Full lyrics for track 2 of Ctrl by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for Norman Fucking Rockwell!",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_36_3",
+                "id": "s_song_3_from_ctrl",
                 "track": 3,
-                "title": "Track 3 for Norman Fucking Rockwell!",
+                "title": "Song 3 from Ctrl",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Norman Fucking Rockwell! go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Norman Fucking Rockwell!'s message.",
+                "lyrics": "Full lyrics for track 3 of Ctrl by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for Norman Fucking Rockwell!",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_36_4",
+                "id": "s_song_4_from_ctrl",
                 "track": 4,
-                "title": "Track 4 for Norman Fucking Rockwell!",
+                "title": "Song 4 from Ctrl",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Norman Fucking Rockwell! go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Norman Fucking Rockwell!'s message.",
+                "lyrics": "Full lyrics for track 4 of Ctrl by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Norman Fucking Rockwell!",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_36_5",
+                "id": "s_song_5_from_ctrl",
                 "track": 5,
-                "title": "Track 5 for Norman Fucking Rockwell!",
+                "title": "Song 5 from Ctrl",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Norman Fucking Rockwell! go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Norman Fucking Rockwell!'s message.",
+                "lyrics": "Full lyrics for track 5 of Ctrl by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for Norman Fucking Rockwell!",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_36_6",
+                "id": "s_song_6_from_ctrl",
                 "track": 6,
-                "title": "Track 6 for Norman Fucking Rockwell!",
+                "title": "Song 6 from Ctrl",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Norman Fucking Rockwell! go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Norman Fucking Rockwell!'s message.",
+                "lyrics": "Full lyrics for track 6 of Ctrl by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Norman Fucking Rockwell!",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_36_7",
+                "id": "s_song_7_from_ctrl",
                 "track": 7,
-                "title": "Track 7 for Norman Fucking Rockwell!",
+                "title": "Song 7 from Ctrl",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Norman Fucking Rockwell! go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Norman Fucking Rockwell!'s message.",
+                "lyrics": "Full lyrics for track 7 of Ctrl by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for Norman Fucking Rockwell!",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_36_8",
+                "id": "s_song_8_from_ctrl",
                 "track": 8,
-                "title": "Track 8 for Norman Fucking Rockwell!",
+                "title": "Song 8 from Ctrl",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Norman Fucking Rockwell! go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Norman Fucking Rockwell!'s message.",
+                "lyrics": "Full lyrics for track 8 of Ctrl by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for Norman Fucking Rockwell!",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_36_9",
+                "id": "s_song_9_from_ctrl",
                 "track": 9,
-                "title": "Track 9 for Norman Fucking Rockwell!",
+                "title": "Song 9 from Ctrl",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Norman Fucking Rockwell! go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Norman Fucking Rockwell!'s message.",
+                "lyrics": "Full lyrics for track 9 of Ctrl by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for Norman Fucking Rockwell!",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_36_10",
+                "id": "s_song_10_from_ctrl",
                 "track": 10,
-                "title": "Track 10 for Norman Fucking Rockwell!",
+                "title": "Song 10 from Ctrl",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Norman Fucking Rockwell! go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Norman Fucking Rockwell!'s message.",
+                "lyrics": "Full lyrics for track 10 of Ctrl by SZA go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for Norman Fucking Rockwell!",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_36_11",
-                "track": 11,
-                "title": "Track 11 for Norman Fucking Rockwell!",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Norman Fucking Rockwell! go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Norman Fucking Rockwell!'s message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Norman Fucking Rockwell!",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_36_12",
-                "track": 12,
-                "title": "Track 12 for Norman Fucking Rockwell!",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Norman Fucking Rockwell! go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Norman Fucking Rockwell!'s message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Norman Fucking Rockwell!",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -9232,261 +5802,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_37",
-        "title": "AM",
-        "artist": "Arctic Monkeys",
-        "year": "2013",
-        "genre": "Rock",
+        "title": "Take Care",
+        "artist": "Drake",
+        "year": "2011",
+        "genre": "R&B/Hip-Hop",
         "cover": "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_37_1",
+                "id": "s_song_1_from_take_care",
                 "track": 1,
-                "title": "Track 1 for AM",
+                "title": "Song 1 from Take Care",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for AM go here...",
-                "interpretation": "This track exploring the depths of Track 1 for AM's message.",
+                "lyrics": "Full lyrics for track 1 of Take Care by Drake go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for AM",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_37_2",
+                "id": "s_song_2_from_take_care",
                 "track": 2,
-                "title": "Track 2 for AM",
+                "title": "Song 2 from Take Care",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for AM go here...",
-                "interpretation": "This track exploring the depths of Track 2 for AM's message.",
+                "lyrics": "Full lyrics for track 2 of Take Care by Drake go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for AM",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_37_3",
+                "id": "s_song_3_from_take_care",
                 "track": 3,
-                "title": "Track 3 for AM",
+                "title": "Song 3 from Take Care",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for AM go here...",
-                "interpretation": "This track exploring the depths of Track 3 for AM's message.",
+                "lyrics": "Full lyrics for track 3 of Take Care by Drake go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for AM",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_37_4",
+                "id": "s_song_4_from_take_care",
                 "track": 4,
-                "title": "Track 4 for AM",
+                "title": "Song 4 from Take Care",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for AM go here...",
-                "interpretation": "This track exploring the depths of Track 4 for AM's message.",
+                "lyrics": "Full lyrics for track 4 of Take Care by Drake go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for AM",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_37_5",
+                "id": "s_song_5_from_take_care",
                 "track": 5,
-                "title": "Track 5 for AM",
+                "title": "Song 5 from Take Care",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for AM go here...",
-                "interpretation": "This track exploring the depths of Track 5 for AM's message.",
+                "lyrics": "Full lyrics for track 5 of Take Care by Drake go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for AM",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_37_6",
+                "id": "s_song_6_from_take_care",
                 "track": 6,
-                "title": "Track 6 for AM",
+                "title": "Song 6 from Take Care",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for AM go here...",
-                "interpretation": "This track exploring the depths of Track 6 for AM's message.",
+                "lyrics": "Full lyrics for track 6 of Take Care by Drake go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for AM",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_37_7",
+                "id": "s_song_7_from_take_care",
                 "track": 7,
-                "title": "Track 7 for AM",
+                "title": "Song 7 from Take Care",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for AM go here...",
-                "interpretation": "This track exploring the depths of Track 7 for AM's message.",
+                "lyrics": "Full lyrics for track 7 of Take Care by Drake go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for AM",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_37_8",
+                "id": "s_song_8_from_take_care",
                 "track": 8,
-                "title": "Track 8 for AM",
+                "title": "Song 8 from Take Care",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for AM go here...",
-                "interpretation": "This track exploring the depths of Track 8 for AM's message.",
+                "lyrics": "Full lyrics for track 8 of Take Care by Drake go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for AM",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_37_9",
+                "id": "s_song_9_from_take_care",
                 "track": 9,
-                "title": "Track 9 for AM",
+                "title": "Song 9 from Take Care",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for AM go here...",
-                "interpretation": "This track exploring the depths of Track 9 for AM's message.",
+                "lyrics": "Full lyrics for track 9 of Take Care by Drake go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for AM",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_37_10",
+                "id": "s_song_10_from_take_care",
                 "track": 10,
-                "title": "Track 10 for AM",
+                "title": "Song 10 from Take Care",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for AM go here...",
-                "interpretation": "This track exploring the depths of Track 10 for AM's message.",
+                "lyrics": "Full lyrics for track 10 of Take Care by Drake go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for AM",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_37_11",
-                "track": 11,
-                "title": "Track 11 for AM",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for AM go here...",
-                "interpretation": "This track exploring the depths of Track 11 for AM's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for AM",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_37_12",
-                "track": 12,
-                "title": "Track 12 for AM",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for AM go here...",
-                "interpretation": "This track exploring the depths of Track 12 for AM's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for AM",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -9494,261 +6012,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_38",
-        "title": "Favourite Worst Nightmare",
-        "artist": "Arctic Monkeys",
-        "year": "2007",
-        "genre": "Rock",
+        "title": "Rodeo",
+        "artist": "Travis Scott",
+        "year": "2015",
+        "genre": "Hip-Hop",
         "cover": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_38_1",
+                "id": "s_song_1_from_rodeo",
                 "track": 1,
-                "title": "Track 1 for Favourite Worst Nightmare",
+                "title": "Song 1 from Rodeo",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Favourite Worst Nightmare go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Favourite Worst Nightmare's message.",
+                "lyrics": "Full lyrics for track 1 of Rodeo by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for Favourite Worst Nightmare",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_38_2",
+                "id": "s_song_2_from_rodeo",
                 "track": 2,
-                "title": "Track 2 for Favourite Worst Nightmare",
+                "title": "Song 2 from Rodeo",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Favourite Worst Nightmare go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Favourite Worst Nightmare's message.",
+                "lyrics": "Full lyrics for track 2 of Rodeo by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for Favourite Worst Nightmare",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_38_3",
+                "id": "s_song_3_from_rodeo",
                 "track": 3,
-                "title": "Track 3 for Favourite Worst Nightmare",
+                "title": "Song 3 from Rodeo",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Favourite Worst Nightmare go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Favourite Worst Nightmare's message.",
+                "lyrics": "Full lyrics for track 3 of Rodeo by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for Favourite Worst Nightmare",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_38_4",
+                "id": "s_song_4_from_rodeo",
                 "track": 4,
-                "title": "Track 4 for Favourite Worst Nightmare",
+                "title": "Song 4 from Rodeo",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Favourite Worst Nightmare go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Favourite Worst Nightmare's message.",
+                "lyrics": "Full lyrics for track 4 of Rodeo by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Favourite Worst Nightmare",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_38_5",
+                "id": "s_song_5_from_rodeo",
                 "track": 5,
-                "title": "Track 5 for Favourite Worst Nightmare",
+                "title": "Song 5 from Rodeo",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Favourite Worst Nightmare go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Favourite Worst Nightmare's message.",
+                "lyrics": "Full lyrics for track 5 of Rodeo by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for Favourite Worst Nightmare",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_38_6",
+                "id": "s_song_6_from_rodeo",
                 "track": 6,
-                "title": "Track 6 for Favourite Worst Nightmare",
+                "title": "Song 6 from Rodeo",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Favourite Worst Nightmare go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Favourite Worst Nightmare's message.",
+                "lyrics": "Full lyrics for track 6 of Rodeo by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Favourite Worst Nightmare",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_38_7",
+                "id": "s_song_7_from_rodeo",
                 "track": 7,
-                "title": "Track 7 for Favourite Worst Nightmare",
+                "title": "Song 7 from Rodeo",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Favourite Worst Nightmare go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Favourite Worst Nightmare's message.",
+                "lyrics": "Full lyrics for track 7 of Rodeo by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for Favourite Worst Nightmare",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_38_8",
+                "id": "s_song_8_from_rodeo",
                 "track": 8,
-                "title": "Track 8 for Favourite Worst Nightmare",
+                "title": "Song 8 from Rodeo",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Favourite Worst Nightmare go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Favourite Worst Nightmare's message.",
+                "lyrics": "Full lyrics for track 8 of Rodeo by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for Favourite Worst Nightmare",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_38_9",
+                "id": "s_song_9_from_rodeo",
                 "track": 9,
-                "title": "Track 9 for Favourite Worst Nightmare",
+                "title": "Song 9 from Rodeo",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Favourite Worst Nightmare go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Favourite Worst Nightmare's message.",
+                "lyrics": "Full lyrics for track 9 of Rodeo by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for Favourite Worst Nightmare",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_38_10",
+                "id": "s_song_10_from_rodeo",
                 "track": 10,
-                "title": "Track 10 for Favourite Worst Nightmare",
+                "title": "Song 10 from Rodeo",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Favourite Worst Nightmare go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Favourite Worst Nightmare's message.",
+                "lyrics": "Full lyrics for track 10 of Rodeo by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for Favourite Worst Nightmare",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_38_11",
-                "track": 11,
-                "title": "Track 11 for Favourite Worst Nightmare",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Favourite Worst Nightmare go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Favourite Worst Nightmare's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Favourite Worst Nightmare",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_38_12",
-                "track": 12,
-                "title": "Track 12 for Favourite Worst Nightmare",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Favourite Worst Nightmare go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Favourite Worst Nightmare's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Favourite Worst Nightmare",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -9756,261 +6222,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_39",
-        "title": "OK Computer",
-        "artist": "Radiohead",
-        "year": "1997",
-        "genre": "Rock",
+        "title": "Utopia",
+        "artist": "Travis Scott",
+        "year": "2023",
+        "genre": "Hip-Hop",
         "cover": "https://images.unsplash.com/photo-1619983081563-430f63602796?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_39_1",
+                "id": "s_song_1_from_utopia",
                 "track": 1,
-                "title": "Track 1 for OK Computer",
+                "title": "Song 1 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for OK Computer go here...",
-                "interpretation": "This track exploring the depths of Track 1 for OK Computer's message.",
+                "lyrics": "Full lyrics for track 1 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for OK Computer",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_39_2",
+                "id": "s_song_2_from_utopia",
                 "track": 2,
-                "title": "Track 2 for OK Computer",
+                "title": "Song 2 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for OK Computer go here...",
-                "interpretation": "This track exploring the depths of Track 2 for OK Computer's message.",
+                "lyrics": "Full lyrics for track 2 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for OK Computer",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_39_3",
+                "id": "s_song_3_from_utopia",
                 "track": 3,
-                "title": "Track 3 for OK Computer",
+                "title": "Song 3 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for OK Computer go here...",
-                "interpretation": "This track exploring the depths of Track 3 for OK Computer's message.",
+                "lyrics": "Full lyrics for track 3 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for OK Computer",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_39_4",
+                "id": "s_song_4_from_utopia",
                 "track": 4,
-                "title": "Track 4 for OK Computer",
+                "title": "Song 4 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for OK Computer go here...",
-                "interpretation": "This track exploring the depths of Track 4 for OK Computer's message.",
+                "lyrics": "Full lyrics for track 4 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for OK Computer",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_39_5",
+                "id": "s_song_5_from_utopia",
                 "track": 5,
-                "title": "Track 5 for OK Computer",
+                "title": "Song 5 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for OK Computer go here...",
-                "interpretation": "This track exploring the depths of Track 5 for OK Computer's message.",
+                "lyrics": "Full lyrics for track 5 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for OK Computer",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_39_6",
+                "id": "s_song_6_from_utopia",
                 "track": 6,
-                "title": "Track 6 for OK Computer",
+                "title": "Song 6 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for OK Computer go here...",
-                "interpretation": "This track exploring the depths of Track 6 for OK Computer's message.",
+                "lyrics": "Full lyrics for track 6 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for OK Computer",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_39_7",
+                "id": "s_song_7_from_utopia",
                 "track": 7,
-                "title": "Track 7 for OK Computer",
+                "title": "Song 7 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for OK Computer go here...",
-                "interpretation": "This track exploring the depths of Track 7 for OK Computer's message.",
+                "lyrics": "Full lyrics for track 7 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for OK Computer",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_39_8",
+                "id": "s_song_8_from_utopia",
                 "track": 8,
-                "title": "Track 8 for OK Computer",
+                "title": "Song 8 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for OK Computer go here...",
-                "interpretation": "This track exploring the depths of Track 8 for OK Computer's message.",
+                "lyrics": "Full lyrics for track 8 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for OK Computer",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_39_9",
+                "id": "s_song_9_from_utopia",
                 "track": 9,
-                "title": "Track 9 for OK Computer",
+                "title": "Song 9 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for OK Computer go here...",
-                "interpretation": "This track exploring the depths of Track 9 for OK Computer's message.",
+                "lyrics": "Full lyrics for track 9 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for OK Computer",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_39_10",
+                "id": "s_song_10_from_utopia",
                 "track": 10,
-                "title": "Track 10 for OK Computer",
+                "title": "Song 10 from Utopia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for OK Computer go here...",
-                "interpretation": "This track exploring the depths of Track 10 for OK Computer's message.",
+                "lyrics": "Full lyrics for track 10 of Utopia by Travis Scott go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for OK Computer",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_39_11",
-                "track": 11,
-                "title": "Track 11 for OK Computer",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for OK Computer go here...",
-                "interpretation": "This track exploring the depths of Track 11 for OK Computer's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for OK Computer",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_39_12",
-                "track": 12,
-                "title": "Track 12 for OK Computer",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for OK Computer go here...",
-                "interpretation": "This track exploring the depths of Track 12 for OK Computer's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for OK Computer",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -10018,261 +6432,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_40",
-        "title": "Kid A",
-        "artist": "Radiohead",
-        "year": "2000",
-        "genre": "Rock",
+        "title": "Norman Fucking Rockwell!",
+        "artist": "Lana Del Rey",
+        "year": "2019",
+        "genre": "Pop",
         "cover": "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_40_1",
+                "id": "s_song_1_from_norman_fucking_rockwell!",
                 "track": 1,
-                "title": "Track 1 for Kid A",
+                "title": "Song 1 from Norman Fucking Rockwell!",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Kid A go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Kid A's message.",
+                "lyrics": "Full lyrics for track 1 of Norman Fucking Rockwell! by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for Kid A",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_40_2",
+                "id": "s_song_2_from_norman_fucking_rockwell!",
                 "track": 2,
-                "title": "Track 2 for Kid A",
+                "title": "Song 2 from Norman Fucking Rockwell!",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Kid A go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Kid A's message.",
+                "lyrics": "Full lyrics for track 2 of Norman Fucking Rockwell! by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for Kid A",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_40_3",
+                "id": "s_song_3_from_norman_fucking_rockwell!",
                 "track": 3,
-                "title": "Track 3 for Kid A",
+                "title": "Song 3 from Norman Fucking Rockwell!",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Kid A go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Kid A's message.",
+                "lyrics": "Full lyrics for track 3 of Norman Fucking Rockwell! by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for Kid A",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_40_4",
+                "id": "s_song_4_from_norman_fucking_rockwell!",
                 "track": 4,
-                "title": "Track 4 for Kid A",
+                "title": "Song 4 from Norman Fucking Rockwell!",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Kid A go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Kid A's message.",
+                "lyrics": "Full lyrics for track 4 of Norman Fucking Rockwell! by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Kid A",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_40_5",
+                "id": "s_song_5_from_norman_fucking_rockwell!",
                 "track": 5,
-                "title": "Track 5 for Kid A",
+                "title": "Song 5 from Norman Fucking Rockwell!",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Kid A go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Kid A's message.",
+                "lyrics": "Full lyrics for track 5 of Norman Fucking Rockwell! by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for Kid A",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_40_6",
+                "id": "s_song_6_from_norman_fucking_rockwell!",
                 "track": 6,
-                "title": "Track 6 for Kid A",
+                "title": "Song 6 from Norman Fucking Rockwell!",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Kid A go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Kid A's message.",
+                "lyrics": "Full lyrics for track 6 of Norman Fucking Rockwell! by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Kid A",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_40_7",
+                "id": "s_song_7_from_norman_fucking_rockwell!",
                 "track": 7,
-                "title": "Track 7 for Kid A",
+                "title": "Song 7 from Norman Fucking Rockwell!",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Kid A go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Kid A's message.",
+                "lyrics": "Full lyrics for track 7 of Norman Fucking Rockwell! by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for Kid A",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_40_8",
+                "id": "s_song_8_from_norman_fucking_rockwell!",
                 "track": 8,
-                "title": "Track 8 for Kid A",
+                "title": "Song 8 from Norman Fucking Rockwell!",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Kid A go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Kid A's message.",
+                "lyrics": "Full lyrics for track 8 of Norman Fucking Rockwell! by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for Kid A",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_40_9",
+                "id": "s_song_9_from_norman_fucking_rockwell!",
                 "track": 9,
-                "title": "Track 9 for Kid A",
+                "title": "Song 9 from Norman Fucking Rockwell!",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Kid A go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Kid A's message.",
+                "lyrics": "Full lyrics for track 9 of Norman Fucking Rockwell! by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for Kid A",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_40_10",
+                "id": "s_song_10_from_norman_fucking_rockwell!",
                 "track": 10,
-                "title": "Track 10 for Kid A",
+                "title": "Song 10 from Norman Fucking Rockwell!",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Kid A go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Kid A's message.",
+                "lyrics": "Full lyrics for track 10 of Norman Fucking Rockwell! by Lana Del Rey go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for Kid A",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_40_11",
-                "track": 11,
-                "title": "Track 11 for Kid A",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Kid A go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Kid A's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Kid A",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_40_12",
-                "track": 12,
-                "title": "Track 12 for Kid A",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Kid A go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Kid A's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Kid A",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -10280,261 +6642,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_41",
-        "title": "The Dark Side of the Moon",
-        "artist": "Pink Floyd",
-        "year": "1973",
-        "genre": "Rock",
+        "title": "Future Nostalgia",
+        "artist": "Dua Lipa",
+        "year": "2020",
+        "genre": "Disco-Pop",
         "cover": "https://images.unsplash.com/photo-1459749411177-042180ceea72?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_41_1",
+                "id": "s_song_1_from_future_nostalgia",
                 "track": 1,
-                "title": "Track 1 for The Dark Side of the Moon",
+                "title": "Song 1 from Future Nostalgia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for The Dark Side of the Moon go here...",
-                "interpretation": "This track exploring the depths of Track 1 for The Dark Side of the Moon's message.",
+                "lyrics": "Full lyrics for track 1 of Future Nostalgia by Dua Lipa go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for The Dark Side of the Moon",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_41_2",
+                "id": "s_song_2_from_future_nostalgia",
                 "track": 2,
-                "title": "Track 2 for The Dark Side of the Moon",
+                "title": "Song 2 from Future Nostalgia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for The Dark Side of the Moon go here...",
-                "interpretation": "This track exploring the depths of Track 2 for The Dark Side of the Moon's message.",
+                "lyrics": "Full lyrics for track 2 of Future Nostalgia by Dua Lipa go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for The Dark Side of the Moon",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_41_3",
+                "id": "s_song_3_from_future_nostalgia",
                 "track": 3,
-                "title": "Track 3 for The Dark Side of the Moon",
+                "title": "Song 3 from Future Nostalgia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for The Dark Side of the Moon go here...",
-                "interpretation": "This track exploring the depths of Track 3 for The Dark Side of the Moon's message.",
+                "lyrics": "Full lyrics for track 3 of Future Nostalgia by Dua Lipa go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for The Dark Side of the Moon",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_41_4",
+                "id": "s_song_4_from_future_nostalgia",
                 "track": 4,
-                "title": "Track 4 for The Dark Side of the Moon",
+                "title": "Song 4 from Future Nostalgia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for The Dark Side of the Moon go here...",
-                "interpretation": "This track exploring the depths of Track 4 for The Dark Side of the Moon's message.",
+                "lyrics": "Full lyrics for track 4 of Future Nostalgia by Dua Lipa go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for The Dark Side of the Moon",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_41_5",
+                "id": "s_song_5_from_future_nostalgia",
                 "track": 5,
-                "title": "Track 5 for The Dark Side of the Moon",
+                "title": "Song 5 from Future Nostalgia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for The Dark Side of the Moon go here...",
-                "interpretation": "This track exploring the depths of Track 5 for The Dark Side of the Moon's message.",
+                "lyrics": "Full lyrics for track 5 of Future Nostalgia by Dua Lipa go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for The Dark Side of the Moon",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_41_6",
+                "id": "s_song_6_from_future_nostalgia",
                 "track": 6,
-                "title": "Track 6 for The Dark Side of the Moon",
+                "title": "Song 6 from Future Nostalgia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for The Dark Side of the Moon go here...",
-                "interpretation": "This track exploring the depths of Track 6 for The Dark Side of the Moon's message.",
+                "lyrics": "Full lyrics for track 6 of Future Nostalgia by Dua Lipa go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for The Dark Side of the Moon",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_41_7",
+                "id": "s_song_7_from_future_nostalgia",
                 "track": 7,
-                "title": "Track 7 for The Dark Side of the Moon",
+                "title": "Song 7 from Future Nostalgia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for The Dark Side of the Moon go here...",
-                "interpretation": "This track exploring the depths of Track 7 for The Dark Side of the Moon's message.",
+                "lyrics": "Full lyrics for track 7 of Future Nostalgia by Dua Lipa go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for The Dark Side of the Moon",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_41_8",
+                "id": "s_song_8_from_future_nostalgia",
                 "track": 8,
-                "title": "Track 8 for The Dark Side of the Moon",
+                "title": "Song 8 from Future Nostalgia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for The Dark Side of the Moon go here...",
-                "interpretation": "This track exploring the depths of Track 8 for The Dark Side of the Moon's message.",
+                "lyrics": "Full lyrics for track 8 of Future Nostalgia by Dua Lipa go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for The Dark Side of the Moon",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_41_9",
+                "id": "s_song_9_from_future_nostalgia",
                 "track": 9,
-                "title": "Track 9 for The Dark Side of the Moon",
+                "title": "Song 9 from Future Nostalgia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for The Dark Side of the Moon go here...",
-                "interpretation": "This track exploring the depths of Track 9 for The Dark Side of the Moon's message.",
+                "lyrics": "Full lyrics for track 9 of Future Nostalgia by Dua Lipa go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for The Dark Side of the Moon",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_41_10",
+                "id": "s_song_10_from_future_nostalgia",
                 "track": 10,
-                "title": "Track 10 for The Dark Side of the Moon",
+                "title": "Song 10 from Future Nostalgia",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for The Dark Side of the Moon go here...",
-                "interpretation": "This track exploring the depths of Track 10 for The Dark Side of the Moon's message.",
+                "lyrics": "Full lyrics for track 10 of Future Nostalgia by Dua Lipa go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for The Dark Side of the Moon",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_41_11",
-                "track": 11,
-                "title": "Track 11 for The Dark Side of the Moon",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for The Dark Side of the Moon go here...",
-                "interpretation": "This track exploring the depths of Track 11 for The Dark Side of the Moon's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for The Dark Side of the Moon",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_41_12",
-                "track": 12,
-                "title": "Track 12 for The Dark Side of the Moon",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for The Dark Side of the Moon go here...",
-                "interpretation": "This track exploring the depths of Track 12 for The Dark Side of the Moon's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for The Dark Side of the Moon",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -10542,261 +6852,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_42",
-        "title": "Nevermind",
-        "artist": "Nirvana",
-        "year": "1991",
-        "genre": "Rock",
+        "title": "Anti",
+        "artist": "Rihanna",
+        "year": "2016",
+        "genre": "R&B",
         "cover": "https://images.unsplash.com/photo-1514525253361-bee8718a300c?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_42_1",
+                "id": "s_song_1_from_anti",
                 "track": 1,
-                "title": "Track 1 for Nevermind",
+                "title": "Song 1 from Anti",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Nevermind go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Nevermind's message.",
+                "lyrics": "Full lyrics for track 1 of Anti by Rihanna go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for Nevermind",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_42_2",
+                "id": "s_song_2_from_anti",
                 "track": 2,
-                "title": "Track 2 for Nevermind",
+                "title": "Song 2 from Anti",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Nevermind go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Nevermind's message.",
+                "lyrics": "Full lyrics for track 2 of Anti by Rihanna go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for Nevermind",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_42_3",
+                "id": "s_song_3_from_anti",
                 "track": 3,
-                "title": "Track 3 for Nevermind",
+                "title": "Song 3 from Anti",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Nevermind go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Nevermind's message.",
+                "lyrics": "Full lyrics for track 3 of Anti by Rihanna go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for Nevermind",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_42_4",
+                "id": "s_song_4_from_anti",
                 "track": 4,
-                "title": "Track 4 for Nevermind",
+                "title": "Song 4 from Anti",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Nevermind go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Nevermind's message.",
+                "lyrics": "Full lyrics for track 4 of Anti by Rihanna go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Nevermind",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_42_5",
+                "id": "s_song_5_from_anti",
                 "track": 5,
-                "title": "Track 5 for Nevermind",
+                "title": "Song 5 from Anti",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Nevermind go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Nevermind's message.",
+                "lyrics": "Full lyrics for track 5 of Anti by Rihanna go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for Nevermind",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_42_6",
+                "id": "s_song_6_from_anti",
                 "track": 6,
-                "title": "Track 6 for Nevermind",
+                "title": "Song 6 from Anti",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Nevermind go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Nevermind's message.",
+                "lyrics": "Full lyrics for track 6 of Anti by Rihanna go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Nevermind",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_42_7",
+                "id": "s_song_7_from_anti",
                 "track": 7,
-                "title": "Track 7 for Nevermind",
+                "title": "Song 7 from Anti",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Nevermind go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Nevermind's message.",
+                "lyrics": "Full lyrics for track 7 of Anti by Rihanna go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for Nevermind",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_42_8",
+                "id": "s_song_8_from_anti",
                 "track": 8,
-                "title": "Track 8 for Nevermind",
+                "title": "Song 8 from Anti",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Nevermind go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Nevermind's message.",
+                "lyrics": "Full lyrics for track 8 of Anti by Rihanna go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for Nevermind",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_42_9",
+                "id": "s_song_9_from_anti",
                 "track": 9,
-                "title": "Track 9 for Nevermind",
+                "title": "Song 9 from Anti",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Nevermind go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Nevermind's message.",
+                "lyrics": "Full lyrics for track 9 of Anti by Rihanna go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for Nevermind",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_42_10",
+                "id": "s_song_10_from_anti",
                 "track": 10,
-                "title": "Track 10 for Nevermind",
+                "title": "Song 10 from Anti",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Nevermind go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Nevermind's message.",
+                "lyrics": "Full lyrics for track 10 of Anti by Rihanna go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for Nevermind",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_42_11",
-                "track": 11,
-                "title": "Track 11 for Nevermind",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Nevermind go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Nevermind's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Nevermind",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_42_12",
-                "track": 12,
-                "title": "Track 12 for Nevermind",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Nevermind go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Nevermind's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Nevermind",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -10804,261 +7062,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_43",
-        "title": "Discovery",
-        "artist": "Daft Punk",
-        "year": "2001",
-        "genre": "Electronic",
+        "title": "Man on the Moon",
+        "artist": "Kid Cudi",
+        "year": "2009",
+        "genre": "Hip-Hop",
         "cover": "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_43_1",
+                "id": "s_song_1_from_man_on_the_moon",
                 "track": 1,
-                "title": "Track 1 for Discovery",
+                "title": "Song 1 from Man on the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Discovery go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Discovery's message.",
+                "lyrics": "Full lyrics for track 1 of Man on the Moon by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for Discovery",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_43_2",
+                "id": "s_song_2_from_man_on_the_moon",
                 "track": 2,
-                "title": "Track 2 for Discovery",
+                "title": "Song 2 from Man on the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Discovery go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Discovery's message.",
+                "lyrics": "Full lyrics for track 2 of Man on the Moon by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for Discovery",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_43_3",
+                "id": "s_song_3_from_man_on_the_moon",
                 "track": 3,
-                "title": "Track 3 for Discovery",
+                "title": "Song 3 from Man on the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Discovery go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Discovery's message.",
+                "lyrics": "Full lyrics for track 3 of Man on the Moon by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for Discovery",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_43_4",
+                "id": "s_song_4_from_man_on_the_moon",
                 "track": 4,
-                "title": "Track 4 for Discovery",
+                "title": "Song 4 from Man on the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Discovery go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Discovery's message.",
+                "lyrics": "Full lyrics for track 4 of Man on the Moon by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Discovery",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_43_5",
+                "id": "s_song_5_from_man_on_the_moon",
                 "track": 5,
-                "title": "Track 5 for Discovery",
+                "title": "Song 5 from Man on the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Discovery go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Discovery's message.",
+                "lyrics": "Full lyrics for track 5 of Man on the Moon by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for Discovery",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_43_6",
+                "id": "s_song_6_from_man_on_the_moon",
                 "track": 6,
-                "title": "Track 6 for Discovery",
+                "title": "Song 6 from Man on the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Discovery go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Discovery's message.",
+                "lyrics": "Full lyrics for track 6 of Man on the Moon by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Discovery",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_43_7",
+                "id": "s_song_7_from_man_on_the_moon",
                 "track": 7,
-                "title": "Track 7 for Discovery",
+                "title": "Song 7 from Man on the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Discovery go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Discovery's message.",
+                "lyrics": "Full lyrics for track 7 of Man on the Moon by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for Discovery",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_43_8",
+                "id": "s_song_8_from_man_on_the_moon",
                 "track": 8,
-                "title": "Track 8 for Discovery",
+                "title": "Song 8 from Man on the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Discovery go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Discovery's message.",
+                "lyrics": "Full lyrics for track 8 of Man on the Moon by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for Discovery",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_43_9",
+                "id": "s_song_9_from_man_on_the_moon",
                 "track": 9,
-                "title": "Track 9 for Discovery",
+                "title": "Song 9 from Man on the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Discovery go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Discovery's message.",
+                "lyrics": "Full lyrics for track 9 of Man on the Moon by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for Discovery",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_43_10",
+                "id": "s_song_10_from_man_on_the_moon",
                 "track": 10,
-                "title": "Track 10 for Discovery",
+                "title": "Song 10 from Man on the Moon",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Discovery go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Discovery's message.",
+                "lyrics": "Full lyrics for track 10 of Man on the Moon by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for Discovery",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_43_11",
-                "track": 11,
-                "title": "Track 11 for Discovery",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Discovery go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Discovery's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Discovery",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_43_12",
-                "track": 12,
-                "title": "Track 12 for Discovery",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Discovery go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Discovery's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Discovery",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -11066,261 +7272,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_44",
-        "title": "Random Access Memories",
-        "artist": "Daft Punk",
-        "year": "2013",
-        "genre": "Electronic",
+        "title": "Circles",
+        "artist": "Mac Miller",
+        "year": "2020",
+        "genre": "Hip-Hop",
         "cover": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_44_1",
+                "id": "s_song_1_from_circles",
                 "track": 1,
-                "title": "Track 1 for Random Access Memories",
+                "title": "Song 1 from Circles",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Random Access Memories go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Random Access Memories's message.",
+                "lyrics": "Full lyrics for track 1 of Circles by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for Random Access Memories",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_44_2",
+                "id": "s_song_2_from_circles",
                 "track": 2,
-                "title": "Track 2 for Random Access Memories",
+                "title": "Song 2 from Circles",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Random Access Memories go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Random Access Memories's message.",
+                "lyrics": "Full lyrics for track 2 of Circles by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for Random Access Memories",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_44_3",
+                "id": "s_song_3_from_circles",
                 "track": 3,
-                "title": "Track 3 for Random Access Memories",
+                "title": "Song 3 from Circles",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Random Access Memories go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Random Access Memories's message.",
+                "lyrics": "Full lyrics for track 3 of Circles by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for Random Access Memories",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_44_4",
+                "id": "s_song_4_from_circles",
                 "track": 4,
-                "title": "Track 4 for Random Access Memories",
+                "title": "Song 4 from Circles",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Random Access Memories go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Random Access Memories's message.",
+                "lyrics": "Full lyrics for track 4 of Circles by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Random Access Memories",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_44_5",
+                "id": "s_song_5_from_circles",
                 "track": 5,
-                "title": "Track 5 for Random Access Memories",
+                "title": "Song 5 from Circles",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Random Access Memories go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Random Access Memories's message.",
+                "lyrics": "Full lyrics for track 5 of Circles by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for Random Access Memories",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_44_6",
+                "id": "s_song_6_from_circles",
                 "track": 6,
-                "title": "Track 6 for Random Access Memories",
+                "title": "Song 6 from Circles",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Random Access Memories go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Random Access Memories's message.",
+                "lyrics": "Full lyrics for track 6 of Circles by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Random Access Memories",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_44_7",
+                "id": "s_song_7_from_circles",
                 "track": 7,
-                "title": "Track 7 for Random Access Memories",
+                "title": "Song 7 from Circles",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Random Access Memories go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Random Access Memories's message.",
+                "lyrics": "Full lyrics for track 7 of Circles by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for Random Access Memories",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_44_8",
+                "id": "s_song_8_from_circles",
                 "track": 8,
-                "title": "Track 8 for Random Access Memories",
+                "title": "Song 8 from Circles",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Random Access Memories go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Random Access Memories's message.",
+                "lyrics": "Full lyrics for track 8 of Circles by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for Random Access Memories",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_44_9",
+                "id": "s_song_9_from_circles",
                 "track": 9,
-                "title": "Track 9 for Random Access Memories",
+                "title": "Song 9 from Circles",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Random Access Memories go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Random Access Memories's message.",
+                "lyrics": "Full lyrics for track 9 of Circles by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for Random Access Memories",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_44_10",
+                "id": "s_song_10_from_circles",
                 "track": 10,
-                "title": "Track 10 for Random Access Memories",
+                "title": "Song 10 from Circles",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Random Access Memories go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Random Access Memories's message.",
+                "lyrics": "Full lyrics for track 10 of Circles by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for Random Access Memories",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_44_11",
-                "track": 11,
-                "title": "Track 11 for Random Access Memories",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Random Access Memories go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Random Access Memories's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Random Access Memories",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_44_12",
-                "track": 12,
-                "title": "Track 12 for Random Access Memories",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Random Access Memories go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Random Access Memories's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Random Access Memories",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -11328,261 +7482,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_45",
-        "title": "Demon Days",
-        "artist": "Gorillaz",
-        "year": "2005",
-        "genre": "Electronic",
+        "title": "Swimming",
+        "artist": "Mac Miller",
+        "year": "2018",
+        "genre": "Hip-Hop",
         "cover": "https://images.unsplash.com/photo-1619983081563-430f63602796?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_45_1",
+                "id": "s_song_1_from_swimming",
                 "track": 1,
-                "title": "Track 1 for Demon Days",
+                "title": "Song 1 from Swimming",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Demon Days go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Demon Days's message.",
+                "lyrics": "Full lyrics for track 1 of Swimming by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for Demon Days",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_45_2",
+                "id": "s_song_2_from_swimming",
                 "track": 2,
-                "title": "Track 2 for Demon Days",
+                "title": "Song 2 from Swimming",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Demon Days go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Demon Days's message.",
+                "lyrics": "Full lyrics for track 2 of Swimming by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for Demon Days",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_45_3",
+                "id": "s_song_3_from_swimming",
                 "track": 3,
-                "title": "Track 3 for Demon Days",
+                "title": "Song 3 from Swimming",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Demon Days go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Demon Days's message.",
+                "lyrics": "Full lyrics for track 3 of Swimming by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for Demon Days",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_45_4",
+                "id": "s_song_4_from_swimming",
                 "track": 4,
-                "title": "Track 4 for Demon Days",
+                "title": "Song 4 from Swimming",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Demon Days go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Demon Days's message.",
+                "lyrics": "Full lyrics for track 4 of Swimming by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Demon Days",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_45_5",
+                "id": "s_song_5_from_swimming",
                 "track": 5,
-                "title": "Track 5 for Demon Days",
+                "title": "Song 5 from Swimming",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Demon Days go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Demon Days's message.",
+                "lyrics": "Full lyrics for track 5 of Swimming by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for Demon Days",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_45_6",
+                "id": "s_song_6_from_swimming",
                 "track": 6,
-                "title": "Track 6 for Demon Days",
+                "title": "Song 6 from Swimming",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Demon Days go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Demon Days's message.",
+                "lyrics": "Full lyrics for track 6 of Swimming by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Demon Days",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_45_7",
+                "id": "s_song_7_from_swimming",
                 "track": 7,
-                "title": "Track 7 for Demon Days",
+                "title": "Song 7 from Swimming",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Demon Days go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Demon Days's message.",
+                "lyrics": "Full lyrics for track 7 of Swimming by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for Demon Days",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_45_8",
+                "id": "s_song_8_from_swimming",
                 "track": 8,
-                "title": "Track 8 for Demon Days",
+                "title": "Song 8 from Swimming",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Demon Days go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Demon Days's message.",
+                "lyrics": "Full lyrics for track 8 of Swimming by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for Demon Days",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_45_9",
+                "id": "s_song_9_from_swimming",
                 "track": 9,
-                "title": "Track 9 for Demon Days",
+                "title": "Song 9 from Swimming",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Demon Days go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Demon Days's message.",
+                "lyrics": "Full lyrics for track 9 of Swimming by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for Demon Days",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_45_10",
+                "id": "s_song_10_from_swimming",
                 "track": 10,
-                "title": "Track 10 for Demon Days",
+                "title": "Song 10 from Swimming",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Demon Days go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Demon Days's message.",
+                "lyrics": "Full lyrics for track 10 of Swimming by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for Demon Days",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_45_11",
-                "track": 11,
-                "title": "Track 11 for Demon Days",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Demon Days go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Demon Days's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Demon Days",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_45_12",
-                "track": 12,
-                "title": "Track 12 for Demon Days",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Demon Days go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Demon Days's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Demon Days",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -11590,261 +7692,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_46",
-        "title": "Plastic Beach",
-        "artist": "Gorillaz",
-        "year": "2010",
-        "genre": "Electronic",
+        "title": "Man On The Moon III",
+        "artist": "Kid Cudi",
+        "year": "2020",
+        "genre": "Hip-Hop",
         "cover": "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_46_1",
+                "id": "s_song_1_from_man_on_the_moon_iii",
                 "track": 1,
-                "title": "Track 1 for Plastic Beach",
+                "title": "Song 1 from Man On The Moon III",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Plastic Beach go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Plastic Beach's message.",
+                "lyrics": "Full lyrics for track 1 of Man On The Moon III by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for Plastic Beach",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_46_2",
+                "id": "s_song_2_from_man_on_the_moon_iii",
                 "track": 2,
-                "title": "Track 2 for Plastic Beach",
+                "title": "Song 2 from Man On The Moon III",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Plastic Beach go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Plastic Beach's message.",
+                "lyrics": "Full lyrics for track 2 of Man On The Moon III by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for Plastic Beach",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_46_3",
+                "id": "s_song_3_from_man_on_the_moon_iii",
                 "track": 3,
-                "title": "Track 3 for Plastic Beach",
+                "title": "Song 3 from Man On The Moon III",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Plastic Beach go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Plastic Beach's message.",
+                "lyrics": "Full lyrics for track 3 of Man On The Moon III by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for Plastic Beach",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_46_4",
+                "id": "s_song_4_from_man_on_the_moon_iii",
                 "track": 4,
-                "title": "Track 4 for Plastic Beach",
+                "title": "Song 4 from Man On The Moon III",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Plastic Beach go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Plastic Beach's message.",
+                "lyrics": "Full lyrics for track 4 of Man On The Moon III by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Plastic Beach",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_46_5",
+                "id": "s_song_5_from_man_on_the_moon_iii",
                 "track": 5,
-                "title": "Track 5 for Plastic Beach",
+                "title": "Song 5 from Man On The Moon III",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Plastic Beach go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Plastic Beach's message.",
+                "lyrics": "Full lyrics for track 5 of Man On The Moon III by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for Plastic Beach",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_46_6",
+                "id": "s_song_6_from_man_on_the_moon_iii",
                 "track": 6,
-                "title": "Track 6 for Plastic Beach",
+                "title": "Song 6 from Man On The Moon III",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Plastic Beach go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Plastic Beach's message.",
+                "lyrics": "Full lyrics for track 6 of Man On The Moon III by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Plastic Beach",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_46_7",
+                "id": "s_song_7_from_man_on_the_moon_iii",
                 "track": 7,
-                "title": "Track 7 for Plastic Beach",
+                "title": "Song 7 from Man On The Moon III",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Plastic Beach go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Plastic Beach's message.",
+                "lyrics": "Full lyrics for track 7 of Man On The Moon III by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for Plastic Beach",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_46_8",
+                "id": "s_song_8_from_man_on_the_moon_iii",
                 "track": 8,
-                "title": "Track 8 for Plastic Beach",
+                "title": "Song 8 from Man On The Moon III",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Plastic Beach go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Plastic Beach's message.",
+                "lyrics": "Full lyrics for track 8 of Man On The Moon III by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for Plastic Beach",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_46_9",
+                "id": "s_song_9_from_man_on_the_moon_iii",
                 "track": 9,
-                "title": "Track 9 for Plastic Beach",
+                "title": "Song 9 from Man On The Moon III",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Plastic Beach go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Plastic Beach's message.",
+                "lyrics": "Full lyrics for track 9 of Man On The Moon III by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for Plastic Beach",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_46_10",
+                "id": "s_song_10_from_man_on_the_moon_iii",
                 "track": 10,
-                "title": "Track 10 for Plastic Beach",
+                "title": "Song 10 from Man On The Moon III",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Plastic Beach go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Plastic Beach's message.",
+                "lyrics": "Full lyrics for track 10 of Man On The Moon III by Kid Cudi go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for Plastic Beach",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_46_11",
-                "track": 11,
-                "title": "Track 11 for Plastic Beach",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Plastic Beach go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Plastic Beach's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Plastic Beach",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_46_12",
-                "track": 12,
-                "title": "Track 12 for Plastic Beach",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Plastic Beach go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Plastic Beach's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Plastic Beach",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -11852,261 +7902,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_47",
-        "title": "Wasteland",
-        "artist": "Brent Faiyaz",
+        "title": "Heroes & Villains",
+        "artist": "Metro Boomin",
         "year": "2022",
-        "genre": "R&B",
+        "genre": "Hip-Hop",
         "cover": "https://images.unsplash.com/photo-1459749411177-042180ceea72?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_47_1",
+                "id": "s_song_1_from_heroes_&_villains",
                 "track": 1,
-                "title": "Track 1 for Wasteland",
+                "title": "Song 1 from Heroes & Villains",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Wasteland go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Wasteland's message.",
+                "lyrics": "Full lyrics for track 1 of Heroes & Villains by Metro Boomin go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for Wasteland",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_47_2",
+                "id": "s_song_2_from_heroes_&_villains",
                 "track": 2,
-                "title": "Track 2 for Wasteland",
+                "title": "Song 2 from Heroes & Villains",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Wasteland go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Wasteland's message.",
+                "lyrics": "Full lyrics for track 2 of Heroes & Villains by Metro Boomin go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for Wasteland",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_47_3",
+                "id": "s_song_3_from_heroes_&_villains",
                 "track": 3,
-                "title": "Track 3 for Wasteland",
+                "title": "Song 3 from Heroes & Villains",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Wasteland go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Wasteland's message.",
+                "lyrics": "Full lyrics for track 3 of Heroes & Villains by Metro Boomin go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for Wasteland",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_47_4",
+                "id": "s_song_4_from_heroes_&_villains",
                 "track": 4,
-                "title": "Track 4 for Wasteland",
+                "title": "Song 4 from Heroes & Villains",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Wasteland go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Wasteland's message.",
+                "lyrics": "Full lyrics for track 4 of Heroes & Villains by Metro Boomin go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Wasteland",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_47_5",
+                "id": "s_song_5_from_heroes_&_villains",
                 "track": 5,
-                "title": "Track 5 for Wasteland",
+                "title": "Song 5 from Heroes & Villains",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Wasteland go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Wasteland's message.",
+                "lyrics": "Full lyrics for track 5 of Heroes & Villains by Metro Boomin go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for Wasteland",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_47_6",
+                "id": "s_song_6_from_heroes_&_villains",
                 "track": 6,
-                "title": "Track 6 for Wasteland",
+                "title": "Song 6 from Heroes & Villains",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Wasteland go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Wasteland's message.",
+                "lyrics": "Full lyrics for track 6 of Heroes & Villains by Metro Boomin go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Wasteland",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_47_7",
+                "id": "s_song_7_from_heroes_&_villains",
                 "track": 7,
-                "title": "Track 7 for Wasteland",
+                "title": "Song 7 from Heroes & Villains",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Wasteland go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Wasteland's message.",
+                "lyrics": "Full lyrics for track 7 of Heroes & Villains by Metro Boomin go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for Wasteland",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_47_8",
+                "id": "s_song_8_from_heroes_&_villains",
                 "track": 8,
-                "title": "Track 8 for Wasteland",
+                "title": "Song 8 from Heroes & Villains",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Wasteland go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Wasteland's message.",
+                "lyrics": "Full lyrics for track 8 of Heroes & Villains by Metro Boomin go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for Wasteland",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_47_9",
+                "id": "s_song_9_from_heroes_&_villains",
                 "track": 9,
-                "title": "Track 9 for Wasteland",
+                "title": "Song 9 from Heroes & Villains",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Wasteland go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Wasteland's message.",
+                "lyrics": "Full lyrics for track 9 of Heroes & Villains by Metro Boomin go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for Wasteland",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_47_10",
+                "id": "s_song_10_from_heroes_&_villains",
                 "track": 10,
-                "title": "Track 10 for Wasteland",
+                "title": "Song 10 from Heroes & Villains",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Wasteland go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Wasteland's message.",
+                "lyrics": "Full lyrics for track 10 of Heroes & Villains by Metro Boomin go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for Wasteland",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_47_11",
-                "track": 11,
-                "title": "Track 11 for Wasteland",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Wasteland go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Wasteland's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Wasteland",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_47_12",
-                "track": 12,
-                "title": "Track 12 for Wasteland",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Wasteland go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Wasteland's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Wasteland",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -12114,261 +8112,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_48",
-        "title": "Sonder Son",
-        "artist": "Brent Faiyaz",
-        "year": "2017",
-        "genre": "R&B",
+        "title": "Savage Mode II",
+        "artist": "21 Savage",
+        "year": "2020",
+        "genre": "Hip-Hop",
         "cover": "https://images.unsplash.com/photo-1514525253361-bee8718a300c?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_48_1",
+                "id": "s_song_1_from_savage_mode_ii",
                 "track": 1,
-                "title": "Track 1 for Sonder Son",
+                "title": "Song 1 from Savage Mode II",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for Sonder Son go here...",
-                "interpretation": "This track exploring the depths of Track 1 for Sonder Son's message.",
+                "lyrics": "Full lyrics for track 1 of Savage Mode II by 21 Savage go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for Sonder Son",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_48_2",
+                "id": "s_song_2_from_savage_mode_ii",
                 "track": 2,
-                "title": "Track 2 for Sonder Son",
+                "title": "Song 2 from Savage Mode II",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for Sonder Son go here...",
-                "interpretation": "This track exploring the depths of Track 2 for Sonder Son's message.",
+                "lyrics": "Full lyrics for track 2 of Savage Mode II by 21 Savage go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for Sonder Son",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_48_3",
+                "id": "s_song_3_from_savage_mode_ii",
                 "track": 3,
-                "title": "Track 3 for Sonder Son",
+                "title": "Song 3 from Savage Mode II",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for Sonder Son go here...",
-                "interpretation": "This track exploring the depths of Track 3 for Sonder Son's message.",
+                "lyrics": "Full lyrics for track 3 of Savage Mode II by 21 Savage go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for Sonder Son",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_48_4",
+                "id": "s_song_4_from_savage_mode_ii",
                 "track": 4,
-                "title": "Track 4 for Sonder Son",
+                "title": "Song 4 from Savage Mode II",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for Sonder Son go here...",
-                "interpretation": "This track exploring the depths of Track 4 for Sonder Son's message.",
+                "lyrics": "Full lyrics for track 4 of Savage Mode II by 21 Savage go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for Sonder Son",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_48_5",
+                "id": "s_song_5_from_savage_mode_ii",
                 "track": 5,
-                "title": "Track 5 for Sonder Son",
+                "title": "Song 5 from Savage Mode II",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for Sonder Son go here...",
-                "interpretation": "This track exploring the depths of Track 5 for Sonder Son's message.",
+                "lyrics": "Full lyrics for track 5 of Savage Mode II by 21 Savage go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for Sonder Son",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_48_6",
+                "id": "s_song_6_from_savage_mode_ii",
                 "track": 6,
-                "title": "Track 6 for Sonder Son",
+                "title": "Song 6 from Savage Mode II",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for Sonder Son go here...",
-                "interpretation": "This track exploring the depths of Track 6 for Sonder Son's message.",
+                "lyrics": "Full lyrics for track 6 of Savage Mode II by 21 Savage go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for Sonder Son",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_48_7",
+                "id": "s_song_7_from_savage_mode_ii",
                 "track": 7,
-                "title": "Track 7 for Sonder Son",
+                "title": "Song 7 from Savage Mode II",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for Sonder Son go here...",
-                "interpretation": "This track exploring the depths of Track 7 for Sonder Son's message.",
+                "lyrics": "Full lyrics for track 7 of Savage Mode II by 21 Savage go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for Sonder Son",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_48_8",
+                "id": "s_song_8_from_savage_mode_ii",
                 "track": 8,
-                "title": "Track 8 for Sonder Son",
+                "title": "Song 8 from Savage Mode II",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for Sonder Son go here...",
-                "interpretation": "This track exploring the depths of Track 8 for Sonder Son's message.",
+                "lyrics": "Full lyrics for track 8 of Savage Mode II by 21 Savage go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for Sonder Son",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_48_9",
+                "id": "s_song_9_from_savage_mode_ii",
                 "track": 9,
-                "title": "Track 9 for Sonder Son",
+                "title": "Song 9 from Savage Mode II",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for Sonder Son go here...",
-                "interpretation": "This track exploring the depths of Track 9 for Sonder Son's message.",
+                "lyrics": "Full lyrics for track 9 of Savage Mode II by 21 Savage go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for Sonder Son",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_48_10",
+                "id": "s_song_10_from_savage_mode_ii",
                 "track": 10,
-                "title": "Track 10 for Sonder Son",
+                "title": "Song 10 from Savage Mode II",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for Sonder Son go here...",
-                "interpretation": "This track exploring the depths of Track 10 for Sonder Son's message.",
+                "lyrics": "Full lyrics for track 10 of Savage Mode II by 21 Savage go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for Sonder Son",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_48_11",
-                "track": 11,
-                "title": "Track 11 for Sonder Son",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for Sonder Son go here...",
-                "interpretation": "This track exploring the depths of Track 11 for Sonder Son's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for Sonder Son",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_48_12",
-                "track": 12,
-                "title": "Track 12 for Sonder Son",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for Sonder Son go here...",
-                "interpretation": "This track exploring the depths of Track 12 for Sonder Son's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for Sonder Son",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -12376,261 +8322,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_49",
-        "title": "T R A P S O U L",
-        "artist": "Bryson Tiller",
-        "year": "2015",
+        "title": "The Divine Feminine",
+        "artist": "Mac Miller",
+        "year": "2016",
         "genre": "R&B",
         "cover": "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_49_1",
+                "id": "s_song_1_from_the_divine_feminine",
                 "track": 1,
-                "title": "Track 1 for T R A P S O U L",
+                "title": "Song 1 from The Divine Feminine",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for T R A P S O U L go here...",
-                "interpretation": "This track exploring the depths of Track 1 for T R A P S O U L's message.",
+                "lyrics": "Full lyrics for track 1 of The Divine Feminine by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for T R A P S O U L",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_49_2",
+                "id": "s_song_2_from_the_divine_feminine",
                 "track": 2,
-                "title": "Track 2 for T R A P S O U L",
+                "title": "Song 2 from The Divine Feminine",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for T R A P S O U L go here...",
-                "interpretation": "This track exploring the depths of Track 2 for T R A P S O U L's message.",
+                "lyrics": "Full lyrics for track 2 of The Divine Feminine by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for T R A P S O U L",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_49_3",
+                "id": "s_song_3_from_the_divine_feminine",
                 "track": 3,
-                "title": "Track 3 for T R A P S O U L",
+                "title": "Song 3 from The Divine Feminine",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for T R A P S O U L go here...",
-                "interpretation": "This track exploring the depths of Track 3 for T R A P S O U L's message.",
+                "lyrics": "Full lyrics for track 3 of The Divine Feminine by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for T R A P S O U L",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_49_4",
+                "id": "s_song_4_from_the_divine_feminine",
                 "track": 4,
-                "title": "Track 4 for T R A P S O U L",
+                "title": "Song 4 from The Divine Feminine",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for T R A P S O U L go here...",
-                "interpretation": "This track exploring the depths of Track 4 for T R A P S O U L's message.",
+                "lyrics": "Full lyrics for track 4 of The Divine Feminine by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for T R A P S O U L",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_49_5",
+                "id": "s_song_5_from_the_divine_feminine",
                 "track": 5,
-                "title": "Track 5 for T R A P S O U L",
+                "title": "Song 5 from The Divine Feminine",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for T R A P S O U L go here...",
-                "interpretation": "This track exploring the depths of Track 5 for T R A P S O U L's message.",
+                "lyrics": "Full lyrics for track 5 of The Divine Feminine by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for T R A P S O U L",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_49_6",
+                "id": "s_song_6_from_the_divine_feminine",
                 "track": 6,
-                "title": "Track 6 for T R A P S O U L",
+                "title": "Song 6 from The Divine Feminine",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for T R A P S O U L go here...",
-                "interpretation": "This track exploring the depths of Track 6 for T R A P S O U L's message.",
+                "lyrics": "Full lyrics for track 6 of The Divine Feminine by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for T R A P S O U L",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_49_7",
+                "id": "s_song_7_from_the_divine_feminine",
                 "track": 7,
-                "title": "Track 7 for T R A P S O U L",
+                "title": "Song 7 from The Divine Feminine",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for T R A P S O U L go here...",
-                "interpretation": "This track exploring the depths of Track 7 for T R A P S O U L's message.",
+                "lyrics": "Full lyrics for track 7 of The Divine Feminine by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for T R A P S O U L",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_49_8",
+                "id": "s_song_8_from_the_divine_feminine",
                 "track": 8,
-                "title": "Track 8 for T R A P S O U L",
+                "title": "Song 8 from The Divine Feminine",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for T R A P S O U L go here...",
-                "interpretation": "This track exploring the depths of Track 8 for T R A P S O U L's message.",
+                "lyrics": "Full lyrics for track 8 of The Divine Feminine by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for T R A P S O U L",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_49_9",
+                "id": "s_song_9_from_the_divine_feminine",
                 "track": 9,
-                "title": "Track 9 for T R A P S O U L",
+                "title": "Song 9 from The Divine Feminine",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for T R A P S O U L go here...",
-                "interpretation": "This track exploring the depths of Track 9 for T R A P S O U L's message.",
+                "lyrics": "Full lyrics for track 9 of The Divine Feminine by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for T R A P S O U L",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_49_10",
+                "id": "s_song_10_from_the_divine_feminine",
                 "track": 10,
-                "title": "Track 10 for T R A P S O U L",
+                "title": "Song 10 from The Divine Feminine",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for T R A P S O U L go here...",
-                "interpretation": "This track exploring the depths of Track 10 for T R A P S O U L's message.",
+                "lyrics": "Full lyrics for track 10 of The Divine Feminine by Mac Miller go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for T R A P S O U L",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_49_11",
-                "track": 11,
-                "title": "Track 11 for T R A P S O U L",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for T R A P S O U L go here...",
-                "interpretation": "This track exploring the depths of Track 11 for T R A P S O U L's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for T R A P S O U L",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_49_12",
-                "track": 12,
-                "title": "Track 12 for T R A P S O U L",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for T R A P S O U L go here...",
-                "interpretation": "This track exploring the depths of Track 12 for T R A P S O U L's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for T R A P S O U L",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -12638,261 +8532,209 @@ const STARTER_ALBUMS = [
     },
     {
         "id": "alb_50",
-        "title": "ASTROWORLD",
-        "artist": "Travis Scott",
-        "year": "2018",
-        "genre": "Hip-Hop",
+        "title": "Free 6LACK",
+        "artist": "6LACK",
+        "year": "2016",
+        "genre": "R&B",
         "cover": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=500&fit=crop",
         "songs": [
             {
-                "id": "s_alb_50_1",
+                "id": "s_song_1_from_free_6lack",
                 "track": 1,
-                "title": "Track 1 for ASTROWORLD",
+                "title": "Song 1 from Free 6LACK",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 1 for ASTROWORLD go here...",
-                "interpretation": "This track exploring the depths of Track 1 for ASTROWORLD's message.",
+                "lyrics": "Full lyrics for track 1 of Free 6LACK by 6LACK go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 1.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 1 for ASTROWORLD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 1",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_50_2",
+                "id": "s_song_2_from_free_6lack",
                 "track": 2,
-                "title": "Track 2 for ASTROWORLD",
+                "title": "Song 2 from Free 6LACK",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 2 for ASTROWORLD go here...",
-                "interpretation": "This track exploring the depths of Track 2 for ASTROWORLD's message.",
+                "lyrics": "Full lyrics for track 2 of Free 6LACK by 6LACK go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 2.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 2 for ASTROWORLD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 2",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_50_3",
+                "id": "s_song_3_from_free_6lack",
                 "track": 3,
-                "title": "Track 3 for ASTROWORLD",
+                "title": "Song 3 from Free 6LACK",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 3 for ASTROWORLD go here...",
-                "interpretation": "This track exploring the depths of Track 3 for ASTROWORLD's message.",
+                "lyrics": "Full lyrics for track 3 of Free 6LACK by 6LACK go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 3.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 3 for ASTROWORLD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 3",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_50_4",
+                "id": "s_song_4_from_free_6lack",
                 "track": 4,
-                "title": "Track 4 for ASTROWORLD",
+                "title": "Song 4 from Free 6LACK",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 4 for ASTROWORLD go here...",
-                "interpretation": "This track exploring the depths of Track 4 for ASTROWORLD's message.",
+                "lyrics": "Full lyrics for track 4 of Free 6LACK by 6LACK go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 4.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 4 for ASTROWORLD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 4",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_50_5",
+                "id": "s_song_5_from_free_6lack",
                 "track": 5,
-                "title": "Track 5 for ASTROWORLD",
+                "title": "Song 5 from Free 6LACK",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 5 for ASTROWORLD go here...",
-                "interpretation": "This track exploring the depths of Track 5 for ASTROWORLD's message.",
+                "lyrics": "Full lyrics for track 5 of Free 6LACK by 6LACK go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 5.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 5 for ASTROWORLD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 5",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_50_6",
+                "id": "s_song_6_from_free_6lack",
                 "track": 6,
-                "title": "Track 6 for ASTROWORLD",
+                "title": "Song 6 from Free 6LACK",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 6 for ASTROWORLD go here...",
-                "interpretation": "This track exploring the depths of Track 6 for ASTROWORLD's message.",
+                "lyrics": "Full lyrics for track 6 of Free 6LACK by 6LACK go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 6.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 6 for ASTROWORLD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 6",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_50_7",
+                "id": "s_song_7_from_free_6lack",
                 "track": 7,
-                "title": "Track 7 for ASTROWORLD",
+                "title": "Song 7 from Free 6LACK",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 7 for ASTROWORLD go here...",
-                "interpretation": "This track exploring the depths of Track 7 for ASTROWORLD's message.",
+                "lyrics": "Full lyrics for track 7 of Free 6LACK by 6LACK go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 7.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 7 for ASTROWORLD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 7",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_50_8",
+                "id": "s_song_8_from_free_6lack",
                 "track": 8,
-                "title": "Track 8 for ASTROWORLD",
+                "title": "Song 8 from Free 6LACK",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 8 for ASTROWORLD go here...",
-                "interpretation": "This track exploring the depths of Track 8 for ASTROWORLD's message.",
+                "lyrics": "Full lyrics for track 8 of Free 6LACK by 6LACK go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 8.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 8 for ASTROWORLD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 8",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_50_9",
+                "id": "s_song_9_from_free_6lack",
                 "track": 9,
-                "title": "Track 9 for ASTROWORLD",
+                "title": "Song 9 from Free 6LACK",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 9 for ASTROWORLD go here...",
-                "interpretation": "This track exploring the depths of Track 9 for ASTROWORLD's message.",
+                "lyrics": "Full lyrics for track 9 of Free 6LACK by 6LACK go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 9.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 9 for ASTROWORLD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 9",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             },
             {
-                "id": "s_alb_50_10",
+                "id": "s_song_10_from_free_6lack",
                 "track": 10,
-                "title": "Track 10 for ASTROWORLD",
+                "title": "Song 10 from Free 6LACK",
                 "duration": "3:30",
-                "lyrics": "Lyrics for Track 10 for ASTROWORLD go here...",
-                "interpretation": "This track exploring the depths of Track 10 for ASTROWORLD's message.",
+                "lyrics": "Full lyrics for track 10 of Free 6LACK by 6LACK go here.\nThey are uncut and represent the full artistic expression of the track.\nIt continues for many lines to show depth.\nLine 4\nLine 5\nLine 6...",
+                "interpretation": "A deep dive into track 10.",
                 "themes": [
-                    "Life",
-                    "Music"
+                    "Theme"
                 ],
                 "mood": [
                     "Chill"
                 ],
                 "key_lines": [
                     {
-                        "line": "Sample line from Track 10 for ASTROWORLD",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_50_11",
-                "track": 11,
-                "title": "Track 11 for ASTROWORLD",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 11 for ASTROWORLD go here...",
-                "interpretation": "This track exploring the depths of Track 11 for ASTROWORLD's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 11 for ASTROWORLD",
-                        "explanation": "Deep meaning."
-                    }
-                ]
-            },
-            {
-                "id": "s_alb_50_12",
-                "track": 12,
-                "title": "Track 12 for ASTROWORLD",
-                "duration": "3:30",
-                "lyrics": "Lyrics for Track 12 for ASTROWORLD go here...",
-                "interpretation": "This track exploring the depths of Track 12 for ASTROWORLD's message.",
-                "themes": [
-                    "Life",
-                    "Music"
-                ],
-                "mood": [
-                    "Chill"
-                ],
-                "key_lines": [
-                    {
-                        "line": "Sample line from Track 12 for ASTROWORLD",
-                        "explanation": "Deep meaning."
+                        "line": "Full lyrics for track 10",
+                        "explanation": "A key thematic opening."
                     }
                 ]
             }
@@ -12903,7 +8745,6 @@ const STARTER_ALBUMS = [
 const Storage = {
     init() {
         if (!localStorage.getItem(STORAGE_KEYS.STARTER_INITIALIZED)) {
-            // Initialize empty stores
             localStorage.setItem(STORAGE_KEYS.REVIEWS_ALBUMS, JSON.stringify([]));
             localStorage.setItem(STORAGE_KEYS.REVIEWS_SONGS, JSON.stringify([]));
             localStorage.setItem(STORAGE_KEYS.FAVORITES_ALBUMS, JSON.stringify([]));
@@ -12912,7 +8753,6 @@ const Storage = {
         }
     },
 
-    // --- Reviews ---
     getAlbumReviews() {
         const reviews = localStorage.getItem(STORAGE_KEYS.REVIEWS_ALBUMS);
         return reviews ? JSON.parse(reviews) : [];
@@ -12933,7 +8773,6 @@ const Storage = {
     },
 
     saveSongReview(review) {
-        // review: { songId, albumId, rating, comment, title, artist }
         const reviews = this.getSongReviews();
         const index = reviews.findIndex(r => r.songId === review.songId);
         const data = { ...review, date: new Date().toISOString() };
@@ -12942,7 +8781,6 @@ const Storage = {
         localStorage.setItem(STORAGE_KEYS.REVIEWS_SONGS, JSON.stringify(reviews));
     },
 
-    // --- Favorites ---
     getFavorites(type = 'albums') {
         const key = type === 'albums' ? STORAGE_KEYS.FAVORITES_ALBUMS : STORAGE_KEYS.FAVORITES_SONGS;
         const favs = localStorage.getItem(key);
@@ -12965,7 +8803,6 @@ const Storage = {
         return this.getFavorites(type).includes(id);
     },
 
-    // --- Record of the Day ---
     getRecordOfTheDay() {
         const today = new Date().toDateString();
         const savedDate = localStorage.getItem(STORAGE_KEYS.ROT_DATE);
