@@ -40,10 +40,20 @@
 
         <section class="top-charts container">
             <div class="section-header">
-                <h2>Top Charts</h2>
+                <h2>Top Rated Albums</h2>
                 <a href="explore.html?sort=rating" class="btn-text">View All <i class="fa-solid fa-arrow-right"></i></a>
             </div>
             <div class="album-grid" id="top-charts-grid"></div>
+        </section>
+
+        <section class="leaderboard container">
+            <div class="section-header">
+                <h2>Song Leaderboard</h2>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Your highest rated tracks</p>
+            </div>
+            <div id="song-leaderboard" class="song-leaderboard">
+                <!-- Populated by JS -->
+            </div>
         </section>
 
         <section class="recent-reviews container">

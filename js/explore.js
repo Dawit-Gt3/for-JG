@@ -3,31 +3,25 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFilters();
 });
 
-let currentTab = 'all'; // 'all' or 'reviews'
-let searchResults = [];
+let currentTab = 'all'; // 'all', 'songs', 'reviews'
+let albumResults = [];
+let songResults = [];
 
 function initExplore() {
     const urlParams = new URLSearchParams(window.location.search);
     const tab = urlParams.get('tab');
-    const sort = urlParams.get('sort');
 
     if (tab === 'reviews') {
         switchTab('reviews');
     } else {
-        if (sort === 'rating') {
-            document.getElementById('filter-rating').value = 8;
-            document.getElementById('rating-val').innerText = '8';
-        }
         renderDiscover();
     }
 
-    // Search event
     document.getElementById('search-btn').addEventListener('click', handleSearch);
     document.getElementById('search-input').addEventListener('keypress', (e) => {
         if (e.key === 'Enter') handleSearch();
     });
 
-    // Tab events
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.onclick = () => switchTab(btn.dataset.tab);
     });
@@ -39,11 +33,11 @@ function switchTab(tab) {
         btn.classList.toggle('active', btn.dataset.tab === tab);
     });
 
-    if (tab === 'reviews') {
-        renderMyReviews();
-    } else {
-        renderDiscover();
-    }
+    document.getElementById('explore-grid').innerHTML = '';
+
+    if (tab === 'reviews') renderMyReviews();
+    else if (tab === 'songs') renderSongs(songResults.length > 0 ? songResults : []);
+    else renderDiscover();
 }
 
 async function handleSearch() {
@@ -51,23 +45,88 @@ async function handleSearch() {
     if (!query) return;
 
     showLoading(true);
-    searchResults = await API.searchAlbums(query);
+    albumResults = await API.searchAlbums(query);
+    songResults = await API.searchSongs(query);
     showLoading(false);
 
-    currentTab = 'all';
-    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.tab === 'all'));
-    renderGrid(searchResults);
+    if (currentTab === 'reviews') currentTab = 'all';
+    renderCurrentTab();
+}
+
+function renderCurrentTab() {
+    switchTab(currentTab);
 }
 
 function renderDiscover() {
-    // Show starter albums by default
-    searchResults = STARTER_ALBUMS;
-    renderGrid(searchResults);
+    if (albumResults.length === 0) albumResults = STARTER_ALBUMS;
+    renderGrid(albumResults);
+}
+
+function renderSongs(songs) {
+    const grid = document.getElementById('explore-grid');
+    const filters = getFilters();
+
+    let filtered = songs.filter(s => {
+        const matchesRating = s.rating ? s.rating >= filters.rating : true;
+        const matchesFav = filters.favOnly ? Storage.isFavorite(s.id, 'songs') : true;
+        return matchesRating && matchesFav;
+    });
+
+    if (filtered.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">No songs found matching your search or filters.</p>';
+        return;
+    }
+
+    grid.innerHTML = filtered.map(song => `
+        <div class="album-card" onclick="viewSongDetails('${song.albumId}', '${song.id}')">
+            ${song.rating ? `<div class="rating-badge">${song.rating}/10</div>` : ''}
+            <img src="${song.cover}" alt="${song.title}" style="opacity: 0.8;">
+            <div style="position: absolute; top: 15px; left: 15px; background: rgba(0,0,0,0.6); padding: 4px 8px; border-radius: 4px; font-size: 0.7rem;">SONG</div>
+            <h3>${song.title}</h3>
+            <p>${song.artist} • ${song.albumTitle}</p>
+        </div>
+    `).join('');
 }
 
 function renderMyReviews() {
-    const reviews = Storage.getReviews();
-    renderGrid(reviews);
+    const aReviews = Storage.getAlbumReviews();
+    const sReviews = Storage.getSongReviews();
+
+    const grid = document.getElementById('explore-grid');
+    if (!grid) return;
+
+    if (aReviews.length === 0 && sReviews.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">You haven\'t written any reviews yet!</p>';
+        return;
+    }
+
+    let html = '';
+
+    if (aReviews.length > 0) {
+        html += `<h3 style="grid-column: 1/-1; margin-top: 20px; color: var(--primary);">Album Reviews</h3>`;
+        html += aReviews.map(album => `
+            <div class="album-card" onclick="viewAlbumDetails('${album.id}')">
+                <div class="rating-badge">${album.rating}/10</div>
+                <img src="${album.cover}" alt="${album.title}">
+                <h3>${album.title}</h3>
+                <p>${album.artist} • ${album.year}</p>
+            </div>
+        `).join('');
+    }
+
+    if (sReviews.length > 0) {
+        html += `<h3 style="grid-column: 1/-1; margin-top: 40px; color: var(--primary);">Track Reviews</h3>`;
+        html += sReviews.map(song => `
+            <div class="album-card" onclick="viewSongDetails('${song.albumId}', '${song.songId}')">
+                <div class="rating-badge">${song.rating}/10</div>
+                <img src="${song.cover || 'https://via.placeholder.com/250?text=Song'}" alt="${song.title}" style="opacity: 0.7;">
+                <h3>${song.title}</h3>
+                <p>${song.artist}</p>
+            </div>
+        `).join('');
+    }
+
+    grid.innerHTML = html;
 }
 
 function renderGrid(items) {
@@ -75,29 +134,21 @@ function renderGrid(items) {
     const filters = getFilters();
 
     let filtered = items.filter(item => {
-        const matchesGenre = filters.genre === 'all' || item.genre === filters.genre;
-        const matchesYear = filters.year === 'all' ||
-                           (filters.year === 'older' ? parseInt(item.year) < 2021 : item.year === filters.year);
+        const matchesGenre = filters.genre === 'all' || item.genre.includes(filters.genre);
         const matchesRating = item.rating ? item.rating >= filters.rating : true;
-
-        return matchesGenre && matchesYear && matchesRating;
+        const matchesFav = filters.favOnly ? Storage.isFavorite(item.id, 'albums') : true;
+        return matchesGenre && matchesRating && matchesFav;
     });
 
     if (filtered.length === 0) {
-        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">No albums found matching your criteria.</p>';
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">No albums found.</p>';
         return;
-    }
-
-    // Handle sorting if requested
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('sort') === 'rating') {
-        filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
     }
 
     grid.innerHTML = filtered.map(album => `
         <div class="album-card" onclick="viewAlbumDetails('${album.id}')">
             ${album.rating ? `<div class="rating-badge">${album.rating}/10</div>` : ''}
-            <img src="${album.cover}" alt="${album.title}" onerror="this.src='https://via.placeholder.com/250?text=No+Cover'">
+            <img src="${album.cover}" alt="${album.title}">
             <h3>${album.title}</h3>
             <p>${album.artist} • ${album.year}</p>
         </div>
@@ -109,7 +160,6 @@ function showLoading(show) {
     document.getElementById('explore-grid').classList.toggle('hidden', show);
 }
 
-// Filters logic
 function setupFilters() {
     const ratingInput = document.getElementById('filter-rating');
     const ratingVal = document.getElementById('rating-val');
@@ -120,11 +170,11 @@ function setupFilters() {
     };
 
     document.getElementById('filter-genre').onchange = applyFilters;
-    document.getElementById('filter-year').onchange = applyFilters;
+    document.getElementById('filter-fav').onchange = applyFilters;
 
     document.getElementById('reset-filters').onclick = () => {
         document.getElementById('filter-genre').value = 'all';
-        document.getElementById('filter-year').value = 'all';
+        document.getElementById('filter-fav').checked = false;
         ratingInput.value = 0;
         ratingVal.innerText = '0';
         applyFilters();
@@ -134,15 +184,13 @@ function setupFilters() {
 function getFilters() {
     return {
         genre: document.getElementById('filter-genre').value,
-        year: document.getElementById('filter-year').value,
-        rating: parseInt(document.getElementById('filter-rating').value)
+        rating: parseInt(document.getElementById('filter-rating').value),
+        favOnly: document.getElementById('filter-fav').checked
     };
 }
 
 function applyFilters() {
-    if (currentTab === 'reviews') {
-        renderMyReviews();
-    } else {
-        renderGrid(searchResults);
-    }
+    if (currentTab === 'reviews') renderMyReviews();
+    else if (currentTab === 'songs') renderSongs(songResults);
+    else renderGrid(albumResults);
 }

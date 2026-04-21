@@ -35,16 +35,7 @@
                         <option value="R&B">R&B</option>
                         <option value="Indie">Indie</option>
                         <option value="Rock">Rock</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label>Year</label>
-                    <select id="filter-year">
-                        <option value="all">All Years</option>
-                        <option value="2023">2023</option>
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                        <option value="older">Older</option>
+                        <option value="Electronic">Electronic</option>
                     </select>
                 </div>
                 <div class="filter-group">
@@ -52,19 +43,24 @@
                     <input type="range" id="filter-rating" min="0" max="10" value="0">
                     <span id="rating-val">0</span>
                 </div>
-                <button id="reset-filters" class="btn-primary" style="width:100%; font-size:0.8rem; padding:8px;">Reset Filters</button>
+                <div class="filter-group" style="display: flex; align-items: center; gap: 10px; margin-top: 20px;">
+                    <input type="checkbox" id="filter-fav" style="width: 20px; height: 20px; cursor: pointer;">
+                    <label for="filter-fav" style="margin-bottom: 0;">Show Favorites Only</label>
+                </div>
+                <button id="reset-filters" class="btn-primary" style="width:100%; font-size:0.8rem; padding:8px; margin-top: 20px;">Reset Filters</button>
             </aside>
 
             <section class="explore-content">
                 <div class="search-header">
                     <div class="search-main">
-                        <input type="text" id="search-input" placeholder="Search for albums or artists...">
+                        <input type="text" id="search-input" placeholder="Search for albums, artists, or songs...">
                         <button id="search-btn" class="btn-primary">Search</button>
                     </div>
                 </div>
 
                 <div class="tabs">
-                    <button class="tab-btn active" data-tab="all">Discover</button>
+                    <button class="tab-btn active" data-tab="all">Albums</button>
+                    <button class="tab-btn" data-tab="songs">Songs</button>
                     <button class="tab-btn" data-tab="reviews">My Reviews</button>
                 </div>
 
@@ -72,7 +68,7 @@
 
                 <div id="loading-state" class="hidden" style="text-align:center; padding: 50px;">
                     <div class="spinner"></div>
-                    <p>Searching for music...</p>
+                    <p>Searching database...</p>
                 </div>
             </section>
         </div>
