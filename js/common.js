@@ -227,3 +227,5 @@ function refreshViews() {
     if (typeof renderMyReviews === 'function') renderMyReviews();
     if (typeof renderLeaderboard === 'function') renderLeaderboard();
 }
+
+function escapeHTML(str) { return str.replace(/[&<>"'"'"]/g, m => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[m])); }

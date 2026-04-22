@@ -129,16 +129,44 @@ function renderMyReviews() {
     grid.innerHTML = html;
 }
 
+
 function renderGrid(items) {
     const grid = document.getElementById('explore-grid');
     const filters = getFilters();
+    const urlParams = new URLSearchParams(window.location.search);
+    const sort = urlParams.get('sort');
 
-    let filtered = items.filter(item => {
+    let filtered = items.map(item => {
+        const review = Storage.getAlbumReviews().find(r => r.id === item.id);
+        return { ...item, rating: review ? review.rating : 0 };
+    }).filter(item => {
         const matchesGenre = filters.genre === 'all' || item.genre.includes(filters.genre);
         const matchesRating = item.rating ? item.rating >= filters.rating : true;
         const matchesFav = filters.favOnly ? Storage.isFavorite(item.id, 'albums') : true;
         return matchesGenre && matchesRating && matchesFav;
     });
+
+    if (sort === 'rating') {
+        filtered.sort((a, b) => b.rating - a.rating);
+    } else if (sort === 'year') {
+        filtered.sort((a, b) => b.year - a.year);
+    }
+
+    if (filtered.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">No albums found.</p>';
+        return;
+    }
+
+    grid.innerHTML = filtered.map(album => `
+        <div class="album-card" onclick="viewAlbumDetails('${album.id}')">
+            ${album.rating > 0 ? `<div class="rating-badge">${album.rating}/10</div>` : ''}
+            <img src="${album.cover}" alt="${album.title}">
+            <h3>${album.title}</h3>
+            <p>${album.artist} • ${album.year}</p>
+        </div>
+    `).join('');
+}
+);
 
     if (filtered.length === 0) {
         grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px;">No albums found.</p>';
